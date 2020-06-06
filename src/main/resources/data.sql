@@ -1,0 +1,2 @@
+use agreementgenerator;
+INSERT INTO agreementgenerator.user (email, enabled, first_name, last_name, password, role, username) VALUES ('wkuziow@gmail.com', 1, 'Wojciech', 'Kuziów', '$2a$10$tsZmv8kZSyv39QaTT2/9RO6wHwVE94TjdmJ.mWjKAMlnQFv3Osajq', 2, 'admin');
