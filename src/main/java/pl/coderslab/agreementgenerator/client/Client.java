@@ -23,13 +23,23 @@ public class Client {
     private String postalCode;
     private String blockNumber;
     private String flatNumber;
+    private String town;
     private String phone;
     private String email;
     @OneToOne
     private Transaction transaction;
     private boolean softDelete;
-    private String accout;
+    private String account;
     private String contactPerson;
     @ManyToOne
     private User user;
+
+    public String getAdress() {
+        return street + " " + blockNumber + "/"
+                + flatNumber + "; " + postalCode + " " + town;
+    }
+
+    public String getContactInfo() {
+        return "email: " + email + ", phone: " + phone;
+    }
 }

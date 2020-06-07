@@ -25,14 +25,14 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http.authorizeRequests()
-
+                .antMatchers("/admin/**").hasRole("ADMIN")
                 .antMatchers("/", "/login").permitAll()
                 .antMatchers("/**").authenticated()
                 .and().formLogin()
                 .loginPage("/login")
-                .and().logout().logoutSuccessUrl("/");
+                .and().logout().logoutSuccessUrl("/")
                 //.permitAll()
-                //.and().exceptionHandling().accessDeniedPage("home/403");
+                .and().exceptionHandling().accessDeniedPage("/403");
     }
     @Bean
     public BCryptPasswordEncoder passwordEncoder() {

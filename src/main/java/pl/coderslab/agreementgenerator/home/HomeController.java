@@ -10,6 +10,8 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import pl.coderslab.agreementgenerator.user.CurrentUser;
 import pl.coderslab.agreementgenerator.user.User;
 
+import java.util.Optional;
+
 @Controller
 
 public class HomeController {
@@ -20,16 +22,5 @@ public class HomeController {
     }
 
 
-
-    @GetMapping("/about")
-    public String about() {
-        return "home/about";
-    }
-
-    @ModelAttribute("currentUserFisrtName")
-    public String currentUser(@AuthenticationPrincipal CurrentUser customUser, Model model) {
-        User entityUser = customUser.getUser();
-        return entityUser.getFirstName();
-    }
 
 }

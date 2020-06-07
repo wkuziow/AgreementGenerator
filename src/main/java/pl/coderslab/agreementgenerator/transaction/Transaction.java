@@ -28,8 +28,8 @@ public class Transaction {
     private LocalDate terminationDate;
     private String repaymentAccount;
     private String collaterals;
-    private FinancingModel financingModel;
-    private ReferenceRate referenceRate;
+ //   private FinancingModel financingModel;
+  //  private ReferenceRate referenceRate;
     private double setUpFee;
     private double arrangementFee;
     private double administrationFee;
