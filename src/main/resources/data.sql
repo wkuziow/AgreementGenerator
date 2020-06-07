@@ -1,2 +1,10 @@
 use agreementgenerator;
-INSERT INTO agreementgenerator.user (email, enabled, first_name, last_name, password, role, username) VALUES ('wkuziow@gmail.com', 1, 'Wojciech', 'Kuziów', '$2a$10$tsZmv8kZSyv39QaTT2/9RO6wHwVE94TjdmJ.mWjKAMlnQFv3Osajq', 2, 'admin');
+INSERT INTO agreementgenerator.user (email, enabled, first_name, last_name, password, role, username) VALUES ('wkuziow@gmail.com', true, 'Wojciech', 'Kuziów', '$2a$10$tsZmv8kZSyv39QaTT2/9RO6wHwVE94TjdmJ.mWjKAMlnQFv3Osajq', 2, 'admin');
+INSERT INTO agreementgenerator.user (email, enabled, first_name, last_name, password, role, username) VALUES ('wk@gmail.com', true, 'Adam', 'Kowalski', '$2a$10$5n2En0pOsq/UaUM3J8Jo9OAjWz/ocY9VHZy6bHoMDxLmWhCG7FxtW', 0, 'adamk');
+INSERT INTO agreementgenerator.user (email, enabled, first_name, last_name, password, role, username) VALUES ('ola@wp.pl', true, 'Aleksandra', 'Wiatr', '$2a$10$8kf7YKGhhKA6CYxX2g2JbennzngeSnBzO.hqIZtDsDGNU1CIGQy/a', 1, 'olaw');
+INSERT INTO agreementgenerator.user (email, enabled, first_name, last_name, password, role, username) VALUES ('tomcio@onet.pl', true, 'Tomasz', 'Dyrektorski', '$2a$10$8kf7YKGhhKA6CYxX2g2JbennzngeSnBzO.hqIZtDsDGNU1CIGQy/a', 1, 'tomaszd');
+INSERT INTO agreementgenerator.user (email, enabled, first_name, last_name, password, role, username) VALUES ('annak@gmail.com', false, 'Anna', 'Nowak', '$2a$10$8kf7YKGhhKA6CYxX2g2JbennzngeSnBzO.hqIZtDsDGNU1CIGQy/a', 1, 'aniaw');
+INSERT INTO agreementgenerator.user (email, enabled, first_name, last_name, password, role, username) VALUES ('piotrk@wp.pl', true, 'Piotrek', 'Sowa', '$2a$10$8kf7YKGhhKA6CYxX2g2JbennzngeSnBzO.hqIZtDsDGNU1CIGQy/a', 0, 'piotrk');
+INSERT INTO agreementgenerator.user (email, enabled, first_name, last_name, password, role, username) VALUES ('rafp@wp.pl', true, 'Rafał', 'Piotrowski', '$2a$10$8kf7YKGhhKA6CYxX2g2JbennzngeSnBzO.hqIZtDsDGNU1CIGQy/a', 0, 'rafalp');
+INSERT INTO agreementgenerator.user (email, enabled, first_name, last_name, password, role, username) VALUES ('mkozlow@onet.pl', false, 'Michał', 'Kozłowski', '$2a$10$8kf7YKGhhKA6CYxX2g2JbennzngeSnBzO.hqIZtDsDGNU1CIGQy/a', 0, 'michałk');
+INSERT INTO agreementgenerator.user (email, enabled, first_name, last_name, password, role, username) VALUES ('bnowak@gmail.com.pl', true, 'Bartosz', 'Nowak', '$2a$10$8kf7YKGhhKA6CYxX2g2JbennzngeSnBzO.hqIZtDsDGNU1CIGQy/a', 0, 'barteks');
