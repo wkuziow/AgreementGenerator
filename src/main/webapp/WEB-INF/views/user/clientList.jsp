@@ -1,8 +1,8 @@
 <%--
   Created by IntelliJ IDEA.
   User: wojtek
-  Date: 07.06.2020
-  Time: 21:33
+  Date: 08.06.2020
+  Time: 22:54
   To change this template use File | Settings | File Templates.
 --%>
 <%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
@@ -12,17 +12,16 @@
            uri="http://www.springframework.org/tags/form" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
-<html>
+<html lang="pl-PL">
 <head>
 
-    <title>Clientlist for admin</title>
+    <title>Client list for User</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="<c:url value="/css/style.css"/>">
 </head>
 <body>
-
 
 <div class="container-fluid">
     <table>
@@ -36,9 +35,8 @@
             <th>Account</th>
             <th>Is Active</th>
             <th>Deleted</th>
-            <th>User</th>
         </tr>
-        <c:forEach var="client" items="${allClientsForAdmin}">
+        <c:forEach var="client" items="${allClientsForUser}">
             <tr>
                 <td>${client.id}</td>
                 <td>${client.name}</td>
@@ -49,14 +47,12 @@
                 <td>${client.account}</td>
                 <td>${client.active}</td>
                 <td>${client.softDelete}</td>
-                <th>${client.user.fullname}</th>
+
             </tr>
         </c:forEach>
     </table>
 
 </div>
-
-
 
 
 <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>

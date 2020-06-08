@@ -34,13 +34,13 @@ public class UserController {
 //    }
 
     @RequestMapping(value = "/admin/addUser", method = RequestMethod.GET)
-    public String addUserGetForm(Model model) {
+    public String addUserByAdminGetForm(Model model) {
         model.addAttribute("user", new User());
         return "admin/addUser";
     }
 
     @RequestMapping(value = "/admin/addUser", method = RequestMethod.POST)
-    public String addUserProcessForm(@ModelAttribute @Validated User user,
+    public String addUserByAdminProcessForm(@ModelAttribute @Validated User user,
                                      BindingResult bindingResult) {
         if (bindingResult.hasErrors()) {
             return "admin/addUser";

@@ -31,7 +31,7 @@ public class Client {
     private boolean softDelete;
     private String account;
     private String contactPerson;
-    @ManyToOne
+    @ManyToOne (fetch = FetchType.EAGER)
     private User user;
 
     public String getAdress() {
