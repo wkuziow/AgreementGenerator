@@ -7,10 +7,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.annotation.Validated;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 import java.util.Optional;
@@ -78,5 +75,23 @@ public class UserController {
     public String getAllUsersForAdmin(Model model) {
         model.addAttribute("allUsersForAdmin", userRepository.findAll());
         return "admin/userList";
+    }
+
+    @GetMapping("/admin/user/update/{id}")
+    public String updateUserByAdminGet(@PathVariable Long id, Model model) {
+        User user = userRepository.findUserById(id);
+        model.addAttribute("user", user);
+        return "admin/addUser";
+    }
+
+    @PostMapping("/admin/user/update/{id}")
+    public String updateUserByAdminPost(@PathVariable Long id, @ModelAttribute @Validated User user,
+                                   BindingResult bindingResult) {
+        if (bindingResult.hasErrors()) {
+            return "admin/addUser";
+        }
+
+        userRepository.save(user);
+        return "redirect:../../allUsers";
     }
 }

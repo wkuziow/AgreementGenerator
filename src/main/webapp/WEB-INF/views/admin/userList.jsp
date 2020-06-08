@@ -41,8 +41,8 @@
             <td>${user.username}</td>
             <td>${user.role}</td>
             <td>
-            <%--    <a href="/author/delete/${author.id}">Delete</a> --%>
-               <%-- <a href="/author/update/${author.id}">Edit</a> --%>
+                    <%--    <a href="/admin/user/delete/${author.id}">Delete</a> --%>
+                <a href="/admin/user/update/${user.id}">Edit</a>
             </td>
         </tr>
     </c:forEach>
