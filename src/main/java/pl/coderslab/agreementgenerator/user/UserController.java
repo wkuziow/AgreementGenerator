@@ -73,4 +73,10 @@ public class UserController {
         String currentUser = customUser.getUser().getFullname();
         return currentUser;
     }
+
+    @RequestMapping(value = "/admin/allUsers", method = RequestMethod.GET)
+    public String getAllUsersForAdmin(Model model) {
+        model.addAttribute("allUsersForAdmin", userRepository.findAll());
+        return "admin/userList";
+    }
 }
