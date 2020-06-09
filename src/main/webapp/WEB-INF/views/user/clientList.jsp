@@ -47,6 +47,9 @@
                 <td>${client.account}</td>
                 <td>${client.active}</td>
                 <td>${client.softDelete}</td>
+                <td>
+                    <a href="/user/client/update/${client.id}">Edit</a>
+                </td>
 
             </tr>
         </c:forEach>

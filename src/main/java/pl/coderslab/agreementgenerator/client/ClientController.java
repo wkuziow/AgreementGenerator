@@ -105,4 +105,23 @@ public class ClientController {
         return "redirect:../../allClients";
     }
 
+    @RequestMapping(value = "/user/client/update/{id}", method = RequestMethod.GET)
+    public String updateClientByUserGet(@PathVariable Long id, Model model) {
+        Client client = clientRepository.findClientById(id);
+        model.addAttribute("addClientByUser", client);
+        return "user/addClient";
+    }
+
+    @RequestMapping(value = "/user/client/update/{id}", method = RequestMethod.POST)
+    public String updateClientByUserProcessForm(@PathVariable Long id, @ModelAttribute @Validated Client client,
+                                                 BindingResult bindingResult) {
+        if (bindingResult.hasErrors()) {
+            return "user/addClient";
+        }
+        User user = clientRepository.findUserIdWhereClientId(id);
+        client.setUser(user);
+        clientRepository.save(client);
+        return "redirect:../../allClients";
+    }
+
 }
