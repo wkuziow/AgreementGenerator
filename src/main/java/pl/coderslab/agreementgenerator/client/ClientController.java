@@ -9,6 +9,7 @@ import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import pl.coderslab.agreementgenerator.user.CurrentUser;
@@ -85,4 +86,23 @@ public class ClientController {
         model.addAttribute("allClientsForUser", clientRepository.findAllByUser(customUser.getUser()));
         return "user/clientList";
     }
+
+    @RequestMapping(value = "/admin/client/update/{id}", method = RequestMethod.GET)
+    public String updateClientByAdminGet(@PathVariable Long id, Model model) {
+        Client client = clientRepository.findClientById(id);
+        model.addAttribute("client", client);
+        return "admin/addClient";
+    }
+
+    @RequestMapping(value = "/admin/client/update/{id}", method = RequestMethod.POST)
+    public String updateClientByAdminProcessForm(@ModelAttribute @Validated Client client,
+                                              BindingResult bindingResult) {
+        if (bindingResult.hasErrors()) {
+            return "admin/addClient";
+        }
+
+        clientRepository.save(client);
+        return "redirect:../../allClients";
+    }
+
 }

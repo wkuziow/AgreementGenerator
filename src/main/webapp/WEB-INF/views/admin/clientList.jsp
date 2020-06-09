@@ -50,13 +50,14 @@
                 <td>${client.active}</td>
                 <td>${client.softDelete}</td>
                 <th>${client.user.fullname}</th>
+                <td>
+                    <a href="/admin/client/update/${client.id}">Edit</a>
+                </td>
             </tr>
         </c:forEach>
     </table>
 
 </div>
-
-
 
 
 <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
