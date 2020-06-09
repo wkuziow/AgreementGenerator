@@ -32,7 +32,7 @@
                 <div class="form-group">
                     <div class="col-sm-9">
                         <label for="amountId"
-                               class="validation-message">Name: </label>
+                               class="validation-message">Amount: </label>
                         <form:input type="text" path="amount" id="amountId" placeholder="amount"
                                     class="form-control"/>
                         <form:errors path="amount"/>
@@ -41,7 +41,7 @@
 
                 <div class="form-group">
                     <div class="col-sm-9">
-                        <label for="currencyd"
+                        <label for="currencyId"
                                class="validation-message">Currency: </label>
                         <form:input type="text" path="currency" id="currencyId"
                                     placeholder="currency" class="form-control"/>
@@ -122,7 +122,7 @@
                         <label for="operationalFeeId" class="validation-message">Operational fee </label>
                         <form:input type="text" path="operationalFee" id="operationalFeeId"
                                     placeholder="Operational fee" class="form-control"/>
-                        <form:errors path="operationalFeeId"/>
+                        <form:errors path="operationalFee"/>
                     </div>
                 </div>
 
@@ -141,6 +141,24 @@
                         <form:select path="referenceRate" items="${referenceRateList}" id="referenceRateId"
                                      placeholder="Reference rate" class="form-control"/>
                         <form:errors path="referenceRate"/>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="col-sm-9">
+                        <label for="setUpFeeId" class="validation-message">Setup fee: </label>
+                        <form:input type="text" path="setUpFee" id="setUpFeeId"
+                                      class="form-control" />
+                        <form:errors path="setUpFee"/>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="col-sm-9">
+                        <label for="repaymentAccountId" class="validation-message">Repayment Account: </label>
+                        <form:input type="text" path="repaymentAccount" id="repaymentAccountId"
+                                    placeholder="repayment Account" class="form-control"/>
+                        <form:errors path="repaymentAccount"/>
                     </div>
                 </div>
 

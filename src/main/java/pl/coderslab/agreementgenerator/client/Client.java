@@ -26,8 +26,6 @@ public class Client {
     private String town;
     private String phone;
     private String email;
-    @OneToOne
-    private Transaction transaction;
     private boolean softDelete;
     private String account;
     private String contactPerson;

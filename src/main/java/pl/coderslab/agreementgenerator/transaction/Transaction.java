@@ -3,11 +3,9 @@ package pl.coderslab.agreementgenerator.transaction;
 import lombok.Getter;
 import lombok.Setter;
 import org.springframework.ui.Model;
+import pl.coderslab.agreementgenerator.client.Client;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.time.LocalDate;
 
 @Entity
@@ -18,14 +16,14 @@ public class Transaction {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private LocalDate dateOfSign;
+    private String dateOfSign;
     private boolean isActive;
     private boolean hasValidDate;
-    private LocalDate validDate;
+    private String validDate;
     private String currency;
     private double amount;
     private boolean isTerminated;
-    private LocalDate terminationDate;
+    private String terminationDate;
     private String repaymentAccount;
     private String collaterals;
     private ReferenceRate referenceRate;
@@ -34,4 +32,6 @@ public class Transaction {
     private double administrationFee;
     private double operationalFee;
     private double margin;
+    @OneToOne
+    private Client client;
 }
