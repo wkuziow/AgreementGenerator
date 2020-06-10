@@ -62,4 +62,10 @@ public class TransactionController {
         transactionRepository.save(transaction);
         return "redirect:allClients";
     }
+
+    @RequestMapping(value = "/admin/allTransactions", method = RequestMethod.GET)
+    public String getAllTransactionsForAdmin(Model model) {
+        model.addAttribute("allTransactionsForAdmin", transactionRepository.findAll());
+        return "admin/transactionList";
+    }
 }

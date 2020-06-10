@@ -34,4 +34,10 @@ public class Transaction {
     private double margin;
     @OneToOne
     private Client client;
+
+    public String getFees() {
+        return "Setup fee: " + setUpFee + "%, arrangament fee: " + arrangementFee
+                + "%, administration fee: " + administrationFee + "%, operational fee: "
+                + "%.";
+    }
 }
