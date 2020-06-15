@@ -1,6 +1,7 @@
 package pl.coderslab.agreementgenerator.transaction;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -11,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import pl.coderslab.agreementgenerator.client.Client;
 import pl.coderslab.agreementgenerator.client.ClientRepository;
+import pl.coderslab.agreementgenerator.user.CurrentUser;
 import pl.coderslab.agreementgenerator.user.UserRepository;
 
 import java.util.Arrays;
@@ -62,7 +64,14 @@ public class TransactionController {
         transactionRepository.save(transaction);
         return "redirect:allClients";
     }
-
+    @ModelAttribute("currentUserFullName")
+    public String currentUser(@AuthenticationPrincipal CurrentUser customUser, Model model) {
+        String currentUser = "-1";
+        if (customUser != null) {
+            currentUser = customUser.getUser().getFullname();
+        }
+        return currentUser;
+    }
     @RequestMapping(value = "/admin/allTransactions", method = RequestMethod.GET)
     public String getAllTransactionsForAdmin(Model model) {
         model.addAttribute("allTransactionsForAdmin", transactionRepository.findAll());

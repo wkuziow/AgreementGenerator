@@ -41,7 +41,7 @@ public class UserController {
 
     @RequestMapping(value = "/admin/addUser", method = RequestMethod.POST)
     public String addUserByAdminProcessForm(@ModelAttribute @Validated User user,
-                                     BindingResult bindingResult) {
+                                            BindingResult bindingResult) {
         if (bindingResult.hasErrors()) {
             return "admin/addUser";
         }
@@ -65,9 +65,22 @@ public class UserController {
         return "home/about";
     }
 
-    @ModelAttribute("currentUserFisrtName")
+    @GetMapping("/contact")
+    public String contact() {
+        return "home/contact";
+    }
+
+    @GetMapping("/dashboard")
+    public String dashboard() {
+        return "home/dashboard";
+    }
+
+    @ModelAttribute("currentUserFullName")
     public String currentUser(@AuthenticationPrincipal CurrentUser customUser, Model model) {
-        String currentUser = customUser.getUser().getFullname();
+        String currentUser = "-1";
+        if (customUser != null) {
+            currentUser = customUser.getUser().getFullname();
+        }
         return currentUser;
     }
 
@@ -86,7 +99,7 @@ public class UserController {
 
     @PostMapping("/admin/user/update/{id}")
     public String updateUserByAdminPost(@PathVariable Long id, @ModelAttribute @Validated User user,
-                                   BindingResult bindingResult) {
+                                        BindingResult bindingResult) {
         if (bindingResult.hasErrors()) {
             return "admin/addUser";
         }

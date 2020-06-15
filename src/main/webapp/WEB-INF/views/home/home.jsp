@@ -13,14 +13,18 @@
 <html lang="pl-PL">
 <head>
 
-    <title>Title</title>
+    <title>Agreement Generator</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
     <link rel="stylesheet" href="<c:url value="/css/style.css"/>">
 </head>
 <body>
-<a href="/about" target="_blank"> about</a>
+
+<%@include file="/WEB-INF/includes/header.jsp"%>
+<%@include file="/WEB-INF/main/homepage.jsp"%>
+<%@include file="/WEB-INF/includes/footer.jsp"%>
+
 <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
         integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
         crossorigin="anonymous"></script>

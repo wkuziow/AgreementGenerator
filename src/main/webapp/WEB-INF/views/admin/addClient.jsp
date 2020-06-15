@@ -22,159 +22,82 @@
     <link rel="stylesheet" href="<c:url value="/css/style.css"/>">
 </head>
 <body>
+<%@include file="/WEB-INF/includes/header.jsp" %>
+<%@include file="/WEB-INF/includes/sidePanel.jsp" %>
 
+<form:form autocomplete="on" action="#" method="post" class="form-horizontal"
+           modelAttribute="client">
+    <h2>Add Client</h2>
 
-<div class="container">
-    <div class="row">
-        <div class="col-md-6 col-md-offset-3">
-            <form:form autocomplete="on" action="#" method="post" class="form-horizontal"
-                       modelAttribute="client">
-                <h2>Add Client</h2>
-                <div class="form-group">
-                    <div class="col-sm-9">
-                        <label for="nameId"
-                               class="validation-message">Name: </label>
-                        <form:input type="text" path="name" id="nameId" placeholder="Name"
-                                    class="form-control"/>
-                        <form:errors path="name"/>
-                    </div>
-                </div>
+    <label for="nameId">Name: </label>
+    <form:input type="text" path="name" id="nameId" placeholder="Name"/>
+    <form:errors path="name"/>
 
-                <div class="form-group">
-                    <div class="col-sm-9">
-                        <label for="NIPId"
-                               class="validation-message">NIP: </label>
-                        <form:input type="text" path="NIP" id="NIPId"
-                                    placeholder="NIP" class="form-control"/>
-                        <form:errors path="NIP"/>
-                    </div>
-                </div>
+    <label for="NIPId">NIP: </label>
+    <form:input type="text" path="NIP" id="NIPId" placeholder="NIP"/>
+    <form:errors path="NIP"/>
 
-                <div class="form-group">
-                    <div class="col-sm-9">
-                        <label for="REGONId" class="validation-message">REGON: </label>
-                        <form:input type="text" path="REGON" placeholder="REGON" id="REGONId"
-                                    class="form-control"/>
-                        <form:errors path="REGON"/>
+    <label for="REGONId">REGON: </label>
+    <form:input type="text" path="REGON" placeholder="REGON" id="REGONId"/>
+    <form:errors path="REGON"/>
 
-                    </div>
-                </div>
+    <label for="accountId">Account: </label>
+    <form:input type="text" path="account" placeholder="account" id="accountId"/>
+    <form:errors path="account"/>
 
-                <div class="form-group">
-                    <div class="col-sm-9">
-                        <label for="accountId" class="validation-message">Account: </label>
-                        <form:input type="text" path="account" placeholder="account"
-                                    id="accountId"
-                                    class="form-control"/>
-                        <form:errors path="account"/>
-                    </div>
-                </div>
+    <label for="contactPersondId">Contact person: </label>
+    <form:input type="text" path="contactPerson" id="contactPersondId"
+                placeholder="COntact person"/>
+    <form:errors path="contactPerson"/>
 
-                <div class="form-group">
-                    <div class="col-sm-9">
-                        <label for="contactPersondId" class="validation-message">Contact person: </label>
-                        <form:input type="text" path="contactPerson" id="contactPersondId"
-                                    placeholder="COntact person" class="form-control"/>
-                        <form:errors path="contactPerson"/>
-                    </div>
-                </div>
+    <label for="emailId">Email: </label>
+    <form:input type="text" path="email" id="emailId"
+                placeholder="Email"/>
+    <form:errors path="email"/>
 
-                <div class="form-group">
-                    <div class="col-sm-9">
-                        <label for="emailId" class="validation-message">Email: </label>
-                        <form:input type="text" path="email" id="emailId"
-                                    placeholder="Email" class="form-control"/>
-                        <form:errors path="email"/>
-                    </div>
-                </div>
+    <label for="phoneId">Phone: </label>
+    <form:input type="text" path="phone" id="phoneId"
+                placeholder="Phone"/>
+    <form:errors path="phone"/>
 
-                <div class="form-group">
-                    <div class="col-sm-9">
-                        <label for="phoneId" class="validation-message">Phone: </label>
-                        <form:input type="text" path="phone" id="phoneId"
-                                    placeholder="Phone" class="form-control"/>
-                        <form:errors path="phone"/>
-                    </div>
-                </div>
+    <label for="streetId">Street: </label>
+    <form:input type="text" path="street" id="streetId"
+                placeholder="Street"/>
+    <form:errors path="street"/>
 
-                <div class="form-group">
-                    <div class="col-sm-9">
-                        <label for="streetId" class="validation-message">Street: </label>
-                        <form:input type="text" path="street" id="streetId"
-                                    placeholder="Street" class="form-control"/>
-                        <form:errors path="street"/>
-                    </div>
-                </div>
+    <label for="blockNumberId">Block number: </label>
+    <form:input type="text" path="blockNumber" id="blockNumberId"
+                placeholder="Block number"/>
+    <form:errors path="blockNumber"/>
 
-                <div class="form-group">
-                    <div class="col-sm-9">
-                        <label for="blockNumberId" class="validation-message">Block number: </label>
-                        <form:input type="text" path="blockNumber" id="blockNumberId"
-                                    placeholder="Block number" class="form-control"/>
-                        <form:errors path="blockNumber"/>
-                    </div>
-                </div>
+    <label for="flatNumberId">Flat number: </label>
+    <form:input type="text" path="flatNumber" id="flatNumberId"
+                placeholder="Flat number"/>
+    <form:errors path="flatNumber"/>
 
-                <div class="form-group">
-                    <div class="col-sm-9">
-                        <label for="flatNumberId" class="validation-message">Flat number: </label>
-                        <form:input type="text" path="flatNumber" id="flatNumberId"
-                                    placeholder="Flat number" class="form-control"/>
-                        <form:errors path="flatNumber"/>
-                    </div>
-                </div>
+    <label for="postalCodeId">Postal code: </label>
+    <form:input type="text" path="postalCode" id="postalCodeId"
+                placeholder="Postal code"/>
+    <form:errors path="postalCode"/>
 
-                <div class="form-group">
-                    <div class="col-sm-9">
-                        <label for="postalCodeId" class="validation-message">Postal code: </label>
-                        <form:input type="text" path="postalCode" id="postalCodeId"
-                                    placeholder="Postal code" class="form-control"/>
-                        <form:errors path="postalCode"/>
-                    </div>
-                </div>
+    <label for="townId">Town: </label>
+    <form:input type="text" path="town" id="townId"
+                placeholder="Town"/>
+    <form:errors path="town"/>
 
-                <div class="form-group">
-                    <div class="col-sm-9">
-                        <label for="townId" class="validation-message">Town: </label>
-                        <form:input type="text" path="town" id="townId"
-                                    placeholder="Town" class="form-control"/>
-                        <form:errors path="town"/>
-                    </div>
-                </div>
+    <label for="isActiveId">Is Active:</label>
+    <form:radiobuttons path="active" items="${isActiveList}" id="isActiveId"/>
+    <form:errors path="active"/>
 
+    <label for="userId">User:</label>
+    <form:select path="user.id" items="${listOfUsers}" itemValue="id" itemLabel="Fullname" id="userId"/>
+    <form:errors path="user.id"/>
 
+    <button type="submit">Add client</button>
 
+</form:form>
 
-                <div class="form-group">
-                    <div class="col-sm-9">
-                        <label for="isActiveId" class="validation-message">Is Active:</label>
-                        <form:radiobuttons path="active" items="${isActiveList}" id="isActiveId" class="form-control"/>
-                        <form:errors path="active"/>
-                    </div>
-                </div>
-
-              <div class="form-group">
-                    <div class="col-sm-9">
-                        <label for="userId" class="validation-message">User:</label>
-                        <form:select path="user.id" items="${listOfUsers}" itemValue="id" itemLabel="Fullname" id="userId" class="form-control"/>
-                        <form:errors path="user.id"/>
-                    </div>
-                </div>
-
-                <div class="form-group">
-                    <div class="col-sm-9">
-                        <button type="submit" class="btn btn-primary btn-block">Add client</button>
-                    </div>
-                </div>
-
-
-
-            </form:form>
-        </div>
-    </div>
-</div>
-
-
+<%@include file="/WEB-INF/includes/footer.jsp" %>
 
 <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>

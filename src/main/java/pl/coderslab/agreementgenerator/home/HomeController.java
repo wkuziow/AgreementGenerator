@@ -21,6 +21,12 @@ public class HomeController {
         return "home/home";
     }
 
-
-
+    @ModelAttribute("currentUserFullName")
+    public String currentUser(@AuthenticationPrincipal CurrentUser customUser, Model model) {
+        String currentUser = "-1";
+        if (customUser != null) {
+            currentUser = customUser.getUser().getFullname();
+        }
+        return currentUser;
+    }
 }

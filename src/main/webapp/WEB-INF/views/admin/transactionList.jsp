@@ -59,9 +59,9 @@
                 <th>${transaction.referenceRate}</th>
                 <th>${transaction.margin}</th>
                 <th>${transaction.fees}</th>
-                <td>
+             <%--   <td>
                     <a href="/admin/client/update/${client.id}">Edit</a>
-                </td>
+                </td> --%>
             </tr>
         </c:forEach>
     </table>

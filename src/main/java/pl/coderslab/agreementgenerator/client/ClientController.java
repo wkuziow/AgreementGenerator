@@ -29,6 +29,14 @@ public class ClientController {
         this.userRepository = userRepository;
         this.clientRepository = clientRepository;
     }
+    @ModelAttribute("currentUserFullName")
+    public String currentUser(@AuthenticationPrincipal CurrentUser customUser, Model model) {
+        String currentUser = "-1";
+        if (customUser != null) {
+            currentUser = customUser.getUser().getFullname();
+        }
+        return currentUser;
+    }
 
     @RequestMapping(value = "/admin/allClients", method = RequestMethod.GET)
     public String getAllClientsForAdmin(Model model) {

@@ -23,12 +23,22 @@
     <link href='<c:url value="/css/style.css"/>' rel="stylesheet" type="text/css">
 </head>
 <body>
-About this webpage <br>
-Witaj! ${currentUserFisrtName}
-<form action="<c:url value="/logout"/>" method="post">
-    <input class="fa fa-id-badge" type="submit" value="Wyloguj">
-    <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
-</form>
+
+<%@include file="/WEB-INF/includes/header.jsp" %>
+
+<section class="section-more padding-small">
+    <div class="container d-flex justify-content-between">
+        <div class="mr-4 mx-auto">
+
+
+            About this webpage <br>
+
+
+        </div>
+    </div>
+</section>
+
+<%@include file="/WEB-INF/includes/footer.jsp" %>
 <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
         integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
         crossorigin="anonymous"></script>

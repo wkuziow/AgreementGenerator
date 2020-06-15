@@ -32,7 +32,7 @@ public class Transaction {
     private double administrationFee;
     private double operationalFee;
     private double margin;
-    @OneToOne
+    @OneToOne (fetch = FetchType.EAGER)
     private Client client;
 
     public String getFees() {
