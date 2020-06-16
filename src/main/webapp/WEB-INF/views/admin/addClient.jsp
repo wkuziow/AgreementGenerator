@@ -25,7 +25,7 @@
 <%@include file="/WEB-INF/includes/header.jsp" %>
 <%@include file="/WEB-INF/includes/sidePanel.jsp" %>
 
-<form:form autocomplete="on" action="#" method="post" class="form-horizontal"
+<form:form autocomplete="on" action="#" method="post"
            modelAttribute="client">
     <h2>Add Client</h2>
 

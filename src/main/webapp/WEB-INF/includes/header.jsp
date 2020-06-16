@@ -32,8 +32,8 @@
             </c:choose>
 
 
-            <!--   <li class="nav-item ml-4">
-                   <a class="nav-link color-header" href="/register">rejestracja</a>
+            <!--   <li >
+                   <a  href="/register">rejestracja</a>
    
                </li> -->
 

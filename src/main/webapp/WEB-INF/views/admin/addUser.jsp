@@ -25,88 +25,43 @@
 </head>
 <body>
 
-<div class="container">
-    <div class="row">
-        <div class="col-md-6 col-md-offset-3">
-            <form:form autocomplete="off" action="#" method="post" class="form-horizontal"
-                       modelAttribute="user">
-                <h2>Add user</h2>
-                <div class="form-group">
-                    <div class="col-sm-9">
-                        <label for="firstNameId"
-                               class="validation-message">First name: </label>
-                        <form:input type="text" path="firstName" id="firstNameId" placeholder="First name"
-                                    class="form-control"/>
-                        <form:errors path="firstName"/>
-                    </div>
-                </div>
+<form:form autocomplete="off" action="#" method="post"
+           modelAttribute="user">
+    <h2>Add user</h2>
 
-                <div class="form-group">
-                    <div class="col-sm-9">
-                        <label for="lastNameId"
-                               class="validation-message">Last name: </label>
-                        <form:input type="text" path="lastName" id="lastNameId"
-                                    placeholder="Last Name" class="form-control"/>
-                        <form:errors path="lastName"/>
-                    </div>
-                </div>
+    <label for="firstNameId">First name: </label>
+    <form:input type="text" path="firstName" id="firstNameId" placeholder="First name"/>
+    <form:errors path="firstName"/>
 
-                <div class="form-group">
-                    <div class="col-sm-9">
-                        <label for="emailId" class="validation-message">Email: </label>
-                        <form:input type="text" path="email" placeholder="Email" id="emailId"
-                                    class="form-control"/>
-                        <form:errors path="email"/>
+    <label for="lastNameId">Last name: </label>
+    <form:input type="text" path="lastName" id="lastNameId"
+                placeholder="Last Name"/>
+    <form:errors path="lastName"/>
 
-                    </div>
-                </div>
+    <label for="emailId">Email: </label>
+    <form:input type="text" path="email" placeholder="Email" id="emailId"/>
+    <form:errors path="email"/>
 
-                <div class="form-group">
-                    <div class="col-sm-9">
-                        <label for="usernameId" class="validation-message">Username: </label>
-                        <form:input type="text" path="username" placeholder="Username" id="usernameId"
-                                    class="form-control"/>
-                        <form:errors path="username"/>
-                    </div>
-                </div>
+    <label for="usernameId">Username: </label>
+    <form:input type="text" path="username" placeholder="Username" id="usernameId"/>
+    <form:errors path="username"/>
 
-                <div class="form-group">
-                    <div class="col-sm-9">
-                        <label for="passwordId" class="validation-message">Password: </label>
-                        <form:input type="password" path="password" id="passwordId"
-                                    placeholder="Password" class="form-control"/>
-                        <form:errors path="password"/>
-                    </div>
-                </div>
+    <label for="passwordId">Password: </label>
+    <form:input type="password" path="password" id="passwordId"
+                placeholder="Password"/>
+    <form:errors path="password"/>
 
-                <div class="form-group">
-                    <div class="col-sm-9">
-                        <label for="enabledId" class="validation-message">Enabled:</label>
-                        <form:radiobuttons path="enabled" items="${enabledList}" id="enabledId" class="form-control"/>
-                        <form:errors path="enabled"/>
-                    </div>
-                </div>
+    <label for="enabledId">Enabled:</label>
+    <form:radiobuttons path="enabled" items="${enabledList}" id="enabledId"/>
+    <form:errors path="enabled"/>
 
-                <div class="form-group">
-                    <div class="col-sm-9">
-                        <label for="roleId" class="validation-message">Role:</label>
-                        <form:radiobuttons path="role" items="${roleList}" id="roleId" class="form-control"/>
-                        <form:errors path="role"/>
-                    </div>
-                </div>
+    <label for="roleId">Role:</label>
+    <form:radiobuttons path="role" items="${roleList}" id="roleId"/>
+    <form:errors path="role"/>
 
-                <div class="form-group">
-                    <div class="col-sm-9">
-                        <button type="submit" class="btn btn-primary btn-block">Add user</button>
-                    </div>
-                </div>
+    <button type="submit">Add user</button>
 
-                <h2><span class="text-success">Udało się</span></h2>
-
-            </form:form>
-        </div>
-    </div>
-</div>
+</form:form>
 
 <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
         integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
