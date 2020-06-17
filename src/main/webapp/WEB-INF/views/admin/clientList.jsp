@@ -1,10 +1,4 @@
-<%--
-  Created by IntelliJ IDEA.
-  User: wojtek
-  Date: 07.06.2020
-  Time: 21:33
-  To change this template use File | Settings | File Templates.
---%>
+
 <%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
@@ -22,9 +16,8 @@
     <link rel="stylesheet" href="<c:url value="/css/style.css"/>">
 </head>
 <body>
-
-
-<div class="container-fluid">
+<%@include file="/WEB-INF/includes/header.jsp" %>
+<%@include file="/WEB-INF/includes/sidePanel.jsp" %>
     <table>
         <tr>
             <th>ID</th>
@@ -57,8 +50,7 @@
         </c:forEach>
     </table>
 
-</div>
-
+    <%@include file="/WEB-INF/includes/footer.jsp" %>
 
 <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>

@@ -14,29 +14,47 @@
 
 
 <ul>
+    <sec:authorize access="hasRole('ADMIN')">
     <li>
         <a href="/admin/addClient">
             <span>Dodaj klienta</span>
         </a>
     </li>
+
     <li>
-        <a href="/app/schedules">
-            <span>Plany</span>
+        <a href="/admin/allClients">
+            <span>Lista klientów</span>
+        </a>
+    </li>
+
+    <li>
+        <a href="/admin/addUser">
+            <span>Dodaj użytkownika</span>
         </a>
     </li>
     <li>
-        <a href="/app/editUserData">
-            <span>Edytuj dane</span>
+        <a href="/admin/allUsers">
+            <span>Lista użytkowników</span>
         </a>
     </li>
     <li>
-        <a href="/app/editPassword">
-            <span>Zmień hasło</span>
+        <a href="/admin/allTransactions">
+            <span>Lista transakcji</span>
         </a>
     </li>
+    </sec:authorize>
+
+
     <li>
-        <a href="/app/supAdmUser">
-            <span>Użytkownicy</span>
+        <a href="/user/addClient">
+            <span>Dodaj klienta</span>
         </a>
     </li>
+
+    <li>
+        <a href="/user/allClients">
+            <span>Moi klienci</span>
+        </a>
+    </li>
+
 </ul>

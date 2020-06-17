@@ -24,16 +24,11 @@
 <body>
 
 <%@include file="/WEB-INF/includes/header.jsp"%>
-<section class="section-more padding-small">
-    <div class="container d-flex justify-content-between">
-        <div class="mr-4 mx-auto">
+
 
 
             contact us <br>
 
-        </div>
-    </div>
-</section>
 
 <%@include file="/WEB-INF/includes/footer.jsp"%>
 <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>

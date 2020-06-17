@@ -24,7 +24,8 @@
     <link href='<c:url value="/css/style.css"/>' rel="stylesheet" type="text/css">
 </head>
 <body>
-
+<%@include file="/WEB-INF/includes/header.jsp" %>
+<%@include file="/WEB-INF/includes/sidePanel.jsp" %>
 <form:form autocomplete="off" action="#" method="post"
            modelAttribute="user">
     <h2>Add user</h2>
@@ -62,7 +63,7 @@
     <button type="submit">Add user</button>
 
 </form:form>
-
+<%@include file="/WEB-INF/includes/footer.jsp" %>
 <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
         integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
         crossorigin="anonymous"></script>

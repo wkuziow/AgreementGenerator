@@ -24,9 +24,7 @@
 </head>
 <body>
 <%@include file="/WEB-INF/includes/header.jsp" %>
-<section class="section-more padding-small">
-    <div class="container d-flex justify-content-between">
-        <div class="mr-4 mx-auto">
+
 
             <form method="post">
                 <div><label> User Name : <input type="text" name="username"/> </label></div>
@@ -34,9 +32,7 @@
                 <div><input type="submit" value="Sign In"/></div>
                 <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
             </form>
-        </div>
-    </div>
-</section>
+
 
 <%@include file="/WEB-INF/includes/footer.jsp" %>
 

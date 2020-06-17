@@ -23,158 +23,85 @@
 </head>
 <body>
 
-<div class="container">
-    <div class="row">
-        <div class="col-md-6 col-md-offset-3">
-            <form:form autocomplete="on" action="#" method="post" class="form-horizontal"
-                       modelAttribute="transaction">
-                <h2>Add transaction</h2>
-                <div class="form-group">
-                    <div class="col-sm-9">
-                        <label for="amountId"
-                               class="validation-message">Amount: </label>
-                        <form:input type="text" path="amount" id="amountId" placeholder="amount"
-                                    class="form-control"/>
-                        <form:errors path="amount"/>
-                    </div>
-                </div>
+<%@include file="/WEB-INF/includes/header.jsp" %>
+<%@include file="/WEB-INF/includes/sidePanel.jsp" %>
 
-                <div class="form-group">
-                    <div class="col-sm-9">
-                        <label for="currencyId"
-                               class="validation-message">Currency: </label>
-                        <form:input type="text" path="currency" id="currencyId"
-                                    placeholder="currency" class="form-control"/>
-                        <form:errors path="currency"/>
-                    </div>
-                </div>
-
-                <div class="form-group">
-                    <div class="col-sm-9">
-                        <label for="dateOfSignId" class="validation-message">Date of sign: </label>
-                        <form:input type="text" path="dateOfSign" placeholder="dateOfSign" id="dateOfSignId"
-                                    class="form-control"/>
-                        <form:errors path="dateOfSign"/>
-
-                    </div>
-                </div>
-
-                <div class="form-group">
-                    <div class="col-sm-9">
-                        <label for="isActiveId" class="validation-message">Is Active: </label>
-                        <form:radiobuttons path="active" items="${isActiveList}" placeholder="isActive"
-                                           id="isActiveId"
-                                           class="form-control"/>
-                        <form:errors path="active"/>
-                    </div>
-                </div>
-
-                <div class="form-group">
-                    <div class="col-sm-9">
-                        <label for="hasValidDateId" class="validation-message">Has Valid Date: </label>
-                        <form:radiobuttons path="hasValidDate" items="${hasValidDate}" placeholder="hasValidDate"
-                                           id="hasValidDateId"
-                                           class="form-control"/>
-                        <form:errors path="hasValidDate"/>
-                    </div>
-                </div>
-
-                <div class="form-group">
-                    <div class="col-sm-9">
-                        <label for="validDateId" class="validation-message">Valid date: </label>
-                        <form:input type="text" path="validDate" placeholder="validDate" id="validDateId"
-                                    class="form-control"/>
-                        <form:errors path="validDate"/>
-
-                    </div>
-                </div>
-
-                <div class="form-group">
-                    <div class="col-sm-9">
-                        <label for="collateralsdId" class="validation-message">Collaterals: </label>
-                        <form:textarea path="collaterals" id="collateralsdId"
-                                       placeholder="collaterals" class="form-control"
-                                       rows="5" cols="50"/>
-                        <form:errors path="collaterals"/>
-                    </div>
-                </div>
-
-                <div class="form-group">
-                    <div class="col-sm-9">
-                        <label for="administrationFeeId" class="validation-message">Administration fee: </label>
-                        <form:input type="text" path="administrationFee" id="administrationFeeId"
-                                    placeholder="Administration fee" class="form-control"/>
-                        <form:errors path="administrationFee"/>
-                    </div>
-                </div>
-
-                <div class="form-group">
-                    <div class="col-sm-9">
-                        <label for="arrangementFeeId" class="validation-message">Arrangement Fee: </label>
-                        <form:input type="text" path="arrangementFee" id="arrangementFeeId"
-                                    placeholder="Arrangement fee" class="form-control"/>
-                        <form:errors path="arrangementFee"/>
-                    </div>
-                </div>
-
-                <div class="form-group">
-                    <div class="col-sm-9">
-                        <label for="operationalFeeId" class="validation-message">Operational fee </label>
-                        <form:input type="text" path="operationalFee" id="operationalFeeId"
-                                    placeholder="Operational fee" class="form-control"/>
-                        <form:errors path="operationalFee"/>
-                    </div>
-                </div>
-
-                <div class="form-group">
-                    <div class="col-sm-9">
-                        <label for="marginId" class="validation-message">Margin: </label>
-                        <form:input type="text" path="margin" id="marginId"
-                                    placeholder="margin" class="form-control"/>
-                        <form:errors path="margin"/>
-                    </div>
-                </div>
-
-                <div class="form-group">
-                    <div class="col-sm-9">
-                        <label for="referenceRateId" class="validation-message">Reference rate: </label>
-                        <form:select path="referenceRate" items="${referenceRateList}" id="referenceRateId"
-                                     placeholder="Reference rate" class="form-control"/>
-                        <form:errors path="referenceRate"/>
-                    </div>
-                </div>
-
-                <div class="form-group">
-                    <div class="col-sm-9">
-                        <label for="setUpFeeId" class="validation-message">Setup fee: </label>
-                        <form:input type="text" path="setUpFee" id="setUpFeeId"
-                                      class="form-control" />
-                        <form:errors path="setUpFee"/>
-                    </div>
-                </div>
-
-                <div class="form-group">
-                    <div class="col-sm-9">
-                        <label for="repaymentAccountId" class="validation-message">Repayment Account: </label>
-                        <form:input type="text" path="repaymentAccount" id="repaymentAccountId"
-                                    placeholder="repayment Account" class="form-control"/>
-                        <form:errors path="repaymentAccount"/>
-                    </div>
-                </div>
+<form:form autocomplete="on" action="#" method="post"
+           modelAttribute="transaction">
+    <h2>Add transaction</h2>
+    <label for="amountId">Amount: </label>
+    <form:input type="text" path="amount" id="amountId" placeholder="amount"/>
+    <form:errors path="amount"/>
 
 
-                <div class="form-group">
-                    <div class="col-sm-9">
-                        <button type="submit" class="btn btn-primary btn-block">Add transaction</button>
-                    </div>
-                </div>
+    <label for="currencyId">Currency: </label>
+    <form:input type="text" path="currency" id="currencyId"
+                placeholder="currency"/>
+    <form:errors path="currency"/>
+
+    <label for="dateOfSignId">Date of sign: </label>
+    <form:input type="text" path="dateOfSign" placeholder="dateOfSign" id="dateOfSignId"/>
+    <form:errors path="dateOfSign"/>
+
+    <label for="isActiveId">Is Active: </label>
+    <form:radiobuttons path="active" items="${isActiveList}" placeholder="isActive"
+                       id="isActiveId"/>
+    <form:errors path="active"/>
+
+    <label for="hasValidDateId">Has Valid Date: </label>
+    <form:radiobuttons path="hasValidDate" items="${hasValidDate}" placeholder="hasValidDate"
+                       id="hasValidDateId"/>
+    <form:errors path="hasValidDate"/>
+
+    <label for="validDateId">Valid date: </label>
+    <form:input type="text" path="validDate" placeholder="validDate" id="validDateId"/>
+    <form:errors path="validDate"/>
+
+    <label for="collateralsdId">Collaterals: </label>
+    <form:textarea path="collaterals" id="collateralsdId"
+                   placeholder="collaterals"
+                   rows="5" cols="50"/>
+    <form:errors path="collaterals"/>
+
+    <label for="administrationFeeId">Administration fee: </label>
+    <form:input type="text" path="administrationFee" id="administrationFeeId"
+                placeholder="Administration fee"/>
+    <form:errors path="administrationFee"/>
+
+    <label for="arrangementFeeId">Arrangement Fee: </label>
+    <form:input type="text" path="arrangementFee" id="arrangementFeeId"
+                placeholder="Arrangement fee"/>
+    <form:errors path="arrangementFee"/>
+
+    <label for="operationalFeeId">Operational fee </label>
+    <form:input type="text" path="operationalFee" id="operationalFeeId"
+                placeholder="Operational fee"/>
+    <form:errors path="operationalFee"/>
+
+    <label for="marginId">Margin: </label>
+    <form:input type="text" path="margin" id="marginId"
+                placeholder="margin"/>
+    <form:errors path="margin"/>
+
+    <label for="referenceRateId">Reference rate: </label>
+    <form:select path="referenceRate" items="${referenceRateList}" id="referenceRateId"
+                 placeholder="Reference rate"/>
+    <form:errors path="referenceRate"/>
+
+    <label for="setUpFeeId">Setup fee: </label>
+    <form:input type="text" path="setUpFee" id="setUpFeeId"/>
+    <form:errors path="setUpFee"/>
+
+    <label for="repaymentAccountId">Repayment Account: </label>
+    <form:input type="text" path="repaymentAccount" id="repaymentAccountId"
+                placeholder="repayment Account"/>
+    <form:errors path="repaymentAccount"/>
+
+    <button type="submit">Add transaction</button>
 
 
-            </form:form>
-        </div>
-    </div>
-</div>
-
+</form:form>
+<%@include file="/WEB-INF/includes/footer.jsp" %>
 
 <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>

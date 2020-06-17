@@ -22,8 +22,9 @@
     <link rel="stylesheet" href="<c:url value="/css/style.css"/>">
 </head>
 <body>
+<%@include file="/WEB-INF/includes/header.jsp" %>
+<%@include file="/WEB-INF/includes/sidePanel.jsp" %>
 
-<div class="container-fluid">
     <table>
         <tr>
             <th>ID</th>
@@ -53,12 +54,15 @@
                 <td>${transaction.active}</td>
                 <td>${transaction.terminated}</td>
                 <td>${transaction.terminationDate}</td>
-                <th>${transaction.hasValidDate}</th>
-                <th>${transaction.validDate}</th>
-                <th>${transaction.repaymentAccount}</th>
-                <th>${transaction.referenceRate}</th>
-                <th>${transaction.margin}</th>
-                <th>${transaction.fees}</th>
+                <td>${transaction.hasValidDate}</td>
+                <td>${transaction.validDate}</td>
+                <td>${transaction.repaymentAccount}</td>
+                <td>${transaction.referenceRate}</td>
+                <td>${transaction.margin}</td>
+                <td>${transaction.fees}</td>
+                <td>
+                    <a href="/client/${transaction.client.id}/showAgreement/${transaction.id}" target="_blank">Umowa</a>
+                </td>
              <%--   <td>
                     <a href="/admin/client/update/${client.id}">Edit</a>
                 </td> --%>
@@ -66,7 +70,7 @@
         </c:forEach>
     </table>
 
-</div>
+    <%@include file="/WEB-INF/includes/footer.jsp" %>
 
 
 
