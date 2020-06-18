@@ -16,3 +16,6 @@ body{
 .agreement{
     background-color: white;
 }
+.error{
+    color:blue;
+}

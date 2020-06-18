@@ -17,6 +17,7 @@ import pl.coderslab.agreementgenerator.user.Role;
 import pl.coderslab.agreementgenerator.user.User;
 import pl.coderslab.agreementgenerator.user.UserRepository;
 
+import javax.validation.Validator;
 import java.util.List;
 
 @Controller
@@ -24,6 +25,7 @@ public class ClientController {
     @Autowired
     private ClientRepository clientRepository;
     private UserRepository userRepository;
+    Validator validator;
 
     public ClientController(UserRepository userRepository, ClientRepository clientRepository) {
         this.userRepository = userRepository;

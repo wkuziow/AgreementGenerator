@@ -6,6 +6,9 @@ import pl.coderslab.agreementgenerator.transaction.Transaction;
 import pl.coderslab.agreementgenerator.user.User;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
 
 @Entity
 @Setter
@@ -15,6 +18,7 @@ public class Client {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+    @NotEmpty(message = "To pole nie może być puste")
     private String name;
     private boolean isActive;
     private String NIP;
