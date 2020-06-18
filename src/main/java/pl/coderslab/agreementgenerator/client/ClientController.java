@@ -25,7 +25,7 @@ public class ClientController {
     @Autowired
     private ClientRepository clientRepository;
     private UserRepository userRepository;
-    Validator validator;
+
 
     public ClientController(UserRepository userRepository, ClientRepository clientRepository) {
         this.userRepository = userRepository;
@@ -65,7 +65,7 @@ public class ClientController {
 
     @RequestMapping(value = "/user/addClient", method = RequestMethod.GET)
     public String addClientByUserGetForm(Model model) {
-        model.addAttribute("addClientByUser", new Client());
+        model.addAttribute("client", new Client());
         return "user/addClient";
     }
 
@@ -118,7 +118,7 @@ public class ClientController {
     @RequestMapping(value = "/user/client/update/{id}", method = RequestMethod.GET)
     public String updateClientByUserGet(@PathVariable Long id, Model model) {
         Client client = clientRepository.findClientById(id);
-        model.addAttribute("addClientByUser", client);
+        model.addAttribute("client", client);
         return "user/addClient";
     }
 

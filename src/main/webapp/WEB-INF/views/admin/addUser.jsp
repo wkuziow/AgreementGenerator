@@ -32,7 +32,7 @@
 
     <label for="firstNameId">First name: </label>
     <form:input type="text" path="firstName" id="firstNameId" placeholder="First name"/>
-    <form:errors path="firstName"/>
+    <form:errors path="firstName" cssClass="error"/>
 
     <label for="lastNameId">Last name: </label>
     <form:input type="text" path="lastName" id="lastNameId"

@@ -4,6 +4,7 @@ import lombok.Getter;
 import lombok.Setter;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotEmpty;
 import java.util.Set;
 
 @Entity
@@ -18,6 +19,7 @@ public class User {
     private String password;
     private boolean enabled;
     private Role role;
+    @NotEmpty(message = "To pole nie może być puste")
     private String firstName;
     private String lastName;
     private String email;

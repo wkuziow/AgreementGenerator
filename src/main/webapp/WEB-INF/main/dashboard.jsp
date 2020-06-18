@@ -11,6 +11,7 @@
 <%@ taglib prefix="form"
            uri="http://www.springframework.org/tags/form" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<li>
-    <a href="/dashboard">PULPIT</a>
+
+<li class="nav-item">
+    <a class="nav-link" href="/dashboard">PULPIT</a>
 </li>

@@ -27,11 +27,11 @@
 
 
 <form:form autocomplete="on" action="#" method="post"
-           modelAttribute="addClientByUser">
+           modelAttribute="client">
     <h2>Add Client</h2>
     <label for="nameId">Name: </label>
     <form:input type="text" path="name" id="nameId" placeholder="Name"/>
-    <form:errors path="name"/>
+    <form:errors path="name" cssClass="error"/>
 
     <label for="NIPId">NIP: </label>
     <form:input type="text" path="NIP" id="NIPId" placeholder="NIP"/>

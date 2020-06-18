@@ -10,12 +10,43 @@
     --green: #1e7e34;
     --font-size: 16px;
 }
+
 body{
     background-color: var(--background-color);
 }
-.agreement{
-    background-color: white;
-}
+
 .error{
     color:blue;
 }
+nav a {
+    color: #CCDBDC;
+}
+nav a:hover {
+    color: #FAC748;
+}
+
+nav input[type=submit] {
+    background: #344966;
+    color: #CCDBDC;
+    border: none;
+    padding: 10px 10px;
+    text-decoration: none;
+    margin: 1px 1px;
+    cursor: pointer;
+}
+nav input[type=submit]:hover {
+    background: #344966;
+    color: #FAC748;
+    border: none;
+    padding: 10px 10px;
+    text-decoration: none;
+    margin: 1px 1px;
+    cursor: pointer;
+}
+
+nav{
+    color: #CCDBDC;
+    background-color: #344966;
+}
+
+

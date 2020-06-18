@@ -13,6 +13,6 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 
-<li>
-    <a href="/login">logowanie</a>
+<li class="nav-item">
+    <a class="nav-link" href="/login">Logowanie</a>
 </li>

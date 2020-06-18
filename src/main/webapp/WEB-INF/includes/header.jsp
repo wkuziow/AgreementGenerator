@@ -12,12 +12,70 @@
            uri="http://www.springframework.org/tags/form" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
-<header>
-    <nav>
-        <a href="/">
-            Agreement <span>Generator</span>
-        </a>
-        <ul>
+<div class="container">
+    <nav class=" navbar navbar-expand-lg ">
+
+        <a class="navbar-brand" href="#">Agreement Generator</a>
+
+        <button class="navbar-toggler" type="button" data-toggle="collapse"
+                data-target="#navbarSupportedContent"
+                aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class=" collapse navbar-collapse" id="navbarSupportedContent">
+
+            <ul class="navbar-nav mr-auto d-flex align-items-center">
+
+                <c:choose>
+                    <c:when test="${currentUserFullName != -1}">
+                        <%@include file="/WEB-INF/main/welcome.jsp" %>
+                        <%@include file="/WEB-INF/main/logout.jsp" %>
+                        <%@include file="/WEB-INF/main/dashboard.jsp" %>
+                    </c:when>
+                    <c:otherwise>
+                        <%@include file="/WEB-INF/main/login.jsp" %>
+                    </c:otherwise>
+                </c:choose>
+
+                <li class="nav-item">
+                    <a class="nav-link" href="/about">O aplikacji</a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" href="/contact">Kontakt</a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link disabled" tabindex="-1" aria-disabled="true"
+                       href="/register">Rejestracja</a>
+                </li>
+
+
+            </ul>
+
+
+        </div>
+
+
+    </nav>
+</div>
+<%--
+
+
+
+<nav class="navbar navbar-expand-lg navbar-light ">
+
+    <a class="navbar-brand" href="#">Agreement Generator</a>
+
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+
             <c:choose>
                 <c:when test="${currentUserFullName != -1}">
                     <%@include file="/WEB-INF/main/welcome.jsp" %>
@@ -25,27 +83,25 @@
                     <%@include file="/WEB-INF/main/dashboard.jsp" %>
                 </c:when>
                 <c:otherwise>
-
                     <%@include file="/WEB-INF/main/login.jsp" %>
                 </c:otherwise>
-
             </c:choose>
 
-
-            <!--   <li >
-                   <a  href="/register">rejestracja</a>
-   
-               </li> -->
-
-            <li>
-                <a href="/about">o aplikacji</a>
+            <li class="nav-item">
+                <a class="nav-link" href="/about">O aplikacji</a>
             </li>
 
-            <li>
-                <a href="/contact">Kontakt</a>
+            <li class="nav-item">
+                <a class="nav-link" href="/contact">Kontakt</a>
             </li>
 
+            <li class="nav-item">
+                <a class="nav-link disabled" tabindex="-1" aria-disabled="true" href="/register">Rejestracja</a>
+            </li>
 
         </ul>
-    </nav>
-</header>
+
+    </div>
+</nav>
+--%>
+

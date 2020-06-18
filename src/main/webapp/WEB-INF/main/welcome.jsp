@@ -12,6 +12,6 @@
            uri="http://www.springframework.org/tags/form" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
-<li>
-    Witaj! ${currentUserFullName}
+<li class="nav-item">
+    <a class="nav-link" href="#">Witaj! ${currentUserFullName}</a>
 </li>
