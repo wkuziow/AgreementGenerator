@@ -23,31 +23,34 @@
 </head>
 <body>
 <%@include file="/WEB-INF/includes/header.jsp" %>
-
-<table>
-    <tr>
-        <th>First name</th>
-        <th>Last name</th>
-        <th>email</th>
-        <th>enabled</th>
-        <th>username</th>
-        <th>role</th>
-    </tr>
-    <c:forEach var="user" items="${allUsersForAdmin}">
-        <tr>
-            <td>${user.firstName}</td>
-            <td>${user.lastName}</td>
-            <td>${user.email}</td>
-            <td>${user.enabled}</td>
-            <td>${user.username}</td>
-            <td>${user.role}</td>
-            <td>
-                    <%--    <a href="/admin/user/delete/${author.id}">Delete</a> --%>
-                <a href="/admin/user/update/${user.id}">Edit</a>
-            </td>
-        </tr>
-    </c:forEach>
-</table>
+<div class="container">
+    <div class="d-flex justify-content-center">
+        <table>
+            <tr>
+                <th>First name</th>
+                <th>Last name</th>
+                <th>email</th>
+                <th>enabled</th>
+                <th>username</th>
+                <th>role</th>
+            </tr>
+            <c:forEach var="user" items="${allUsersForAdmin}">
+                <tr>
+                    <td>${user.firstName}</td>
+                    <td>${user.lastName}</td>
+                    <td>${user.email}</td>
+                    <td>${user.enabled}</td>
+                    <td>${user.username}</td>
+                    <td>${user.role}</td>
+                    <td>
+                            <%--    <a href="/admin/user/delete/${author.id}">Delete</a> --%>
+                        <a href="/admin/user/update/${user.id}">Edit</a>
+                    </td>
+                </tr>
+            </c:forEach>
+        </table>
+    </div>
+</div>
 <%@include file="/WEB-INF/includes/footer.jsp" %>
 <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>

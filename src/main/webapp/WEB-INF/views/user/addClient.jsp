@@ -23,8 +23,8 @@
 </head>
 <body>
 <%@include file="/WEB-INF/includes/header.jsp" %>
-
-
+<div class="container">
+    <div class="d-flex justify-content-center">
 
 <form:form autocomplete="on" action="#" method="post"
            modelAttribute="client">
@@ -84,7 +84,8 @@
     <button type="submit">Add client</button>
 
 </form:form>
-
+</div>
+</div>
 <%@include file="/WEB-INF/includes/footer.jsp" %>
 <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>

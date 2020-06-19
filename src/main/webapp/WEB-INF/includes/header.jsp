@@ -15,7 +15,7 @@
 <div class="container">
     <nav class=" navbar navbar-expand-lg ">
 
-        <a class="navbar-brand" href="#">Agreement Generator</a>
+        <a class="navbar-brand" href="/">Agreement Generator</a>
 
         <button class="navbar-toggler" type="button" data-toggle="collapse"
                 data-target="#navbarSupportedContent"

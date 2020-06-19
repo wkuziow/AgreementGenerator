@@ -23,55 +23,57 @@
 </head>
 <body>
 <%@include file="/WEB-INF/includes/header.jsp" %>
+<div class="container">
+    <div class="d-flex justify-content-center">
 
-
-    <table>
-        <tr>
-            <th>ID</th>
-            <th>Client</th>
-            <th>Amount</th>
-            <th>Currency</th>
-            <th>Collaterals</th>
-            <th>Date of sign</th>
-            <th>Is Active</th>
-            <th>Is terminated</th>
-            <th>Termination date</th>
-            <th>Has valid date</th>
-            <th>Valid date</th>
-            <th>Repayment account</th>
-            <th>Reference rate</th>
-            <th>Margin</th>
-            <th>Fees</th>
-        </tr>
-        <c:forEach var="transaction" items="${allTransactionsForAdmin}">
+        <table>
             <tr>
-                <td>${transaction.id}</td>
-                <td>${transaction.client.name}</td>
-                <td>${transaction.amount}</td>
-                <td>${transaction.currency}</td>
-                <td>${transaction.collaterals}</td>
-                <td>${transaction.dateOfSign}</td>
-                <td>${transaction.active}</td>
-                <td>${transaction.terminated}</td>
-                <td>${transaction.terminationDate}</td>
-                <td>${transaction.hasValidDate}</td>
-                <td>${transaction.validDate}</td>
-                <td>${transaction.repaymentAccount}</td>
-                <td>${transaction.referenceRate}</td>
-                <td>${transaction.margin}</td>
-                <td>${transaction.fees}</td>
-                <td>
-                    <a href="/client/${transaction.client.id}/showAgreement/${transaction.id}" target="_blank">Umowa</a>
-                </td>
-             <%--   <td>
-                    <a href="/admin/client/update/${client.id}">Edit</a>
-                </td> --%>
+                <th>ID</th>
+                <th>Client</th>
+                <th>Amount</th>
+                <th>Currency</th>
+                <th>Collaterals</th>
+                <th>Date of sign</th>
+                <th>Is Active</th>
+                <th>Is terminated</th>
+                <th>Termination date</th>
+                <th>Has valid date</th>
+                <th>Valid date</th>
+                <th>Repayment account</th>
+                <th>Reference rate</th>
+                <th>Margin</th>
+                <th>Fees</th>
             </tr>
-        </c:forEach>
-    </table>
-
-    <%@include file="/WEB-INF/includes/footer.jsp" %>
-
+            <c:forEach var="transaction" items="${allTransactionsForAdmin}">
+                <tr>
+                    <td>${transaction.id}</td>
+                    <td>${transaction.client.name}</td>
+                    <td>${transaction.amount}</td>
+                    <td>${transaction.currency}</td>
+                    <td>${transaction.collaterals}</td>
+                    <td>${transaction.dateOfSign}</td>
+                    <td>${transaction.active}</td>
+                    <td>${transaction.terminated}</td>
+                    <td>${transaction.terminationDate}</td>
+                    <td>${transaction.hasValidDate}</td>
+                    <td>${transaction.validDate}</td>
+                    <td>${transaction.repaymentAccount}</td>
+                    <td>${transaction.referenceRate}</td>
+                    <td>${transaction.margin}</td>
+                    <td>${transaction.fees}</td>
+                    <td>
+                        <a href="/client/${transaction.client.id}/showAgreement/${transaction.id}"
+                           target="_blank">Umowa</a>
+                    </td>
+                        <%--   <td>
+                               <a href="/admin/client/update/${client.id}">Edit</a>
+                           </td> --%>
+                </tr>
+            </c:forEach>
+        </table>
+    </div>
+</div>
+<%@include file="/WEB-INF/includes/footer.jsp" %>
 
 
 <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>

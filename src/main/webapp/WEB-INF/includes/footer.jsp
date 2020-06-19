@@ -8,7 +8,9 @@
 <link rel="stylesheet" href="<c:url value="/css/style.css"/>">
 
 <footer>
-
+        <div class="container">
+                <div class="d-flex justify-content-center">
         <h5 >Copyright <a href=#><span >AgreementGenerator.pl</span></a></h5>
-
+                </div>
+        </div>
 </footer>

@@ -25,44 +25,78 @@
 </head>
 <body>
 <%@include file="/WEB-INF/includes/header.jsp" %>
+<div class="container">
+    <div class="d-flex justify-content-center">
+        <form:form autocomplete="off" action="#" method="post"
+                   modelAttribute="user">
+            <h2 class="d-flex justify-content-center">Add user</h2>
 
-<form:form autocomplete="off" action="#" method="post"
-           modelAttribute="user">
-    <h2>Add user</h2>
 
-    <label for="firstNameId">First name: </label>
-    <form:input type="text" path="firstName" id="firstNameId" placeholder="First name"/>
-    <form:errors path="firstName" cssClass="error"/>
+            <div class="form-group row">
+                <label for="firstNameId" class="col-sm-2 col-form-label">First name: </label>
+                <div class="col-sm-10">
+                    <form:input type="text" path="firstName" id="firstNameId" placeholder="First name"
+                                class="form-control"/>
+                    <form:errors path="firstName" cssClass="error"/>
+                </div>
+            </div>
 
-    <label for="lastNameId">Last name: </label>
-    <form:input type="text" path="lastName" id="lastNameId"
-                placeholder="Last Name"/>
-    <form:errors path="lastName"/>
+            <div class="form-group row">
+                <label for="lastNameId" class="col-sm-2 col-form-label">Last name: </label>
+                <div class="col-sm-10">
+                    <form:input type="text" path="lastName" id="lastNameId"
+                                placeholder="Last Name" class="form-control"/>
+                    <form:errors path="lastName" cssClass="error"/>
+                </div>
+            </div>
 
-    <label for="emailId">Email: </label>
-    <form:input type="text" path="email" placeholder="Email" id="emailId"/>
-    <form:errors path="email"/>
+            <div class="form-group row">
+                <label for="emailId" class="col-sm-2 col-form-label">Email: </label>
+                <div class="col-sm-10">
+                    <form:input type="text" path="email" placeholder="Email" id="emailId" class="form-control"/>
+                    <form:errors path="email" cssClass="error"/>
+                </div>
+            </div>
 
-    <label for="usernameId">Username: </label>
-    <form:input type="text" path="username" placeholder="Username" id="usernameId"/>
-    <form:errors path="username"/>
+            <div class="form-group">
+                <label for="usernameId" class="col-sm-2 col-form-label">Username: </label>
+                <div class="col-sm-10">
+                    <form:input type="text" path="username" placeholder="Username" id="usernameId"
+                                class="form-control"/>
+                    <form:errors path="username" cssClass="error"/>
+                </div>
+            </div>
 
-    <label for="passwordId">Password: </label>
-    <form:input type="password" path="password" id="passwordId"
-                placeholder="Password"/>
-    <form:errors path="password"/>
+            <div class="form-group">
+                <label for="passwordId" class="col-sm-2 col-form-label">Password: </label>
+                <div class="col-sm-10">
+                    <form:input type="password" path="password" id="passwordId"
+                                placeholder="Password" class="form-control"/>
+                    <form:errors path="password" cssClass="error"/>
+                </div>
+            </div>
 
-    <label for="enabledId">Enabled:</label>
-    <form:radiobuttons path="enabled" items="${enabledList}" id="enabledId"/>
-    <form:errors path="enabled"/>
+            <div class="form-check form-check-inline">
+                <label for="enabledId" class="form-check-label">Enabled:</label>
+                <div class="">
+                    <form:radiobuttons path="enabled" items="${enabledList}" id="enabledId" class="form-control"/>
+                    <form:errors path="enabled" cssClass="error"/>
+                </div>
+            </div>
 
-    <label for="roleId">Role:</label>
-    <form:radiobuttons path="role" items="${roleList}" id="roleId"/>
-    <form:errors path="role"/>
+            <div class="form-group row">
+                <label for="roleId" class="">Role:</label>
+                <div class="">
+                    <form:radiobuttons path="role" items="${roleList}" id="roleId" class="form-control"/>
+                    <form:errors path="role" cssClass="error"/>
+                </div>
+            </div>
 
-    <button type="submit">Add user</button>
+            <button type="submit" class="btn btn-primary btn-block">Add user</button>
 
-</form:form>
+        </form:form>
+    </div>
+</div>
 <%@include file="/WEB-INF/includes/footer.jsp" %>
 <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
         integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"

@@ -23,80 +23,139 @@
 </head>
 <body>
 <%@include file="/WEB-INF/includes/header.jsp" %>
+<div class="container">
+    <div class="d-flex justify-content-center">
 
+        <form:form autocomplete="on" action="#" method="post"
+                   modelAttribute="client">
+            <h2 class="d-flex justify-content-center">Add Client</h2>
 
-<form:form autocomplete="on" action="#" method="post"
-           modelAttribute="client">
-    <h2>Add Client</h2>
+            <div class="form-group row">
+                <label for="nameId" class="col-sm-2 col-form-label">Name: </label>
+                <div class="col-sm-10">
+                    <form:input type="text" path="name" id="nameId" placeholder="Name" class="form-control"/>
+                    <form:errors path="name" cssClass="error"/>
+                </div>
+            </div>
 
-    <label for="nameId">Name: </label>
-    <form:input type="text" path="name" id="nameId" placeholder="Name"/>
-    <form:errors path="name" cssClass="error"/>
+            <div class="form-group row">
+                <label for="NIPId" class="col-sm-2 col-form-label">NIP: </label>
+                <div class="col-sm-10">
+                    <form:input type="text" path="NIP" id="NIPId" placeholder="NIP" class="form-control"/>
+                    <form:errors path="NIP" cssClass="error"/>
+                </div>
+            </div>
 
-    <label for="NIPId">NIP: </label>
-    <form:input type="text" path="NIP" id="NIPId" placeholder="NIP"/>
-    <form:errors path="NIP"/>
+            <div class="form-group row">
+                <label for="REGONId" class="col-sm-2 col-form-label">REGON: </label>
+                <div class="col-sm-10">
+                    <form:input type="text" path="REGON" placeholder="REGON" id="REGONId" class="form-control"/>
+                    <form:errors path="REGON" cssClass="error"/>
+                </div>
+            </div>
 
-    <label for="REGONId">REGON: </label>
-    <form:input type="text" path="REGON" placeholder="REGON" id="REGONId"/>
-    <form:errors path="REGON"/>
+            <div class="form-group row">
+                <label for="accountId" class="col-sm-2 col-form-label">Account: </label>
+                <div class="col-sm-10">
+                    <form:input type="text" path="account" placeholder="account" id="accountId" class="form-control"/>
+                    <form:errors path="account" cssClass="error"/>
+                </div>
+            </div>
 
-    <label for="accountId">Account: </label>
-    <form:input type="text" path="account" placeholder="account" id="accountId"/>
-    <form:errors path="account"/>
+            <div class="form-group row">
+                <label for="contactPersondId" class="col-sm-2 col-form-label">Contact person: </label>
+                <div class="col-sm-10">
+                    <form:input type="text" path="contactPerson" id="contactPersondId"
+                                placeholder="COntact person"
+                                class="form-control"/>
+                    <form:errors path="contactPerson" cssClass="error"/>
+                </div>
+            </div>
 
-    <label for="contactPersondId">Contact person: </label>
-    <form:input type="text" path="contactPerson" id="contactPersondId"
-                placeholder="COntact person"/>
-    <form:errors path="contactPerson"/>
+            <div class="form-group row">
+                <label for="emailId" class="col-sm-2 col-form-label">Email: </label>
+                <div class="col-sm-10">
+                    <form:input type="text" path="email" id="emailId"
+                                placeholder="Email" class="form-control"/>
+                    <form:errors path="email" cssClass="error"/>
+                </div>
+            </div>
 
-    <label for="emailId">Email: </label>
-    <form:input type="text" path="email" id="emailId"
-                placeholder="Email"/>
-    <form:errors path="email"/>
+            <div class="form-group row">
+                <label for="phoneId" class="col-sm-2 col-form-label">Phone: </label>
+                <div class="col-sm-10">
+                    <form:input type="text" path="phone" id="phoneId"
+                                placeholder="Phone" class="form-control"/>
+                    <form:errors path="phone" cssClass="error"/>
+                </div>
+            </div>
 
-    <label for="phoneId">Phone: </label>
-    <form:input type="text" path="phone" id="phoneId"
-                placeholder="Phone"/>
-    <form:errors path="phone"/>
+            <div class="form-group row">
+                <label for="streetId" class="col-sm-2 col-form-label">Street: </label>
+                <div class="col-sm-10">
+                    <form:input type="text" path="street" id="streetId"
+                                placeholder="Street" class="form-control"/>
+                    <form:errors path="street" cssClass="error"/>
+                </div>
+            </div>
 
-    <label for="streetId">Street: </label>
-    <form:input type="text" path="street" id="streetId"
-                placeholder="Street"/>
-    <form:errors path="street"/>
+            <div class="form-group row">
+                <label for="blockNumberId" class="col-sm-2 col-form-label">Block number: </label>
+                <div class="col-sm-10">
+                    <form:input type="text" path="blockNumber" id="blockNumberId"
+                                placeholder="Block number" class="form-control"/>
+                    <form:errors path="blockNumber" cssClass="error"/>
+                </div>
+            </div>
 
-    <label for="blockNumberId">Block number: </label>
-    <form:input type="text" path="blockNumber" id="blockNumberId"
-                placeholder="Block number"/>
-    <form:errors path="blockNumber"/>
+            <div class="form-group row">
+                <label for="flatNumberId" class="col-sm-2 col-form-label">Flat number: </label>
+                <div class="col-sm-10">
+                    <form:input type="text" path="flatNumber" id="flatNumberId"
+                                placeholder="Flat number" class="form-control"/>
+                    <form:errors path="flatNumber" cssClass="error"/>
+                </div>
+            </div>
 
-    <label for="flatNumberId">Flat number: </label>
-    <form:input type="text" path="flatNumber" id="flatNumberId"
-                placeholder="Flat number"/>
-    <form:errors path="flatNumber"/>
+            <div class="form-group row">
+                <label for="postalCodeId" class="col-sm-2 col-form-label">Postal code: </label>
+                <div class="col-sm-10">
+                    <form:input type="text" path="postalCode" id="postalCodeId"
+                                placeholder="Postal code" class="form-control"/>
+                    <form:errors path="postalCode" cssClass="error"/>
+                </div>
+            </div>
 
-    <label for="postalCodeId">Postal code: </label>
-    <form:input type="text" path="postalCode" id="postalCodeId"
-                placeholder="Postal code"/>
-    <form:errors path="postalCode"/>
+            <div class="form-group row">
+                <label for="townId" class="col-sm-2 col-form-label">Town: </label>
+                <div class="col-sm-10">
+                    <form:input type="text" path="town" id="townId"
+                                placeholder="Town" class="form-control"/>
+                    <form:errors path="town" cssClass="error"/>
+                </div>
+            </div>
 
-    <label for="townId">Town: </label>
-    <form:input type="text" path="town" id="townId"
-                placeholder="Town"/>
-    <form:errors path="town"/>
+            <div class="form-group row">
+                <label for="isActiveId" class="col-sm-2 col-form-label">Is Active:</label>
+                <div class="col-sm-10">
+                    <form:radiobuttons path="active" items="${isActiveList}" id="isActiveId" class="form-control"/>
+                    <form:errors path="active"  cssClass="error"/>
+                </div>
+            </div>
 
-    <label for="isActiveId">Is Active:</label>
-    <form:radiobuttons path="active" items="${isActiveList}" id="isActiveId"/>
-    <form:errors path="active"/>
+            <div class="form-group row">
+                <label for="userId" class="col-sm-2 col-form-label">User:</label>
+                <div class="col-sm-10">
+                    <form:select path="user.id" items="${listOfUsers}" itemValue="id" itemLabel="Fullname" id="userId"
+                                 class="custom-select"/>
+                    <form:errors path="user.id" cssClass="error"/>
+                </div>
+            </div>
+            <button type="submit" class="btn btn-primary btn-block">Add client</button>
 
-    <label for="userId">User:</label>
-    <form:select path="user.id" items="${listOfUsers}" itemValue="id" itemLabel="Fullname" id="userId"/>
-    <form:errors path="user.id"/>
-
-    <button type="submit">Add client</button>
-
-</form:form>
-
+        </form:form>
+    </div>
+</div>
 <%@include file="/WEB-INF/includes/footer.jsp" %>
 
 <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>

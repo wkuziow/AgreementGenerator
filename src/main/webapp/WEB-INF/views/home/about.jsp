@@ -26,12 +26,12 @@
 
 <%@include file="/WEB-INF/includes/header.jsp" %>
 
-
-
+<div class="container">
+    <div class="d-flex justify-content-center">
 
             About this webpage <br>
-
-
+    </div>
+</div>
 
 
 <%@include file="/WEB-INF/includes/footer.jsp" %>

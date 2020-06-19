@@ -12,9 +12,11 @@
            uri="http://www.springframework.org/tags/form" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
-
+<div class="container">
+    <div class="d-flex justify-content-center">
 <h1>Witamy w aplikacji Agreement Generator firmy Faktoring dla wszystkich S.A.</h1>
 <h4>Wybierz jedną z opcji powyżej.</h4>
-
+    </div>
+</div>
 
 
