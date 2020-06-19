@@ -30,7 +30,6 @@
                 <c:choose>
                     <c:when test="${currentUserFullName != -1}">
                         <%@include file="/WEB-INF/main/welcome.jsp" %>
-                        <%@include file="/WEB-INF/main/logout.jsp" %>
                         <%@include file="/WEB-INF/main/dashboard.jsp" %>
                     </c:when>
                     <c:otherwise>
@@ -50,8 +49,11 @@
                     <a class="nav-link disabled" tabindex="-1" aria-disabled="true"
                        href="/register">Rejestracja</a>
                 </li>
-
-
+                <c:choose>
+                    <c:when test="${currentUserFullName != -1}">
+                        <%@include file="/WEB-INF/main/logout.jsp" %>
+                    </c:when>
+                </c:choose>
             </ul>
 
 
