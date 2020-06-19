@@ -25,7 +25,7 @@
 </head>
 <body>
 <%@include file="/WEB-INF/includes/header.jsp" %>
-<%@include file="/WEB-INF/includes/sidePanel.jsp" %>
+
 <form:form autocomplete="off" action="#" method="post"
            modelAttribute="user">
     <h2>Add user</h2>

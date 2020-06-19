@@ -24,7 +24,7 @@
 <body>
 
 <%@include file="/WEB-INF/includes/header.jsp" %>
-<%@include file="/WEB-INF/includes/sidePanel.jsp" %>
+
 
 <form:form autocomplete="on" action="#" method="post"
            modelAttribute="transaction">

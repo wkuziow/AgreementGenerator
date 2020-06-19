@@ -12,6 +12,24 @@
            uri="http://www.springframework.org/tags/form" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
-<li class="nav-item">
-    <a class="nav-link" href="/dashboard">PULPIT</a>
+
+
+<li class="nav-item dropdown">
+    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+       data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        AKCJE
+    </a>
+    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+        <sec:authorize access="hasRole('ADMIN')">
+            <a class="dropdown-item" href="/admin/addClient">Dodaj klienta</a>
+            <a class="dropdown-item" href="/admin/allClients">Lista klientów</a>
+            <a class="dropdown-item" href="/admin/addUser">Dodaj użytkownika</a>
+            <a class="dropdown-item" href="/admin/allUsers">Lista użytkowników</a>
+            <a class="dropdown-item" href="/admin/allTransactions">Lista transakcji</a>
+            <div class="dropdown-divider"></div>
+        </sec:authorize>
+
+        <a class="dropdown-item" href="/user/addClient">Dodaj klienta</a>
+        <a class="dropdown-item" href="/user/allClients">Moi klienci</a>
+    </div>
 </li>
