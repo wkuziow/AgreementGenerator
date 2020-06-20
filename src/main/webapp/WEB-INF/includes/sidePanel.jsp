@@ -11,7 +11,7 @@
 <%@ taglib prefix="form"
            uri="http://www.springframework.org/tags/form" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-
+<%--
 
 <ul>
     <sec:authorize access="hasRole('ADMIN')">
@@ -57,4 +57,11 @@
         </a>
     </li>
 
+    <li>
+        <a href="/user/allTransactions">
+            <span>Moje transakcje</span>
+        </a>
+    </li>
+
 </ul>
+--%>

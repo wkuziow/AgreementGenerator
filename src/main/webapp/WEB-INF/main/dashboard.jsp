@@ -13,7 +13,6 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 
-
 <li class="nav-item dropdown">
     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -31,5 +30,6 @@
 
         <a class="dropdown-item" href="/user/addClient">Dodaj klienta</a>
         <a class="dropdown-item" href="/user/allClients">Moi klienci</a>
+        <a class="dropdown-item" href="/user/allTransactions">Moje transakcje</a>
     </div>
 </li>

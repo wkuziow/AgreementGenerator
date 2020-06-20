@@ -64,6 +64,7 @@ public class TransactionController {
         transactionRepository.save(transaction);
         return "redirect:allClients";
     }
+
     @ModelAttribute("currentUserFullName")
     public String currentUser(@AuthenticationPrincipal CurrentUser customUser, Model model) {
         String currentUser = "-1";
@@ -72,9 +73,16 @@ public class TransactionController {
         }
         return currentUser;
     }
+
     @RequestMapping(value = "/admin/allTransactions", method = RequestMethod.GET)
     public String getAllTransactionsForAdmin(Model model) {
         model.addAttribute("allTransactionsForAdmin", transactionRepository.findAll());
         return "admin/transactionList";
+    }
+
+    @RequestMapping(value = "user/allTransactions", method = RequestMethod.GET)
+    public String getAllTransactionsForUser(Model model, @AuthenticationPrincipal CurrentUser customUser) {
+        model.addAttribute("allTransactionsforUser", transactionRepository.findTransactionsForUser(customUser.getUser().getId()));
+        return "user/transactionList";
     }
 }
