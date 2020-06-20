@@ -104,4 +104,25 @@ public class TransactionController {
         model.addAttribute("allTransactionsforUser", transactionRepository.findTransactionsForUser(customUser.getUser().getId()));
         return "user/transactionList";
     }
+
+    @RequestMapping(value = "/user/transaction/update/{id}", method = RequestMethod.GET)
+    public String updateTransactionByUserGet(@PathVariable Long id, Model model) {
+        Transaction transaction = transactionRepository.findTransactionById(id);
+        model.addAttribute("transaction", transaction);
+        return "transaction/addTransaction";
+    }
+
+    @RequestMapping(value = "/user/transaction/update/{id}", method = RequestMethod.POST)
+    public String updateTransactionByUserProcessForm(@ModelAttribute @Validated Transaction transaction, @PathVariable Long id,
+                                                      BindingResult bindingResult) {
+        if (bindingResult.hasErrors()) {
+            return "transaction/addTransaction";
+        }
+
+        transaction.setClient(transactionRepository.findTransactionById(id).getClient());
+        transactionRepository.save(transaction);
+        return "redirect:../../../user/allTransactions";
+    }
+
+
 }

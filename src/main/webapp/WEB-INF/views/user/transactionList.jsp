@@ -66,6 +66,11 @@
                         <a href="/client/${transaction.client.id}/showAgreement/${transaction.id}"
                            target="_blank">Umowa</a>
                     </button>
+
+                    <button type="button" class="btn btn-outline-primary">
+                        <a href="/user/transaction/update/${transaction.id}">Edytuj</a>
+                    </button>
+
                 </td>
                     <%--   <td>
                            <a href="/admin/client/update/${client.id}">Edit</a>
