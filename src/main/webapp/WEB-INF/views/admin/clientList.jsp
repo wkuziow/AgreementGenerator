@@ -20,7 +20,8 @@
 <div class="container">
     <div class="d-flex justify-content-center">
         <div class="table-responsive">
-            <table class="table-sm">
+            <table class="table-sm table-striped table-bordered table-hover">
+                <thead class="">
                 <tr>
                     <th>ID</th>
                     <th>Name</th>
@@ -33,6 +34,8 @@
                     <th>Deleted</th>
                     <th>User</th>
                 </tr>
+                </thead>
+                <tbody>
                 <c:forEach var="client" items="${allClientsForAdmin}">
                     <tr>
                         <td>${client.id}</td>
@@ -46,10 +49,13 @@
                         <td>${client.softDelete}</td>
                         <th>${client.user.fullname}</th>
                         <td>
+                            <button type="button" class="btn btn-outline-primary">
                             <a href="/admin/client/update/${client.id}">Edit</a>
+                            </button>
                         </td>
                     </tr>
                 </c:forEach>
+                </tbody>
             </table>
         </div>
     </div>

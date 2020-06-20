@@ -10,7 +10,9 @@
     --green: #1e7e34;
     --font-size: 16px;
 }
-
+.agreement {
+    background-color: white;
+}
 body{
     background-color: var(--background-color);
 }

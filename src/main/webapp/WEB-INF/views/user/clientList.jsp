@@ -26,39 +26,42 @@
 <div class="container">
     <div class="d-flex justify-content-center">
 
-    <table>
-        <tr>
-            <th>ID</th>
-            <th>Name</th>
-            <th>NIP</th>
-            <th>REGON</th>
-            <th>Adres</th>
-            <th>Contact info</th>
-            <th>Account</th>
-            <th>Is Active</th>
-            <th>Deleted</th>
-        </tr>
-        <c:forEach var="client" items="${allClientsForUser}">
-            <tr>
-                <td>${client.id}</td>
-                <td>${client.name}</td>
-                <td>${client.NIP}</td>
-                <td>${client.REGON}</td>
-                <td>${client.adress}</td>
-                <td>${client.contactInfo}</td>
-                <td>${client.account}</td>
-                <td>${client.active}</td>
-                <td>${client.softDelete}</td>
-                <td>
-                    <a href="/user/client/update/${client.id}">Edit</a>
-                </td>
+        <div class="table-responsive">
+            <table class="table-sm table-striped table-bordered table-hover">
+                <tr>
+                    <th>ID</th>
+                    <th>Name</th>
+                    <th>NIP</th>
+                    <th>REGON</th>
+                    <th>Adres</th>
+                    <th>Contact info</th>
+                    <th>Account</th>
+                    <th>Is Active</th>
+                    <th>Deleted</th>
+                </tr>
+                <c:forEach var="client" items="${allClientsForUser}">
+                    <tr>
+                        <td>${client.id}</td>
+                        <td>${client.name}</td>
+                        <td>${client.NIP}</td>
+                        <td>${client.REGON}</td>
+                        <td>${client.adress}</td>
+                        <td>${client.contactInfo}</td>
+                        <td>${client.account}</td>
+                        <td>${client.active}</td>
+                        <td>${client.softDelete}</td>
+                        <td>
+                            <button type="button" class="btn btn-outline-primary">
+                            <a href="/user/client/update/${client.id}">Edit</a>
+                            </button>
+                        </td>
 
-            </tr>
-        </c:forEach>
-    </table>
+                    </tr>
+                </c:forEach>
+            </table>
+        </div>
 
-
-</div>
+    </div>
 </div>
 <%@include file="/WEB-INF/includes/footer.jsp" %>
 <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>

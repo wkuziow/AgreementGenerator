@@ -24,31 +24,36 @@
 <body>
 <%@include file="/WEB-INF/includes/header.jsp" %>
 <div class="container">
-    <div class="d-flex justify-content-center">
-        <table>
-            <tr>
-                <th>First name</th>
-                <th>Last name</th>
-                <th>email</th>
-                <th>enabled</th>
-                <th>username</th>
-                <th>role</th>
-            </tr>
-            <c:forEach var="user" items="${allUsersForAdmin}">
+    <div class="">
+        <div class="table-responsive d-flex justify-content-center">
+            <table class="table-sm table-striped table-bordered table-hover">
                 <tr>
-                    <td>${user.firstName}</td>
-                    <td>${user.lastName}</td>
-                    <td>${user.email}</td>
-                    <td>${user.enabled}</td>
-                    <td>${user.username}</td>
-                    <td>${user.role}</td>
-                    <td>
-                            <%--    <a href="/admin/user/delete/${author.id}">Delete</a> --%>
-                        <a href="/admin/user/update/${user.id}">Edit</a>
-                    </td>
+                    <th>First name</th>
+                    <th>Last name</th>
+                    <th>email</th>
+                    <th>enabled</th>
+                    <th>username</th>
+                    <th>role</th>
                 </tr>
-            </c:forEach>
-        </table>
+                <c:forEach var="user" items="${allUsersForAdmin}">
+                    <tr>
+                        <td>${user.firstName}</td>
+                        <td>${user.lastName}</td>
+                        <td>${user.email}</td>
+                        <td>${user.enabled}</td>
+                        <td>${user.username}</td>
+                        <td>${user.role}</td>
+
+                        <td>
+                            <button type="button" class="btn btn-outline-primary">
+                                <%--    <a href="/admin/user/delete/${author.id}">Delete</a> --%>
+                            <a href="/admin/user/update/${user.id}">Edit</a>
+                            </button>
+                        </td>
+                    </tr>
+                </c:forEach>
+            </table>
+        </div>
     </div>
 </div>
 <%@include file="/WEB-INF/includes/footer.jsp" %>
