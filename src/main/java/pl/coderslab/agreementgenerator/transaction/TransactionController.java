@@ -65,6 +65,25 @@ public class TransactionController {
         return "redirect:allClients";
     }
 
+    @RequestMapping(value = "/admin/transaction/update/{id}", method = RequestMethod.GET)
+    public String updateTransactionByAdminGet(@PathVariable Long id, Model model) {
+        Transaction transaction = transactionRepository.findTransactionById(id);
+        model.addAttribute("transaction", transaction);
+        return "transaction/addTransaction";
+    }
+
+    @RequestMapping(value = "/admin/transaction/update/{id}", method = RequestMethod.POST)
+    public String updateTransactionByAdminProcessForm(@ModelAttribute @Validated Transaction transaction, @PathVariable Long id,
+                                                 BindingResult bindingResult) {
+        if (bindingResult.hasErrors()) {
+            return "transaction/addTransaction";
+        }
+
+        transaction.setClient(transactionRepository.findTransactionById(id).getClient());
+        transactionRepository.save(transaction);
+        return "redirect:../../../admin/allTransactions";
+    }
+
     @ModelAttribute("currentUserFullName")
     public String currentUser(@AuthenticationPrincipal CurrentUser customUser, Model model) {
         String currentUser = "-1";
