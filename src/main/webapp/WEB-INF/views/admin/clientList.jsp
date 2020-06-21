@@ -8,7 +8,7 @@
 <html>
 <head>
 
-    <title>Clientlist for admin</title>
+    <title>Lista klientów dla admina</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" rel="stylesheet">
@@ -23,16 +23,16 @@
             <table class="table-sm table-striped table-bordered table-hover">
                 <thead class="">
                 <tr>
-                    <th>ID</th>
-                    <th>Name</th>
+                    <th>ID Klienta</th>
+                    <th>Nazwa</th>
                     <th>NIP</th>
                     <th>REGON</th>
                     <th>Adres</th>
-                    <th>Contact info</th>
-                    <th>Account</th>
-                    <th>Is Active</th>
-                    <th>Deleted</th>
-                    <th>User</th>
+                    <th>Dane kontaktowe</th>
+                    <th>Rachunek</th>
+                    <th>Aktywność</th>
+                    <th>Usunięty</th>
+                    <th>Doradca</th>
                 </tr>
                 </thead>
                 <tbody>
@@ -50,8 +50,13 @@
                         <th>${client.user.fullname}</th>
                         <td>
                             <button type="button" class="btn btn-outline-primary">
-                            <a href="/admin/client/update/${client.id}">Edit</a>
+                            <a href="/admin/client/update/${client.id}">Edytuj</a>
                             </button>
+
+                            <button type="button" class="btn btn-outline-warning">
+                                <a href="/admin/client/${client.id}/addTransaction">Dodaj transakcję</a>
+                            </button>
+
                         </td>
                     </tr>
                 </c:forEach>

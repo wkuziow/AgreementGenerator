@@ -48,13 +48,13 @@ public class TransactionController {
     }
 
     @RequestMapping(value = "/admin/client/{id}/addTransaction", method = RequestMethod.GET)
-    public String addClientByAdminGetForm(@PathVariable Long id, Model model) {
+    public String addTransactionByAdminGetForm(@PathVariable Long id, Model model) {
         model.addAttribute("transaction", new Transaction());
         return "transaction/addTransaction";
     }
 
     @RequestMapping(value = "/admin/client/{id}/addTransaction", method = RequestMethod.POST)
-    public String addClientByAdminProcessForm(@ModelAttribute @Validated Transaction transaction,
+    public String addTransactionByAdminProcessForm(@ModelAttribute @Validated Transaction transaction,
                                               @PathVariable Long id,
                                               BindingResult bindingResult) {
         if (bindingResult.hasErrors()) {
@@ -62,7 +62,7 @@ public class TransactionController {
         }
         transaction.setClient(clientRepository.findClientById(id));
         transactionRepository.save(transaction);
-        return "redirect:allClients";
+        return "redirect:../../../admin/allTransactions";
     }
 
     @RequestMapping(value = "/admin/transaction/update/{id}", method = RequestMethod.GET)
@@ -124,5 +124,22 @@ public class TransactionController {
         return "redirect:../../../user/allTransactions";
     }
 
+    @RequestMapping(value = "/user/client/{id}/addTransaction", method = RequestMethod.GET)
+    public String addTransactionByUserGetForm(@PathVariable Long id, Model model) {
+        model.addAttribute("transaction", new Transaction());
+        return "transaction/addTransaction";
+    }
+
+    @RequestMapping(value = "/user/client/{id}/addTransaction", method = RequestMethod.POST)
+    public String addTransactionByUserProcessForm(@ModelAttribute @Validated Transaction transaction,
+                                              @PathVariable Long id,
+                                              BindingResult bindingResult) {
+        if (bindingResult.hasErrors()) {
+            return "transaction/addTransaction";
+        }
+        transaction.setClient(clientRepository.findClientById(id));
+        transactionRepository.save(transaction);
+        return "redirect:../../../user/allTransactions";
+    }
 
 }

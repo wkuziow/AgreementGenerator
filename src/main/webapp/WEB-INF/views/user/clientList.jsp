@@ -15,7 +15,7 @@
 <html lang="pl-PL">
 <head>
 
-    <title>Client list for User</title>
+    <title>Lista klientów Doradcy ${currentUserFullName}</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" rel="stylesheet">
@@ -30,14 +30,14 @@
             <table class="table-sm table-striped table-bordered table-hover">
                 <tr>
                     <th>ID</th>
-                    <th>Name</th>
+                    <th>Nazwa</th>
                     <th>NIP</th>
                     <th>REGON</th>
                     <th>Adres</th>
-                    <th>Contact info</th>
-                    <th>Account</th>
-                    <th>Is Active</th>
-                    <th>Deleted</th>
+                    <th>Dane kontaktowe</th>
+                    <th>Rachunek</th>
+                    <th>Aktywny</th>
+                    <th>Usunięty</th>
                 </tr>
                 <c:forEach var="client" items="${allClientsForUser}">
                     <tr>
@@ -54,6 +54,11 @@
                             <button type="button" class="btn btn-outline-primary">
                             <a href="/user/client/update/${client.id}">Edit</a>
                             </button>
+
+                            <button type="button" class="btn btn-outline-warning">
+                                <a href="/user/client/${client.id}/addTransaction">Dodaj transakcję</a>
+                            </button>
+
                         </td>
 
                     </tr>
