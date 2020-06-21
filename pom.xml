@@ -15,9 +15,9 @@
     <name>AgreementGenerator</name>
     <description>Agreement Generator app</description>
 
-    <properties>
-        <java.version>11</java.version>
-    </properties>
+<!--    <properties>-->
+<!--        <java.version>11</java.version>-->
+<!--    </properties>-->
 
     <dependencies>
         <dependency>
