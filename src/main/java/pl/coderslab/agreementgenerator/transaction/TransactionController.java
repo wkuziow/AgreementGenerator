@@ -54,8 +54,8 @@ public class TransactionController {
     }
 
     @RequestMapping(value = "/admin/client/{clientId}/addTransaction", method = RequestMethod.POST)
-    public String addTransactionByAdminProcessForm(@ModelAttribute @Validated Transaction transaction,
-                                              @PathVariable Long clientId,
+    public String addTransactionByAdminProcessForm(@PathVariable Long clientId,
+                                                   @ModelAttribute @Validated Transaction transaction,
                                               BindingResult bindingResult) {
         if (bindingResult.hasErrors()) {
             return "transaction/addTransaction";

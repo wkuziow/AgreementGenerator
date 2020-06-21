@@ -15,11 +15,12 @@
 <html lang="pl-PL">
 <head>
 
-    <title>Add transaction</title>
+    <title>Dodaj transakcję dla klienta</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="<c:url value="/css/style.css"/>">
+
 </head>
 <body>
 
@@ -29,36 +30,40 @@
 
         <form:form autocomplete="on" action="#" method="post"
                    modelAttribute="transaction">
-            <h2 class="d-flex justify-content-center">Add transaction</h2>
+            <h2 class="d-flex justify-content-center">Dodaj transakcję</h2>
 
-            <div class="form-group row">
-                <label for="amountId" class="col-sm-2 col-form-label">Amount: </label>
-                <div class="col-sm-10">
-                    <form:input type="text" path="amount" id="amountId" placeholder="amount" class="form-control"/>
-                    <form:errors path="amount" cssClass="error"/>
+
+            <div class="input-group mb-3">
+                <label for="amountId" class="col-sm-2 col-form-label">Limit: </label>
+                <form:input type="number" path="amount" id="amountId" placeholder="Wysokość limitu"
+                            class="form-control"/>
+                <form:errors path="amount" cssClass="error"/>
+                <div class="input-group-append">
+                    <span class="input-group-text">.00</span>
                 </div>
+
             </div>
 
             <div class="form-group row">
-                <label for="currencyId" class="col-sm-2 col-form-label">Currency: </label>
+                <label for="currencyId" class="col-sm-2 col-form-label">Waluta: </label>
                 <div class="col-sm-10">
                     <form:input type="text" path="currency" id="currencyId"
-                                placeholder="currency" class="form-control"/>
+                                placeholder="waluta" class="form-control"/>
                     <form:errors path="currency" cssClass="error"/>
                 </div>
             </div>
 
             <div class="form-group row">
-                <label for="dateOfSignId" class="col-sm-2 col-form-label">Date of sign: </label>
+                <label for="dateOfSignId" class="col-form-label">Data podpisania: </label>
                 <div class="col-sm-10">
-                    <form:input type="text" path="dateOfSign" placeholder="dateOfSign" id="dateOfSignId"
+                    <form:input type="date" path="dateOfSign" placeholder="data podpisania" id="dateOfSignId"
                                 class="form-control"/>
                     <form:errors path="dateOfSign" cssClass="error"/>
                 </div>
             </div>
 
             <div class="form-group row">
-                <label for="isActiveId" class="col-sm-2 col-form-label">Is Active: </label>
+                <label for="isActiveId" class="col-form-label">Czy aktywny: </label>
                 <div class="col-sm-10">
                     <form:radiobuttons path="active" items="${isActiveList}" placeholder="isActive"
                                        id="isActiveId" class="form-control"/>
@@ -67,96 +72,106 @@
             </div>
 
             <div class="form-group row">
-                <label for="hasValidDateId" class="col-sm-2 col-form-label">Has Valid Date: </label>
+                <label for="hasValidDateId" class="col-form-label">Czy ma datę ważności: </label>
                 <div class="col-sm-10">
                     <form:radiobuttons path="hasValidDate" items="${hasValidDate}" placeholder="hasValidDate"
-                                       id="hasValidDateId" class="form-control"/>
+                                       id="hasValidDateId" class="form-control" />
                     <form:errors path="hasValidDate" cssClass="error"/>
                 </div>
             </div>
 
             <div class="form-group row">
-                <label for="validDateId" class="col-sm-2 col-form-label">Valid date: </label>
+                <label for="validDateId" class="col-form-label">Data ważności: </label>
                 <div class="col-sm-10">
-                    <form:input type="text" path="validDate" placeholder="validDate" id="validDateId"
+                    <form:input type="date" path="validDate" placeholder="validDate" id="validDateId"
                                 class="form-control"/>
                     <form:errors path="validDate" cssClass="error"/>
                 </div>
             </div>
 
             <div class="form-group row">
-                <label for="collateralsdId" class="col-sm-2 col-form-label">Collaterals: </label>
+                <label for="collateralsdId" class="col-sm-2 col-form-label">Zabezpieczenia: </label>
                 <div class="col-sm-10">
                     <form:textarea path="collaterals" id="collateralsdId"
-                                   placeholder="collaterals"
+                                   placeholder="zabezpieczenia"
                                    rows="5" cols="50" class="form-control"/>
                     <form:errors path="collaterals" cssClass="error"/>
                 </div>
             </div>
 
-            <div class="form-group row">
-                <label for="administrationFeeId" class="col-sm-2 col-form-label">Administration fee: </label>
-                <div class="col-sm-10">
-                    <form:input type="text" path="administrationFee" id="administrationFeeId"
-                                placeholder="Administration fee" class="form-control"/>
-                    <form:errors path="administrationFee" cssClass="error"/>
+            <div class="input-group mb-3">
+                <label for="administrationFeeId" class="col-form-label">Prowizja administracyjna [%]: </label>
+                <form:input type="number" path="administrationFee" id="administrationFeeId"
+                            placeholder="prowizja administracyjna w procentach"
+                            class="form-control"/>
+                <form:errors path="administrationFee" cssClass="error"/>
+                <div class="input-group-append">
+                    <span class="input-group-text">%</span>
+                </div>
+            </div>
+
+            <div class="input-group mb-3">
+                <label for="arrangementFeeId" class=" col-form-label">Prowizja aranżacyjna [%]: </label>
+                <form:input type="number" path="arrangementFee" id="arrangementFeeId"
+                            placeholder="prowizja aranżacyjna w procentach" class="form-control"/>
+                <form:errors path="arrangementFee" cssClass="error"/>
+                <div class="input-group-append">
+                    <span class="input-group-text">%</span>
+                </div>
+            </div>
+
+            <div class="input-group mb-3">
+                <label for="operationalFeeId" class="col-form-label">Prowizja operacyjna [%]: </label>
+
+                <form:input type="text" path="operationalFee" id="operationalFeeId"
+                            placeholder="prowizja operacyjna w procentach" class="form-control"/>
+                <form:errors path="operationalFee" cssClass="error"/>
+                <div class="input-group-append">
+                    <span class="input-group-text">%</span>
+                </div>
+
+            </div>
+
+            <div class="input-group mb-3">
+                <label for="marginId" class="col-form-label">Marźa [%]: </label>
+
+                <form:input type="number" path="margin" id="marginId"
+                            placeholder="marża"  class="form-control"/>
+                <form:errors path="margin" cssClass="error"/>
+                <div class="input-group-append">
+                    <span class="input-group-text">p.p. p.a.</span>
                 </div>
             </div>
 
             <div class="form-group row">
-                <label for="arrangementFeeId" class="col-sm-2 col-form-label">Arrangement Fee: </label>
-                <div class="col-sm-10">
-                    <form:input type="text" path="arrangementFee" id="arrangementFeeId"
-                                placeholder="Arrangement fee" class="form-control"/>
-                    <form:errors path="arrangementFee" cssClass="error"/>
-                </div>
-            </div>
-
-            <div class="form-group row">
-                <label for="operationalFeeId" class="col-sm-2 col-form-label">Operational fee </label>
-                <div class="col-sm-10">
-                    <form:input type="text" path="operationalFee" id="operationalFeeId"
-                                placeholder="Operational fee" class="form-control"/>
-                    <form:errors path="operationalFee" cssClass="error"/>
-                </div>
-            </div>
-
-            <div class="form-group row">
-                <label for="marginId" class="col-sm-2 col-form-label">Margin: </label>
-                <div class="col-sm-10">
-                    <form:input type="text" path="margin" id="marginId"
-                                placeholder="margin" class="form-control"/>
-                    <form:errors path="margin" cssClass="error"/>
-                </div>
-            </div>
-
-            <div class="form-group row">
-                <label for="referenceRateId" class="col-sm-2 col-form-label">Reference rate: </label>
+                <label for="referenceRateId" class="col-sm-2 col-form-label">Stawka referencyjna: </label>
                 <div class="col-sm-10">
                     <form:select path="referenceRate" items="${referenceRateList}" id="referenceRateId"
-                                 placeholder="Reference rate" class="custom-select"/>
+                                 placeholder="Stawka referencyjna" class="custom-select"/>
                     <form:errors path="referenceRate" cssClass="error"/>
                 </div>
             </div>
 
-            <div class="form-group row">
-                <label for="setUpFeeId" class="col-sm-2 col-form-label">Setup fee: </label>
-                <div class="col-sm-10">
-                    <form:input type="text" path="setUpFee" id="setUpFeeId" class="form-control"/>
+            <div class="input-group mb-3">
+                <label for="setUpFeeId" class="col-form-label">Prowizja przygotowawcza [%]:  </label>
+
+                    <form:input type="number" path="setUpFee" placeholder="prowizja przygotowawcza w procentach" valune="NULL" id="setUpFeeId" class="form-control"/>
                     <form:errors path="setUpFee" cssClass="error"/>
+                <div class="input-group-append">
+                    <span class="input-group-text">%</span>
                 </div>
             </div>
 
             <div class="form-group row">
-                <label for="repaymentAccountId" class="col-sm-2 col-form-label">Repayment Account: </label>
+                <label for="repaymentAccountId" class="col-sm-2 col-form-label">Rachunek do spłat: </label>
                 <div class="col-sm-10">
                     <form:input type="text" path="repaymentAccount" id="repaymentAccountId"
-                                placeholder="repayment Account" class="form-control"/>
+                                placeholder="rachunek do spłat" class="form-control"/>
                     <form:errors path="repaymentAccount" cssClass="error"/>
                 </div>
             </div>
 
-            <button type="submit" class="btn btn-primary btn-block">Add transaction</button>
+            <button type="submit" class="btn btn-primary btn-block">Zapisz</button>
 
 
         </form:form>
