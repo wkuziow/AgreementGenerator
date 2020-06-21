@@ -9,6 +9,7 @@ import org.springframework.validation.BindingResult;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
 
@@ -52,12 +53,12 @@ public class UserController {
 
     @ModelAttribute("enabledList")
     public List<Boolean> enabledList() {
-        return List.of(true, false);
+        return Arrays.asList(true, false);
     }
 
     @ModelAttribute("roleList")
     public List<Role> roleList() {
-        return List.of(Role.ROLE_USER, Role.ROLE_SUPERVISOR);
+        return Arrays.asList(Role.ROLE_USER, Role.ROLE_SUPERVISOR);
     }
 
     @GetMapping("/about")
