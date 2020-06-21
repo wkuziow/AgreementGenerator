@@ -8,6 +8,7 @@
         <version>2.3.0.RELEASE</version>
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
+    <packaging>war</packaging>
     <groupId>pl.coderslab</groupId>
     <artifactId>agreementgenerator</artifactId>
     <version>1.0.0-SNAPSHOT</version>
