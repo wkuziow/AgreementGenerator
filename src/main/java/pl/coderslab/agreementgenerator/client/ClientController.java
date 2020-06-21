@@ -19,6 +19,7 @@ import pl.coderslab.agreementgenerator.user.User;
 import pl.coderslab.agreementgenerator.user.UserRepository;
 
 import javax.validation.Validator;
+import java.util.Arrays;
 import java.util.List;
 
 @Controller
@@ -86,7 +87,7 @@ public class ClientController {
 
     @ModelAttribute("isActiveList")
     public List<Boolean> isActiveList() {
-        return List.of(true, false);
+        return Arrays.asList(true, false);
     }
 
     @ModelAttribute("listOfUsers")

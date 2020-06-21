@@ -34,12 +34,12 @@ public class TransactionController {
 
     @ModelAttribute("isActiveList")
     public List<Boolean> isActiveList() {
-        return List.of(true, false);
+        return Arrays.asList(true, false);
     }
 
     @ModelAttribute("hasValidDate")
     public List<Boolean> hasValidDate() {
-        return List.of(true, false);
+        return Arrays.asList(true, false);
     }
 
     @ModelAttribute("referenceRateList")
