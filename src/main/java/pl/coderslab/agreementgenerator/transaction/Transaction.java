@@ -23,9 +23,9 @@ public class Transaction {
     @NotEmpty(message = "To pole nie może być puste")
     @PastOrPresent(message = "Data zawarcia nie może być w przyszłości")
     private String dateOfSign;
-    @Column(columnDefinition = "default 'false'")
+    @Column(columnDefinition = "boolean default false")
     private boolean isActive;
-    @Column(columnDefinition = "default 'true'")
+    @Column(columnDefinition = "boolean default true")
     private boolean hasValidDate;
     @Future(message = "Data ważności nie może być w przesłości")
     private String validDate;
@@ -35,7 +35,7 @@ public class Transaction {
     @NotEmpty(message = "To pole nie może być puste")
     @Pattern(regexp = "\\d+(\\.\\d{1,2})?", message = "Nieprawidłowy format danych")
     private double amount;
-    @Column(columnDefinition = "default 'false'")
+    @Column(columnDefinition = "boolean default false")
     private boolean isTerminated;
     private String terminationDate;
     @NotEmpty(message = "To pole nie może być puste")
