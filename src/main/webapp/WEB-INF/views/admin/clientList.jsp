@@ -57,6 +57,11 @@
                                 <a href="/admin/client/${client.id}/addTransaction">Dodaj transakcję</a>
                             </button>
 
+                            <button type="button" class="btn btn-outline-warning">
+                                <a href="/../client/${client.id}/allTransactions">Lista transakcji</a>
+                            </button>
+
+
                         </td>
                     </tr>
                 </c:forEach>

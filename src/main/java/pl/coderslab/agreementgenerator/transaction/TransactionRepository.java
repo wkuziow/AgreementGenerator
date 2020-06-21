@@ -14,5 +14,6 @@ public interface TransactionRepository extends JpaRepository<Transaction, Long> 
     @Query("select t from Transaction t  join Client c on t.client.id = c.id where c.user.id = ?1")
     List<Transaction> findTransactionsForUser(Long id);
     Transaction findTransactionById(Long id);
+
 }
 

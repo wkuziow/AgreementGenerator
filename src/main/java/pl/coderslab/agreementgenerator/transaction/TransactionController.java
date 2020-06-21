@@ -47,20 +47,20 @@ public class TransactionController {
         return Arrays.asList(ReferenceRate.values());
     }
 
-    @RequestMapping(value = "/admin/client/{id}/addTransaction", method = RequestMethod.GET)
-    public String addTransactionByAdminGetForm(@PathVariable Long id, Model model) {
+    @RequestMapping(value = "/admin/client/{clientId}/addTransaction", method = RequestMethod.GET)
+    public String addTransactionByAdminGetForm(Model model) {
         model.addAttribute("transaction", new Transaction());
         return "transaction/addTransaction";
     }
 
-    @RequestMapping(value = "/admin/client/{id}/addTransaction", method = RequestMethod.POST)
+    @RequestMapping(value = "/admin/client/{clientId}/addTransaction", method = RequestMethod.POST)
     public String addTransactionByAdminProcessForm(@ModelAttribute @Validated Transaction transaction,
-                                              @PathVariable Long id,
+                                              @PathVariable Long clientId,
                                               BindingResult bindingResult) {
         if (bindingResult.hasErrors()) {
             return "transaction/addTransaction";
         }
-        transaction.setClient(clientRepository.findClientById(id));
+        transaction.setClient(clientRepository.findClientById(clientId));
         transactionRepository.save(transaction);
         return "redirect:../../../admin/allTransactions";
     }
@@ -124,20 +124,20 @@ public class TransactionController {
         return "redirect:../../../user/allTransactions";
     }
 
-    @RequestMapping(value = "/user/client/{id}/addTransaction", method = RequestMethod.GET)
-    public String addTransactionByUserGetForm(@PathVariable Long id, Model model) {
+    @RequestMapping(value = "/user/client/{clientId}/addTransaction", method = RequestMethod.GET)
+    public String addTransactionByUserGetForm(Model model) {
         model.addAttribute("transaction", new Transaction());
         return "transaction/addTransaction";
     }
 
-    @RequestMapping(value = "/user/client/{id}/addTransaction", method = RequestMethod.POST)
+    @RequestMapping(value = "/user/client/{clientId}/addTransaction", method = RequestMethod.POST)
     public String addTransactionByUserProcessForm(@ModelAttribute @Validated Transaction transaction,
-                                              @PathVariable Long id,
+                                              @PathVariable Long clientId,
                                               BindingResult bindingResult) {
         if (bindingResult.hasErrors()) {
             return "transaction/addTransaction";
         }
-        transaction.setClient(clientRepository.findClientById(id));
+        transaction.setClient(clientRepository.findClientById(clientId));
         transactionRepository.save(transaction);
         return "redirect:../../../user/allTransactions";
     }

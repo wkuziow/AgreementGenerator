@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import pl.coderslab.agreementgenerator.transaction.TransactionRepository;
 import pl.coderslab.agreementgenerator.user.CurrentUser;
 import pl.coderslab.agreementgenerator.user.Role;
 import pl.coderslab.agreementgenerator.user.User;
@@ -25,11 +26,13 @@ public class ClientController {
     @Autowired
     private ClientRepository clientRepository;
     private UserRepository userRepository;
+    private TransactionRepository transactionRepository;
 
 
-    public ClientController(UserRepository userRepository, ClientRepository clientRepository) {
+    public ClientController(UserRepository userRepository, ClientRepository clientRepository, TransactionRepository transactionRepository) {
         this.userRepository = userRepository;
         this.clientRepository = clientRepository;
+        this.transactionRepository = transactionRepository;
     }
     @ModelAttribute("currentUserFullName")
     public String currentUser(@AuthenticationPrincipal CurrentUser customUser, Model model) {
@@ -132,6 +135,12 @@ public class ClientController {
         client.setUser(user);
         clientRepository.save(client);
         return "redirect:../../allClients";
+    }
+
+    @RequestMapping(value = "client/{clientId}/allTransactions", method = RequestMethod.GET)
+    public String getAllTransactionsForClient(Model model, @PathVariable Long clientId) {
+        model.addAttribute("allTransactionsforClient", transactionRepository.findTransactionByClientId(clientId));
+        return "client/transactionList";
     }
 
 }
