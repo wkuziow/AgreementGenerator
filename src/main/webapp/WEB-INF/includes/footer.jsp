@@ -10,7 +10,7 @@
 <footer>
         <div class="container">
                 <div class="d-flex justify-content-center">
-        <h5 >Copyright <a href=#><span >AgreementGenerator.pl</span></a></h5>
+        <h6 >Copyright <a href="mailto:wojciech.kuziow@gmail.com"><span >Wojciech Kuziów</span></a></h6>
                 </div>
         </div>
 </footer>

@@ -25,7 +25,7 @@ public class User {
     private String username;
 
     @NotEmpty(message = "To pole jest wymagane")
-    @Size(min = 3, message = "nieprawidłowe dane, minimalna długość to 3")
+    @Size(min = 3, max = 100, message = "nieprawidłowe dane, minimalna długość to 3")
     private String password;
 
     private boolean enabled;
@@ -42,6 +42,7 @@ public class User {
 
     @NotEmpty(message = "To pole jest wymagane")
     @Email
+    @Size(max = 40, message = "maksymalna długość to 40 znaków")
     private String email;
 
     public String getFullname() {

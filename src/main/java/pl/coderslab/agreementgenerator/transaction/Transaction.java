@@ -19,6 +19,7 @@ public class Transaction {
     private Long id;
 
     @NotEmpty(message = "To pole nie może być puste")
+    @Size(max = 40, message = "Maksymalna długość to 40 znaków")
     private String dateOfSign;
 
     @Column(columnDefinition = "boolean default false")
@@ -27,43 +28,47 @@ public class Transaction {
     @Column(columnDefinition = "boolean default true")
     private boolean hasValidDate;
 
+    @Size(max = 40, message = "Maksymalna długość to 40 znaków")
     private String validDate;
 
     @NotEmpty(message = "To pole nie może być puste")
+    @Size(max = 40, message = "Maksymalna długość to 40 znaków")
     private String currency;
 
     @NotNull(message = "To pole nie może być puste")
     @Min(value = 1, message = "To pole nie może być puste")
+    @Max(value = 1999999999, message = "Nieprawidłowa wartość")
     private double amount;
 
     @Column(columnDefinition = "boolean default false")
     private boolean isTerminated;
 
+    @Size(max = 40, message = "Maksymalna długość to 40 znaków")
     private String terminationDate;
 
     @NotEmpty(message = "To pole nie może być puste")
+    @Size(max = 40, message = "Maksymalna długość to 40 znaków")
     private String repaymentAccount;
 
     @NotEmpty(message = "To pole nie może być puste")
     private String collaterals;
 
     private ReferenceRate referenceRate;
-
-    //@Pattern(regexp = "\\d+(\\.\\d{1,2})?",message = "Nieprawidłowy format danych")
+    @Max(value = 100, message = "Nieprawidłowa wartość")
     private double setUpFee;
 
-    // @Pattern(regexp = "\\d+(\\.\\d{1,2})?", message = "Nieprawidłowy format danych")
+    @Max(value = 100, message = "Nieprawidłowa wartość")
     private double arrangementFee;
 
-    //   @Pattern(regexp = "\\d+(\\.\\d{1,2})?", message = "Nieprawidłowy format danych")
+    @Max(value = 100, message = "Nieprawidłowa wartość")
     private double administrationFee;
 
-    // @Pattern(regexp = "\\d+(\\.\\d{1,2})?", message = "Nieprawidłowy format danych")
+    @Max(value = 100, message = "Nieprawidłowa wartość")
     private double operationalFee;
 
-    //@NotNull(message = "To pole nie może być puste")
-    //@Pattern(regexp = "\\d+(\\.\\d{1,2})?", message = "Nieprawidłowy format danych")
+
     @DecimalMin(value = "0.001", message = "To pole nie może być puste")
+    @Max(value = 100, message = "Nieprawidłowa wartość")
     private double margin;
 
     @ManyToOne(fetch = FetchType.EAGER)

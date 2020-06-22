@@ -93,7 +93,7 @@
                 </div>
             </div>
 
-            <button type="submit" class="btn btn-primary btn-block">Add user</button>
+            <button type="submit" class="btn btn-primary btn-block">Zapisz</button>
 
         </form:form>
     </div>
