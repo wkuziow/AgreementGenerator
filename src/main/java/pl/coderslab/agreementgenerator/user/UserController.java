@@ -48,7 +48,7 @@ public class UserController {
         }
 
         userService.saveUser(user);
-        return "redirect:../";
+        return "redirect:../admin/allUsers";
     }
 
     @ModelAttribute("enabledList")

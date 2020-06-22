@@ -16,7 +16,7 @@
 <html>
 <head>
 
-    <title>Add User by Admin</title>
+    <title>Dodaj użytkownika</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
@@ -29,23 +29,23 @@
     <div class="d-flex justify-content-center">
         <form:form autocomplete="off" action="#" method="post"
                    modelAttribute="user">
-            <h2 class="d-flex justify-content-center">Add user</h2>
+            <h2 class="d-flex justify-content-center">Dodaj użytkownika</h2>
 
 
             <div class="form-group row">
-                <label for="firstNameId" class="col-sm-2 col-form-label">First name: </label>
+                <label for="firstNameId" class="col-sm-2 col-form-label">Imię: </label>
                 <div class="col-sm-10">
                     <form:input type="text" path="firstName" id="firstNameId" placeholder="First name"
-                                class="form-control"/>
+                                class="form-control" required="true"/>
                     <form:errors path="firstName" cssClass="error"/>
                 </div>
             </div>
 
             <div class="form-group row">
-                <label for="lastNameId" class="col-sm-2 col-form-label">Last name: </label>
+                <label for="lastNameId" class="col-sm-2 col-form-label">Nazwisko: </label>
                 <div class="col-sm-10">
                     <form:input type="text" path="lastName" id="lastNameId"
-                                placeholder="Last Name" class="form-control"/>
+                                placeholder="Last Name" class="form-control" required="true"/>
                     <form:errors path="lastName" cssClass="error"/>
                 </div>
             </div>
@@ -53,31 +53,32 @@
             <div class="form-group row">
                 <label for="emailId" class="col-sm-2 col-form-label">Email: </label>
                 <div class="col-sm-10">
-                    <form:input type="text" path="email" placeholder="Email" id="emailId" class="form-control"/>
+                    <form:input type="email" path="email" placeholder="Email" id="emailId" class="form-control"
+                                required="true"/>
                     <form:errors path="email" cssClass="error"/>
                 </div>
             </div>
 
             <div class="form-group">
-                <label for="usernameId" class="col-sm-2 col-form-label">Username: </label>
+                <label for="usernameId" class="col-sm-2 col-form-label">Nazwa użytkownika: </label>
                 <div class="col-sm-10">
                     <form:input type="text" path="username" placeholder="Username" id="usernameId"
-                                class="form-control"/>
+                                class="form-control" required="true"/>
                     <form:errors path="username" cssClass="error"/>
                 </div>
             </div>
 
             <div class="form-group">
-                <label for="passwordId" class="col-sm-2 col-form-label">Password: </label>
+                <label for="passwordId" class="col-sm-2 col-form-label">Hasło: </label>
                 <div class="col-sm-10">
                     <form:input type="password" path="password" id="passwordId"
-                                placeholder="Password" class="form-control"/>
+                                placeholder="Password" class="form-control" required="true"/>
                     <form:errors path="password" cssClass="error"/>
                 </div>
             </div>
 
             <div class="form-check form-check-inline">
-                <label for="enabledId" class="form-check-label">Enabled:</label>
+                <label for="enabledId" class="form-check-label">Aktywność:</label>
                 <div class="">
                     <form:radiobuttons path="enabled" items="${enabledList}" id="enabledId" class="form-control"/>
                     <form:errors path="enabled" cssClass="error"/>
@@ -85,7 +86,7 @@
             </div>
 
             <div class="form-group row">
-                <label for="roleId" class="">Role:</label>
+                <label for="roleId" class="">Rola:</label>
                 <div class="">
                     <form:radiobuttons path="role" items="${roleList}" id="roleId" class="form-control"/>
                     <form:errors path="role" cssClass="error"/>
