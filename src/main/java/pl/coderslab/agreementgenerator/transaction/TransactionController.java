@@ -56,7 +56,7 @@ public class TransactionController {
     @RequestMapping(value = "/admin/client/{clientId}/addTransaction", method = RequestMethod.POST)
     public String addTransactionByAdminProcessForm(@PathVariable Long clientId,
                                                    @ModelAttribute @Validated Transaction transaction,
-                                              BindingResult bindingResult) {
+                                                   BindingResult bindingResult) {
         if (bindingResult.hasErrors()) {
             return "transaction/addTransaction";
         }
@@ -74,7 +74,7 @@ public class TransactionController {
 
     @RequestMapping(value = "/admin/transaction/update/{id}", method = RequestMethod.POST)
     public String updateTransactionByAdminProcessForm(@ModelAttribute @Validated Transaction transaction, @PathVariable Long id,
-                                                 BindingResult bindingResult) {
+                                                      BindingResult bindingResult) {
         if (bindingResult.hasErrors()) {
             return "transaction/addTransaction";
         }
@@ -114,7 +114,7 @@ public class TransactionController {
 
     @RequestMapping(value = "/user/transaction/update/{id}", method = RequestMethod.POST)
     public String updateTransactionByUserProcessForm(@ModelAttribute @Validated Transaction transaction, @PathVariable Long id,
-                                                      BindingResult bindingResult) {
+                                                     BindingResult bindingResult) {
         if (bindingResult.hasErrors()) {
             return "transaction/addTransaction";
         }
@@ -132,8 +132,8 @@ public class TransactionController {
 
     @RequestMapping(value = "/user/client/{clientId}/addTransaction", method = RequestMethod.POST)
     public String addTransactionByUserProcessForm(@ModelAttribute @Validated Transaction transaction,
-                                              @PathVariable Long clientId,
-                                              BindingResult bindingResult) {
+                                                  @PathVariable Long clientId,
+                                                  BindingResult bindingResult) {
         if (bindingResult.hasErrors()) {
             return "transaction/addTransaction";
         }
@@ -141,5 +141,4 @@ public class TransactionController {
         transactionRepository.save(transaction);
         return "redirect:../../../user/allTransactions";
     }
-
 }

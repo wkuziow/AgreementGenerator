@@ -36,7 +36,7 @@
             <div class="input-group mb-3">
                 <label for="amountId" class="col-sm-2 col-form-label">Limit: </label>
                 <form:input type="number" path="amount" id="amountId" placeholder="Wysokość limitu"
-                            class="form-control"/>
+                            class="form-control" required="true"/>
                 <form:errors path="amount" cssClass="error"/>
                 <div class="input-group-append">
                     <span class="input-group-text">.00</span>
@@ -48,7 +48,7 @@
                 <label for="currencyId" class="col-sm-2 col-form-label">Waluta: </label>
                 <div class="col-sm-10">
                     <form:input type="text" path="currency" id="currencyId"
-                                placeholder="waluta" class="form-control"/>
+                                placeholder="waluta" class="form-control" required="true"/>
                     <form:errors path="currency" cssClass="error"/>
                 </div>
             </div>
@@ -57,7 +57,7 @@
                 <label for="dateOfSignId" class="col-form-label">Data podpisania: </label>
                 <div class="col-sm-10">
                     <form:input type="date" path="dateOfSign" placeholder="data podpisania" id="dateOfSignId"
-                                class="form-control"/>
+                                class="form-control" required="true"/>
                     <form:errors path="dateOfSign" cssClass="error"/>
                 </div>
             </div>
@@ -94,7 +94,7 @@
                 <div class="col-sm-10">
                     <form:textarea path="collaterals" id="collateralsdId"
                                    placeholder="zabezpieczenia"
-                                   rows="5" cols="50" class="form-control"/>
+                                   rows="5" cols="50" class="form-control" required="true"/>
                     <form:errors path="collaterals" cssClass="error"/>
                 </div>
             </div>
@@ -103,7 +103,7 @@
                 <label for="administrationFeeId" class="col-form-label">Prowizja administracyjna [%]: </label>
                 <form:input type="number" path="administrationFee" id="administrationFeeId"
                             placeholder="prowizja administracyjna w procentach"
-                            class="form-control"/>
+                            class="form-control" step="0.001"/>
                 <form:errors path="administrationFee" cssClass="error"/>
                 <div class="input-group-append">
                     <span class="input-group-text">%</span>
@@ -113,7 +113,7 @@
             <div class="input-group mb-3">
                 <label for="arrangementFeeId" class=" col-form-label">Prowizja aranżacyjna [%]: </label>
                 <form:input type="number" path="arrangementFee" id="arrangementFeeId"
-                            placeholder="prowizja aranżacyjna w procentach" class="form-control"/>
+                            placeholder="prowizja aranżacyjna w procentach" class="form-control" step="0.001"/>
                 <form:errors path="arrangementFee" cssClass="error"/>
                 <div class="input-group-append">
                     <span class="input-group-text">%</span>
@@ -124,7 +124,7 @@
                 <label for="operationalFeeId" class="col-form-label">Prowizja operacyjna [%]: </label>
 
                 <form:input type="text" path="operationalFee" id="operationalFeeId"
-                            placeholder="prowizja operacyjna w procentach" class="form-control"/>
+                            placeholder="prowizja operacyjna w procentach" class="form-control" step="0.001"/>
                 <form:errors path="operationalFee" cssClass="error"/>
                 <div class="input-group-append">
                     <span class="input-group-text">%</span>
@@ -136,7 +136,7 @@
                 <label for="marginId" class="col-form-label">Marźa [%]: </label>
 
                 <form:input type="number" path="margin" id="marginId"
-                            placeholder="marża"  class="form-control"/>
+                            placeholder="marża"  class="form-control" step="0.001" required="true"/>
                 <form:errors path="margin" cssClass="error"/>
                 <div class="input-group-append">
                     <span class="input-group-text">p.p. p.a.</span>
@@ -155,7 +155,8 @@
             <div class="input-group mb-3">
                 <label for="setUpFeeId" class="col-form-label">Prowizja przygotowawcza [%]:  </label>
 
-                    <form:input type="number" path="setUpFee" placeholder="prowizja przygotowawcza w procentach" valune="NULL" id="setUpFeeId" class="form-control"/>
+                    <form:input type="number" path="setUpFee" placeholder="prowizja przygotowawcza w procentach"
+                                id="setUpFeeId" class="form-control" step="0.001"/>
                     <form:errors path="setUpFee" cssClass="error"/>
                 <div class="input-group-append">
                     <span class="input-group-text">%</span>
@@ -166,7 +167,7 @@
                 <label for="repaymentAccountId" class="col-sm-2 col-form-label">Rachunek do spłat: </label>
                 <div class="col-sm-10">
                     <form:input type="text" path="repaymentAccount" id="repaymentAccountId"
-                                placeholder="rachunek do spłat" class="form-control"/>
+                                placeholder="rachunek do spłat" class="form-control" required="true"/>
                     <form:errors path="repaymentAccount" cssClass="error"/>
                 </div>
             </div>
