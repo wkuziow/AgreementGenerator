@@ -20,10 +20,23 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="<c:url value="/css/style.css"/>">
+    <script>
+        function printDiv(divName) {
+            var printContents = document.getElementById(divName).innerHTML;
+            var originalContents = document.body.innerHTML;
+
+            document.body.innerHTML = printContents;
+
+            window.print();
+
+            document.body.innerHTML = originalContents;
+        }
+    </script>
 </head>
 <body class="agreement">
-<div class="container">
-    <div class="">
+
+<div class="container" >
+    <div class="" id="printableArea">
         <p>Umowa nr ${client.id}</p>
         <p>Zawarta w ${client.town} dnia ${transaction.dateOfSign} pomiędzy</p>
         <ol>
@@ -185,7 +198,12 @@
                 <td>(podpis)</td>
             </tr>
         </table>
+
     </div>
+    <p>
+        <br><br><br>
+    <input type="button" class="btn btn-primary btn-lg btn-success" onclick="printDiv('printableArea')" value="Wygeneruj umowę w PDF" />
+    </p>
 </div>
 <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
