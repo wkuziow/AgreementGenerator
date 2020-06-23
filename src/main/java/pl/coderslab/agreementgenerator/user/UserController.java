@@ -108,4 +108,40 @@ public class UserController {
         userRepository.save(user);
         return "redirect:../../allUsers";
     }
+
+    @RequestMapping(value = "/admin/addAdmin", method = RequestMethod.GET)
+    public String addAdminByAdminGetForm(Model model) {
+        model.addAttribute("admin", new User());
+        return "admin/addAdmin";
+    }
+
+    @RequestMapping(value = "/admin/addAdmin", method = RequestMethod.POST)
+    public String addAdminByAdminProcessForm(@ModelAttribute @Validated User admin,
+                                            BindingResult bindingResult) {
+        if (bindingResult.hasErrors()) {
+            return "admin/addAdmin";
+        }
+
+        admin.setRole(Role.ROLE_ADMIN);
+        userService.saveUser(admin);
+        return "redirect:../admin/allUsers";
+    }
+
+    @GetMapping("/admin/admin/update/{id}")
+    public String updateAdminByAdminGet(@PathVariable Long id, Model model) {
+        User admin = userRepository.findUserById(id);
+        model.addAttribute("admin", admin);
+        return "admin/addAdmin";
+    }
+
+    @PostMapping("/admin/admin/update/{id}")
+    public String updateAdminByAdminPost(@PathVariable Long id, @ModelAttribute @Validated User admin,
+                                        BindingResult bindingResult) {
+        if (bindingResult.hasErrors()) {
+            return "admin/addAdmin";
+        }
+
+        userRepository.save(admin);
+        return "redirect:../../allUsers";
+    }
 }

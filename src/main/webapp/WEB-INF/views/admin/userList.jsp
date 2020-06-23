@@ -46,8 +46,15 @@
 
                         <td>
                             <button type="button" class="btn btn-outline-primary">
-                                <%--    <a href="/admin/user/delete/${author.id}">Delete</a> --%>
-                            <a href="/admin/user/update/${user.id}">Edit</a>
+                                    <%--    <a href="/admin/user/delete/${author.id}">Delete</a> --%>
+                                <c:choose>
+                                    <c:when test="${user.role == 'ROLE_ADMIN'}">
+                                        <a href="/admin/admin/update/${user.id}">Edycja</a>
+                                    </c:when>
+                                    <c:otherwise>
+                                        <a href="/admin/user/update/${user.id}">Edycja</a>
+                                    </c:otherwise>
+                                </c:choose>
                             </button>
                         </td>
                     </tr>
