@@ -45,15 +45,21 @@
                     <a class="nav-link" href="/contact">Kontakt</a>
                 </li>
 
-                <li class="nav-item">
-                    <a class="nav-link disabled" tabindex="-1" aria-disabled="true"
-                       href="/register">Rejestracja</a>
-                </li>
 
                 <c:choose>
                     <c:when test="${currentUserFullName != -1}">
+                        <li class="nav-item">
+                            <a class="nav-link disabled" tabindex="-1" aria-disabled="true"
+                               href="/register">Rejestracja</a>
+                        </li>
                         <%@include file="/WEB-INF/main/logout.jsp" %>
                     </c:when>
+                    <c:otherwise>
+                        <li class="nav-item">
+                            <a class="nav-link" tabindex="-1" aria-disabled="true"
+                               href="/register">Rejestracja</a>
+                        </li>
+                    </c:otherwise>
                 </c:choose>
             </ul>
 

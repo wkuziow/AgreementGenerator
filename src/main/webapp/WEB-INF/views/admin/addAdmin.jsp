@@ -68,6 +68,8 @@
                 </div>
             </div>
 
+            <c:choose>
+            <c:when test="${(admin.password == null) || (not empty passwordError)}">
             <div class="form-group">
                 <label for="passwordId" class="col-sm-2 col-form-label">Hasło: </label>
                 <div class="col-sm-10">
@@ -76,7 +78,9 @@
                     <form:errors path="password" cssClass="error"/>
                 </div>
             </div>
-
+            </c:when>
+            </c:choose>
+<%--
             <div class="form-check form-check-inline">
                 <label for="enabledId" class="form-check-label">Aktywność:</label>
                 <div class="">
@@ -84,7 +88,7 @@
                     <form:errors path="enabled" cssClass="error"/>
                 </div>
             </div>
-
+--%>
 
             <button type="submit" class="btn btn-primary btn-block">Zapisz</button>
 

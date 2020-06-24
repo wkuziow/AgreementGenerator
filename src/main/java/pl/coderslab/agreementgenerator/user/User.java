@@ -19,33 +19,52 @@ public class User {
     private Long id;
 
     @Column(nullable = false, unique = true, length = 60)
-    @NotEmpty(message = "To pole jest wymagane")
-    @Size(min = 3, max = 30, message = "nieprawidłowe dane, minimalna długość to 3, maksymalna 30 znaków")
-    @Pattern(regexp = "[a-zA-Z0-9]*", message = "błędny format, dopuszczalne tylko cyfry i litery")
+    @NotEmpty(message = "To pole jest wymagane",
+            groups = {AddUserValidationGroup.class, EditUserValidationGroup.class})
+    @Size(min = 3, max = 30, message = "nieprawidłowe dane, minimalna długość to 3, maksymalna 30 znaków",
+            groups = {AddUserValidationGroup.class, EditUserValidationGroup.class})
+    @Pattern(regexp = "[a-zA-Z0-9]*", message = "błędny format, dopuszczalne tylko cyfry i litery",
+            groups = {AddUserValidationGroup.class, EditUserValidationGroup.class})
     private String username;
 
-    @NotEmpty(message = "To pole jest wymagane")
-    @Size(min = 3, max = 100, message = "nieprawidłowe dane, minimalna długość to 3")
+    @NotEmpty(message = "To pole jest wymagane",
+            groups = {AddUserValidationGroup.class})
+    @Size(min = 3, max = 100, message = "nieprawidłowe dane, minimalna długość to 3",
+            groups = {AddUserValidationGroup.class})
     private String password;
 
     private boolean enabled;
 
     private Role role;
 
-    @NotEmpty(message = "To pole jest wymagane")
-    @Size(min = 3, max = 30, message = "nieprawidłowe dane, minimalna długość to 3, maksymalna 30 znaków")
+    @NotEmpty(message = "To pole jest wymagane",
+            groups = {AddUserValidationGroup.class, EditUserValidationGroup.class})
+    @Size(min = 3, max = 30, message = "nieprawidłowe dane, minimalna długość to 3, maksymalna 30 znaków",
+            groups = {AddUserValidationGroup.class, EditUserValidationGroup.class})
     private String firstName;
 
-    @NotEmpty(message = "To pole jest wymagane")
-    @Size(min = 3, max = 30, message = "nieprawidłowe dane, minimalna długość to 3, maksymalna 30 znaków")
+    @NotEmpty(message = "To pole jest wymagane",
+            groups = {AddUserValidationGroup.class, EditUserValidationGroup.class})
+    @Size(min = 3, max = 30, message = "nieprawidłowe dane, minimalna długość to 3, maksymalna 30 znaków",
+            groups = {AddUserValidationGroup.class, EditUserValidationGroup.class})
     private String lastName;
 
-    @NotEmpty(message = "To pole jest wymagane")
-    @Email
-    @Size(max = 40, message = "maksymalna długość to 40 znaków")
+    @NotEmpty(message = "To pole jest wymagane",
+            groups = {AddUserValidationGroup.class, EditUserValidationGroup.class})
+    @Email(groups = {AddUserValidationGroup.class, EditUserValidationGroup.class})
+    @Size(max = 40, message = "maksymalna długość to 40 znaków",
+            groups = {AddUserValidationGroup.class, EditUserValidationGroup.class})
     private String email;
 
     public String getFullname() {
         return firstName + " " + lastName;
+    }
+
+    public boolean getEnabled() {
+        return enabled;
+    }
+
+    public void setEnabled(boolean enabled) {
+        this.enabled = enabled;
     }
 }

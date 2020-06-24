@@ -14,13 +14,19 @@ import java.util.List;
 import java.util.Optional;
 
 @Controller
-@RequiredArgsConstructor
+
 public class UserController {
     @Autowired
     private UserRepository userRepository;
     private final UserService userService;
+    private UserMethods userMethods;
 
-//    public UserController(UserService userService) {
+    public UserController(UserService userService, UserMethods userMethods) {
+        this.userService = userService;
+        this.userMethods = userMethods;
+    }
+
+    //    public UserController(UserService userService) {
 //        this.userService = userService;
 //    }
 
@@ -41,12 +47,13 @@ public class UserController {
     }
 
     @RequestMapping(value = "/admin/addUser", method = RequestMethod.POST)
-    public String addUserByAdminProcessForm(@ModelAttribute @Validated User user,
+    public String addUserByAdminProcessForm(@ModelAttribute @Validated({AddUserValidationGroup.class}) User user,
                                             BindingResult bindingResult) {
         if (bindingResult.hasErrors()) {
             return "admin/addUser";
         }
 
+        user.setEnabled(false);
         userService.saveUser(user);
         return "redirect:../admin/allUsers";
     }
@@ -99,13 +106,15 @@ public class UserController {
     }
 
     @PostMapping("/admin/user/update/{id}")
-    public String updateUserByAdminPost(@PathVariable Long id, @ModelAttribute @Validated User user,
+    public String updateUserByAdminPost(@PathVariable Long id, @ModelAttribute @Validated({EditUserValidationGroup.class}) User user,
                                         BindingResult bindingResult) {
         if (bindingResult.hasErrors()) {
             return "admin/addUser";
         }
-
-        userRepository.save(user);
+        User baseUser = userRepository.findUserById(id);
+        //user.setEnabled(userRepository.findUserById(id).isEnabled());
+        //userRepository.save(user);
+        userMethods.saveEditedUser(user, baseUser);
         return "redirect:../../allUsers";
     }
 
@@ -116,12 +125,13 @@ public class UserController {
     }
 
     @RequestMapping(value = "/admin/addAdmin", method = RequestMethod.POST)
-    public String addAdminByAdminProcessForm(@ModelAttribute @Validated User admin,
+    public String addAdminByAdminProcessForm(@ModelAttribute @Validated({AddUserValidationGroup.class}) User admin,
                                             BindingResult bindingResult) {
         if (bindingResult.hasErrors()) {
             return "admin/addAdmin";
         }
 
+        admin.setEnabled(false);
         admin.setRole(Role.ROLE_ADMIN);
         userService.saveUser(admin);
         return "redirect:../admin/allUsers";
@@ -135,13 +145,16 @@ public class UserController {
     }
 
     @PostMapping("/admin/admin/update/{id}")
-    public String updateAdminByAdminPost(@PathVariable Long id, @ModelAttribute @Validated User admin,
+    public String updateAdminByAdminPost(@PathVariable Long id, @ModelAttribute @Validated({EditUserValidationGroup.class}) User admin,
                                         BindingResult bindingResult) {
         if (bindingResult.hasErrors()) {
             return "admin/addAdmin";
         }
+        User baseAdmin = userRepository.findUserById(id);
 
-        userRepository.save(admin);
+        //admin.setEnabled(userRepository.findUserById(id).getEnabled());
+        //admin.setRole(Role.ROLE_ADMIN);
+        userMethods.saveEditedAdmin(admin, baseAdmin);
         return "redirect:../../allUsers";
     }
 
@@ -160,4 +173,23 @@ public class UserController {
         userRepository.save(user);
         return "redirect:../../admin/allUsers";
     }
+
+    @RequestMapping(value = "/register", method = RequestMethod.GET)
+    public String registerUserGetForm(Model model) {
+        model.addAttribute("user", new User());
+        return "admin/addUser";
+    }
+
+    @RequestMapping(value = "/register", method = RequestMethod.POST)
+    public String registerUserProcessForm(@ModelAttribute @Validated({AddUserValidationGroup.class}) User user,
+                                            BindingResult bindingResult) {
+        if (bindingResult.hasErrors()) {
+            return "admin/addUser";
+        }
+
+        user.setEnabled(false);
+        userService.saveUser(user);
+        return "redirect:/";
+    }
+
 }
