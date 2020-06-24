@@ -22,11 +22,15 @@
         <sec:authorize access="hasRole('ADMIN')">
             <a class="dropdown-item" href="/admin/addClient">Dodaj klienta</a>
             <a class="dropdown-item" href="/admin/allClients">Lista klientów</a>
-            <a class="dropdown-item" href="/admin/addUser">Dodaj użytkownika</a>
-            <a class="dropdown-item" href="/admin/addAdmin">Dodaj admina</a>
-            <a class="dropdown-item" href="/admin/allUsers">Lista użytkowników</a>
+            <div class="dropdown-divider"></div>
             <a class="dropdown-item" href="/admin/allTransactions">Lista transakcji</a>
             <div class="dropdown-divider"></div>
+            <a class="dropdown-item" href="/admin/addUser">Dodaj użytkownika</a>
+            <a class="dropdown-item" href="/admin/allUsers">Lista użytkowników</a>
+            <div class="dropdown-divider"></div>
+            <a class="dropdown-item" href="/admin/addAdmin">Dodaj admina</a>
+            <div class="dropdown-divider"></div>
+
         </sec:authorize>
 
         <a class="dropdown-item" href="/user/addClient">Dodaj klienta</a>

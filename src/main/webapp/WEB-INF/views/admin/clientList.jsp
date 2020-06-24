@@ -18,8 +18,8 @@
 
 <%@include file="/WEB-INF/includes/header.jsp" %>
 <div class="container">
-    <div class="d-flex justify-content-center">
-        <div class="table-responsive">
+    <div class="">
+        <div class="">
             <table class="table-sm table-striped table-bordered table-hover">
                 <thead class="">
                 <tr>

@@ -15,7 +15,7 @@
 <html lang="pl-PL">
 <head>
 
-    <title>User List for admin</title>
+    <title>Lista użytkowników dla Admina</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" rel="stylesheet">
@@ -25,22 +25,36 @@
 <%@include file="/WEB-INF/includes/header.jsp" %>
 <div class="container">
     <div class="">
-        <div class="table-responsive d-flex justify-content-center">
+        <div class="">
             <table class="table-sm table-striped table-bordered table-hover">
                 <tr>
-                    <th>First name</th>
-                    <th>Last name</th>
-                    <th>email</th>
-                    <th>enabled</th>
+                    <th>Imię</th>
+                    <th>Nazwisko</th>
+                    <th>Email</th>
+                    <th>Aktywność</th>
                     <th>username</th>
-                    <th>role</th>
+                    <th>Rola</th>
                 </tr>
                 <c:forEach var="user" items="${allUsersForAdmin}">
                     <tr>
                         <td>${user.firstName}</td>
                         <td>${user.lastName}</td>
                         <td>${user.email}</td>
-                        <td>${user.enabled}</td>
+                        <td>${user.enabled}
+
+                            <c:choose>
+                                <c:when test="${user.enabled == 'true'}">
+                            <button type="button" class="btn btn-outline-danger">
+                                    <a href="/admin/${user.id}/disable">Dezaktywuj</a>
+                                </c:when>
+                                <c:otherwise>
+                                <button type="button" class="btn btn-outline-success">
+                                    <a href="/admin/${user.id}/enable">Aktywuj</a>
+                                </c:otherwise>
+                            </c:choose>
+                            </button>
+
+                        </td>
                         <td>${user.username}</td>
                         <td>${user.role}</td>
 

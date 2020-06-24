@@ -144,4 +144,20 @@ public class UserController {
         userRepository.save(admin);
         return "redirect:../../allUsers";
     }
+
+    @RequestMapping(value = "/admin/{id}/disable", method = RequestMethod.GET)
+    public String disableUserByAdmin (@PathVariable Long id) {
+        User user = userRepository.findUserById(id);
+        user.setEnabled(false);
+        userRepository.save(user);
+        return "redirect:../../admin/allUsers";
+    }
+
+    @RequestMapping(value = "/admin/{id}/enable", method = RequestMethod.GET)
+    public String enableUserByAdmin (@PathVariable Long id) {
+        User user = userRepository.findUserById(id);
+        user.setEnabled(true);
+        userRepository.save(user);
+        return "redirect:../../admin/allUsers";
+    }
 }

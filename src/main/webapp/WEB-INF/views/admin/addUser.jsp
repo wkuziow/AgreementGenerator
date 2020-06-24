@@ -76,7 +76,7 @@
                     <form:errors path="password" cssClass="error"/>
                 </div>
             </div>
-
+<%--
             <div class="form-check form-check-inline">
                 <label for="enabledId" class="form-check-label">Aktywność:</label>
                 <div class="">
@@ -84,7 +84,7 @@
                     <form:errors path="enabled" cssClass="error"/>
                 </div>
             </div>
-
+--%>
             <div class="form-group row">
                 <label for="roleId" class="">Rola:</label>
                 <div class="">
