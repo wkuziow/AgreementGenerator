@@ -36,5 +36,7 @@
         <a class="dropdown-item" href="/user/addClient">Dodaj klienta</a>
         <a class="dropdown-item" href="/user/allClients">Moi klienci</a>
         <a class="dropdown-item" href="/user/allTransactions">Moje transakcje</a>
+        <div class="dropdown-divider"></div>
+        <a class="dropdown-item" href="/user/changePassword">Zmień hasło</a>
     </div>
 </li>

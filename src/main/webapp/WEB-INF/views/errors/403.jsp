@@ -22,7 +22,10 @@
     <link rel="stylesheet" href="<c:url value="/css/style.css"/>">
 </head>
 <body>
-<h1>Dostęp zabroniony</h1>
+<%@include file="/WEB-INF/includes/header.jsp" %>
+<div class="container">
+<h1>Dostęp zabroniony</h1></div>
+<%@include file="/WEB-INF/includes/footer.jsp" %>
 <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>

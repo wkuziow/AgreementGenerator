@@ -2,17 +2,18 @@ package pl.coderslab.agreementgenerator.user;
 
 import lombok.Getter;
 import lombok.Setter;
+import pl.coderslab.agreementgenerator.validation.*;
 
 import javax.persistence.*;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
-import java.util.Set;
 
 @Entity
 @Setter
 @Getter
+@ConfirmPassword(groups = {AddUserValidationGroup.class, ChangePasswordValidators.class}, message = "hasła muszą być takie same")
 public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -30,8 +31,11 @@ public class User {
     @NotEmpty(message = "To pole jest wymagane",
             groups = {AddUserValidationGroup.class})
     @Size(min = 3, max = 100, message = "nieprawidłowe dane, minimalna długość to 3",
-            groups = {AddUserValidationGroup.class})
+            groups = {AddUserValidationGroup.class, ChangePasswordValidators.class})
     private String password;
+
+    @Transient
+    private String confirmPassword;
 
     private boolean enabled;
 

@@ -41,10 +41,9 @@
         <p>Zawarta w ${client.town} dnia ${transaction.dateOfSign} pomiędzy</p>
         <ol>
             <li><p>
-                Firmą ${client.name} z siedzibą w ${client.town} przy ul. ${client.town} /// dodać blok i mieszkanie z
-                mechanizmem że jak nie ma mieszkania to się nie pojawia, kod pocztowy ${client.postalCode},
-                REGON ${client.REGON}, NIP
-                ${client.NIP},
+                Firmą <b>${client.name}</b>, <b>${client.adress}</b>,
+                REGON <b>${client.REGON}</b>, NIP
+                    <b>${client.NIP}</b>,
             </p>
                 <p>reprezentowaną przez:
                     .........................................................................................
@@ -52,9 +51,9 @@
                     zwaną dalej <b>Faktorantem</b></p></li>
             <p>a</p>
             <li>
-                <p>Firmą Faktoring dla wszystkich S.A. z siedzibą w Warszawie przy ul.
-                    Finansowej 1, kod pocztowy 01-111, REGON 111111111, NIP
-                    2222222222,</p>
+                <p><b>Firmą Faktoring dla wszystkich S.A. </b>z siedzibą w <b>Warszawie</b> przy <b>ul.
+                    Finansowej 1</b>, kod pocztowy <b>01-111</b>, REGON <b>111111111</b>, NIP
+                        <b>2222222222</b>,</p>
                 <p>reprezentowaną przez ................................................................................
                     (imię i nazwisko, uprawnienie do reprezentacji)
                     zwaną dalej <b>Faktorem</b>.</p></li>
@@ -70,7 +69,7 @@
 
             <li>
                 <ol type="a">
-                    <li>Faktor przyznaje Faktorantowi limit w wysokości ${transaction.amount} ${transaction.currency}
+                    <li>Faktor przyznaje Faktorantowi limit w wysokości <b>${transaction.amount} ${transaction.currency}</b>
                         zwany
                         dalej Limitem finansowania.
                     </li>
@@ -81,11 +80,11 @@
                         przez Dłużnika powoduje odnowienie Limitu finansowania o wysokość danej spłaty.
                     </li>
                     <li>Faktorant zobowiązuje się do zapłaty Faktorowi prowizji z tytułu administrowania limitem w
-                        wysokości ${transaction.administrationFee}% od kwoty Limitu finansowania w cyklach miesięcznych.
+                        wysokości <b>${transaction.administrationFee}% </b>od kwoty Limitu finansowania w cyklach miesięcznych.
                     </li>
                     <li>Faktorant zobowiązuje się do zapłaty Faktorowi prowizji z tytułu niewykorzystanego Limitu
                         finansowania w
-                        wysokości ${transaction.arrangementFee}% od kwoty niewykorzystanego Limitu finansowania.
+                        wysokości <b>${transaction.arrangementFee}%</b> od kwoty niewykorzystanego Limitu finansowania.
                     </li>
                     <li>Faktorant zobowiązuje się do zapłaty Faktorowi prowizji z tytułu przyznania Limitu w
                         finansowania.
@@ -95,7 +94,7 @@
             <li>
                 <ol type="a">
                     <li>
-                        Faktorant przenosi na rzecz Faktora wWierzytelności określone w § 1, a Faktor przyjmuje przelew.
+                        Faktorant przenosi na rzecz Faktora Wierzytelności określone w § 1, a Faktor przyjmuje przelew.
                     </li>
                     <li> Wraz z Wierzytelnościami przelane zostają na Faktora wszelkie świadczenia uboczne, w
                         szczególności
@@ -104,7 +103,7 @@
                     <li> Przelew będzie skuteczny po zawiadomieniu Dłużnika o dokonaniu przelewu Wierzytelności i
                         potwierdzenia
                         przez niego przyjęcia do wiadomości dokonanego przelewu. Potwierdzenie musi być pisemne. Dłużnik
-                        zostanie poinformowany o nowym rachunku do spłat Faktora ${transaction.repaymentAccount}.
+                        zostanie poinformowany o nowym rachunku do spłat Faktora <b>${transaction.repaymentAccount}</b>.
                     </li>
                     <li>Faktorant zobowiązuje się powiadomić Dłużnika o przelewie oraz przedstawić Faktorowi pisemne
                         potwierdzenie Dłużnika, o którym mowa w poprzednim ustępie.
@@ -131,17 +130,17 @@
                     <li>Faktor zapłaci Faktorantowi kwotę stanowiącą 100% wartości nominalnej przelanej wierzytelności
                         pomniejszoną o:
                         <ol type="I">
-                            <li>prowizję operacyjną w wysokości ${transaction.operationalFee}% od każdej zgłoszonej
+                            <li>prowizję operacyjną w wysokości <b>${transaction.operationalFee}% </b>od każdej zgłoszonej
                                 Wierzytelności
                             </li>
                             oraz
                             <li>odsetki dyskontowe naliczane od wartości Wierzytelności według odpowiedniej
-                                stopy ${transaction.referenceRate} powiększonej o marżę ${transaction.margin} p.p.p.a.
+                                stopy <b>${transaction.referenceRate} </b>powiększonej o marżę <b>${transaction.margin} p.p.p.a.</b>
                             </li>
                             w terminie 2 dni roboczych od zgłoszenia przez Faktoranta Wierzytelności do wykupu.
                         </ol>
                     </li>
-                    <li>Zapłata nastąpi przelewem na rachunek Faktoranta nr ${client.account}. Datą zapłaty jest data
+                    <li>Zapłata nastąpi przelewem na rachunek Faktoranta nr <b>${client.account}</b>. Datą zapłaty jest data
                         księgowania polecenia obciążenia rachunku Faktora.
                     </li>
                 </ol>
@@ -152,16 +151,16 @@
             </li>
             <li>
                 Prawne zabezpieczenie spłaty wierzytelności objętej niniejszą umową stanowi
-                ${transaction.collaterals}
+                <b>${transaction.collaterals}</b>
             </li>
             <li>
                 Umowa została zawarta na czas
                 <c:choose>
                     <c:when test="${transaction.hasValidDate == false}">
-                        nieokreślony
+                <b>nieokreślony</b>
                     </c:when>
                     <c:otherwise>
-                        określony, do dnia ${transaction.validDate}.
+                        określony, do dnia <b>${transaction.validDate}</b>.
                     </c:otherwise>
                 </c:choose>
             </li>
@@ -174,7 +173,7 @@
                         cywilnego.
                     </li>
                     <li>Do rozstrzygania sporów mogących wyniknąć na tle niniejszej umowy właściwy
-                        będzie sąd dla miasta ${client.town}.
+                        będzie sąd dla miasta <b>${client.town}</b>.
                     </li>
                     <li>Umowę sporządzono w dwóch jednobrzmiących egzemplarzach, po jednym dla każdej
                         ze stron.

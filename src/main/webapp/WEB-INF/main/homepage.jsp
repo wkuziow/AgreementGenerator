@@ -15,7 +15,7 @@
 <div class="container">
     <div class="">
         <p class="d-flex justify-content-center"><h1>Witamy w aplikacji Agreement Generator firmy Faktoring dla wszystkich S.A.</h1></p>
-<p class="d-flex justify-content-center"><h4>Wybierz jedną z opcji powyżej.</h4></p>
+<p class="d-flex justify-content-center"><h4>    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</h4></p>
     </div>
 </div>
 

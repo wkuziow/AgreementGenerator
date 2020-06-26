@@ -1,5 +1,7 @@
 package pl.coderslab.agreementgenerator.user;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -8,9 +10,11 @@ import org.springframework.transaction.annotation.Transactional;
 public class UserMethods {
 
     private UserRepository userRepository;
+    private BCryptPasswordEncoder passwordEncoder;
 
-    public UserMethods(UserRepository userRepository) {
+    public UserMethods(UserRepository userRepository, BCryptPasswordEncoder passwordEncoder) {
         this.userRepository = userRepository;
+        this.passwordEncoder = passwordEncoder;
     }
 
     protected void saveEditedUser(User user, User baseUser) {
@@ -31,6 +35,11 @@ public class UserMethods {
         //baseAdmin.setRole(admin.getRole());
         //    baseUser.setEnabled(user.getEnabled());
         userRepository.save(baseAdmin);
+    }
+
+    protected void changePassword(User user, User baseUser) {
+        baseUser.setPassword(passwordEncoder.encode(user.getPassword()));
+        userRepository.save(baseUser);
     }
 
 }

@@ -33,14 +33,12 @@
             <h2 class="d-flex justify-content-center">Dodaj transakcję</h2>
 
 
-            <div class="input-group mb-3">
+            <div class="form-group row">
                 <label for="amountId" class="col-sm-2 col-form-label">Limit: </label>
                 <form:input type="number" path="amount" id="amountId" placeholder="Wysokość limitu"
                             class="form-control" required="true"/>
                 <form:errors path="amount" cssClass="error"/>
-                <div class="input-group-append">
-                    <span class="input-group-text">.00</span>
-                </div>
+
 
             </div>
 
@@ -111,9 +109,9 @@
             </div>
 
             <div class="input-group mb-3">
-                <label for="arrangementFeeId" class=" col-form-label">Prowizja aranżacyjna [%]: </label>
+                <label for="arrangementFeeId" class=" col-form-label">Prowizja od zaangażowania [%]: </label>
                 <form:input type="number" path="arrangementFee" id="arrangementFeeId"
-                            placeholder="prowizja aranżacyjna w procentach" class="form-control" step="0.001"/>
+                            placeholder="prowizja od zaangażowania w procentach" class="form-control" step="0.001"/>
                 <form:errors path="arrangementFee" cssClass="error"/>
                 <div class="input-group-append">
                     <span class="input-group-text">%</span>
@@ -123,7 +121,7 @@
             <div class="input-group mb-3">
                 <label for="operationalFeeId" class="col-form-label">Prowizja operacyjna [%]: </label>
 
-                <form:input type="text" path="operationalFee" id="operationalFeeId"
+                <form:input type="number" path="operationalFee" id="operationalFeeId"
                             placeholder="prowizja operacyjna w procentach" class="form-control" step="0.001"/>
                 <form:errors path="operationalFee" cssClass="error"/>
                 <div class="input-group-append">
@@ -133,7 +131,7 @@
             </div>
 
             <div class="input-group mb-3">
-                <label for="marginId" class="col-form-label">Marźa [%]: </label>
+                <label for="marginId" class="col-form-label">Marża: </label>
 
                 <form:input type="number" path="margin" id="marginId"
                             placeholder="marża"  class="form-control" step="0.001" required="true"/>

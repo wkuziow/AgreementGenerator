@@ -1,4 +1,4 @@
 package pl.coderslab.agreementgenerator.validation;
 
-public interface AddUserValidationGroup {
+public interface ChangePasswordValidators {
 }

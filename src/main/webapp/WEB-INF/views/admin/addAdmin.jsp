@@ -16,7 +16,7 @@
 <html>
 <head>
 
-    <title>Dodaj admina</title>
+    <title>Zapisz admina</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
@@ -28,67 +28,82 @@
 <div class="container">
     <div class="d-flex justify-content-center">
         <form:form autocomplete="off" action="#" method="post"
-                   modelAttribute="admin">
-            <h2 class="d-flex justify-content-center">Dodaj użytkownika</h2>
+                   modelAttribute="user">
+            <h2 class="d-flex justify-content-center">Zapisz admina</h2>
 
+            <c:if test="${mode == 'add' || mode == 'edit'}">
+                <div class="form-group row">
+                    <label for="firstNameId" class="col-sm-2 col-form-label">Imię: </label>
+                    <div class="col-sm-10">
+                        <form:input type="text" path="firstName" id="firstNameId" placeholder="First name"
+                                    class="form-control" required="true"/>
+                        <form:errors path="firstName" cssClass="error"/>
+                    </div>
+                </div>
+            </c:if>
 
-            <div class="form-group row">
-                <label for="firstNameId" class="col-sm-2 col-form-label">Imię: </label>
-                <div class="col-sm-10">
-                    <form:input type="text" path="firstName" id="firstNameId" placeholder="First name"
-                                class="form-control" required="true"/>
-                    <form:errors path="firstName" cssClass="error"/>
+            <c:if test="${mode == 'add' || mode == 'edit'}">
+                <div class="form-group row">
+                    <label for="lastNameId" class="col-sm-2 col-form-label">Nazwisko: </label>
+                    <div class="col-sm-10">
+                        <form:input type="text" path="lastName" id="lastNameId"
+                                    placeholder="Last Name" class="form-control" required="true"/>
+                        <form:errors path="lastName" cssClass="error"/>
+                    </div>
                 </div>
-            </div>
+            </c:if>
 
-            <div class="form-group row">
-                <label for="lastNameId" class="col-sm-2 col-form-label">Nazwisko: </label>
-                <div class="col-sm-10">
-                    <form:input type="text" path="lastName" id="lastNameId"
-                                placeholder="Last Name" class="form-control" required="true"/>
-                    <form:errors path="lastName" cssClass="error"/>
+            <c:if test="${mode == 'add' || mode == 'edit'}">
+                <div class="form-group row">
+                    <label for="emailId" class="col-sm-2 col-form-label">Email: </label>
+                    <div class="col-sm-10">
+                        <form:input type="email" path="email" placeholder="Email" id="emailId" class="form-control"
+                                    required="true"/>
+                        <form:errors path="email" cssClass="error"/>
+                    </div>
                 </div>
-            </div>
+            </c:if>
 
-            <div class="form-group row">
-                <label for="emailId" class="col-sm-2 col-form-label">Email: </label>
-                <div class="col-sm-10">
-                    <form:input type="email" path="email" placeholder="Email" id="emailId" class="form-control"
-                                required="true"/>
-                    <form:errors path="email" cssClass="error"/>
-                </div>
-            </div>
+            <c:if test="${mode == 'add' || mode == 'edit'}">
 
-            <div class="form-group">
-                <label for="usernameId" class="col-sm-2 col-form-label">Nazwa użytkownika: </label>
-                <div class="col-sm-10">
-                    <form:input type="text" path="username" placeholder="Username" id="usernameId"
-                                class="form-control" required="true"/>
-                    <form:errors path="username" cssClass="error"/>
+                <div class="form-group">
+                    <label for="usernameId" class="col-sm-2 col-form-label">Nazwa użytkownika: </label>
+                    <div class="col-sm-10">
+                        <form:input type="text" path="username" placeholder="Username" id="usernameId"
+                                    class="form-control" required="true"/>
+                        <form:errors path="username" cssClass="error"/>
+                    </div>
                 </div>
-            </div>
+            </c:if>
 
-            <c:choose>
-            <c:when test="${(admin.password == null) || (not empty passwordError)}">
-            <div class="form-group">
-                <label for="passwordId" class="col-sm-2 col-form-label">Hasło: </label>
-                <div class="col-sm-10">
-                    <form:input type="password" path="password" id="passwordId"
-                                placeholder="Password" class="form-control" required="true"/>
-                    <form:errors path="password" cssClass="error"/>
+            <c:if test="${mode == 'add' || mode == 'pass'}">
+                <div class="form-group">
+                    <label for="passwordId" class="col-sm-2 col-form-label">Hasło: </label>
+                    <div class="col-sm-10">
+                        <form:input type="password" path="password" id="passwordId"
+                                    placeholder="Password" class="form-control" required="true"/>
+                        <form:errors path="password" cssClass="error"/>
+                    </div>
                 </div>
-            </div>
-            </c:when>
-            </c:choose>
-<%--
-            <div class="form-check form-check-inline">
-                <label for="enabledId" class="form-check-label">Aktywność:</label>
-                <div class="">
-                    <form:radiobuttons path="enabled" items="${enabledList}" id="enabledId" class="form-control"/>
-                    <form:errors path="enabled" cssClass="error"/>
+
+                <div class="form-group">
+                    <label for="confirmPasswordId" class="col-sm-2 col-form-label">Potwierdź hasło: </label>
+                    <div class="col-sm-10">
+                        <form:input type="password" path="confirmPassword" id="confirmPasswordId"
+                                    placeholder="potwierdź hasło" class="form-control" required="true"/>
+                        <form:errors path="" cssClass="error"/>
+                    </div>
                 </div>
-            </div>
---%>
+            </c:if>
+            <%--
+                        <div class="form-check form-check-inline">
+                            <label for="enabledId" class="form-check-label">Aktywność:</label>
+                            <div class="">
+                                <form:radiobuttons path="enabled" items="${enabledList}" id="enabledId" class="form-control"/>
+                                <form:errors path="enabled" cssClass="error"/>
+                            </div>
+                        </div>
+            --%>
 
             <button type="submit" class="btn btn-primary btn-block">Zapisz</button>
 

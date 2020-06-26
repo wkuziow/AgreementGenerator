@@ -2,13 +2,13 @@ package pl.coderslab.agreementgenerator.client;
 
 import lombok.Getter;
 import lombok.Setter;
-import org.hibernate.validator.constraints.pl.NIP;
-import org.hibernate.validator.constraints.pl.REGON;
-import pl.coderslab.agreementgenerator.transaction.Transaction;
 import pl.coderslab.agreementgenerator.user.User;
 
 import javax.persistence.*;
-import javax.validation.constraints.*;
+import javax.validation.constraints.Email;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.Pattern;
+import javax.validation.constraints.Size;
 
 @Entity
 @Setter
@@ -50,7 +50,7 @@ public class Client {
     private String flatNumber;
 
     @NotEmpty(message = "To pole nie może być puste")
-    @Size(max = 40, message = "maksymana długość pola 40 znaków")
+    @Size(min =3, max = 40, message = "minimalna długość to 3 a maksymana to 40 znaków")
     private String town;
 
     @Size(max = 40, message = "maksymalna dłogość pola to 40 znaków")

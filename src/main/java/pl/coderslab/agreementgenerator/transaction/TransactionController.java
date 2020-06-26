@@ -10,7 +10,6 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import pl.coderslab.agreementgenerator.client.Client;
 import pl.coderslab.agreementgenerator.client.ClientRepository;
 import pl.coderslab.agreementgenerator.user.CurrentUser;
 import pl.coderslab.agreementgenerator.user.UserRepository;
@@ -73,8 +72,9 @@ public class TransactionController {
     }
 
     @RequestMapping(value = "/admin/transaction/update/{id}", method = RequestMethod.POST)
-    public String updateTransactionByAdminProcessForm(@ModelAttribute @Validated Transaction transaction, @PathVariable Long id,
-                                                      BindingResult bindingResult) {
+    public String updateTransactionByAdminProcessForm(@ModelAttribute @Validated Transaction transaction,
+                                                      BindingResult bindingResult,
+                                                      @PathVariable Long id) {
         if (bindingResult.hasErrors()) {
             return "transaction/addTransaction";
         }
@@ -113,8 +113,9 @@ public class TransactionController {
     }
 
     @RequestMapping(value = "/user/transaction/update/{id}", method = RequestMethod.POST)
-    public String updateTransactionByUserProcessForm(@ModelAttribute @Validated Transaction transaction, @PathVariable Long id,
-                                                     BindingResult bindingResult) {
+    public String updateTransactionByUserProcessForm(@ModelAttribute @Validated Transaction transaction,
+                                                     BindingResult bindingResult,
+                                                     @PathVariable Long id) {
         if (bindingResult.hasErrors()) {
             return "transaction/addTransaction";
         }
@@ -132,8 +133,8 @@ public class TransactionController {
 
     @RequestMapping(value = "/user/client/{clientId}/addTransaction", method = RequestMethod.POST)
     public String addTransactionByUserProcessForm(@ModelAttribute @Validated Transaction transaction,
-                                                  @PathVariable Long clientId,
-                                                  BindingResult bindingResult) {
+                                                  BindingResult bindingResult,
+                                                  @PathVariable Long clientId) {
         if (bindingResult.hasErrors()) {
             return "transaction/addTransaction";
         }
