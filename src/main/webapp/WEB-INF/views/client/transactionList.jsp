@@ -67,7 +67,7 @@
                            target="_blank">Umowa</a>
                     </button>
                     <button type="button" class="btn btn-outline-primary">
-                        <a href="/admin/transaction/update/${transaction.id}">Edytuj</a>
+                        <a href="/user/transaction/update/${transaction.id}">Edytuj</a>
                     </button>
                 </td>
                     <%--   <td>

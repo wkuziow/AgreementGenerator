@@ -11,6 +11,7 @@ import pl.coderslab.agreementgenerator.validation.AddUserValidationGroup;
 import pl.coderslab.agreementgenerator.validation.ChangePasswordValidators;
 import pl.coderslab.agreementgenerator.validation.EditUserValidationGroup;
 
+import javax.servlet.http.HttpSession;
 import java.util.Arrays;
 import java.util.List;
 
@@ -152,6 +153,7 @@ public class UserController {
 
     @GetMapping("/admin/admin/update/{id}")
     public String updateAdminByAdminGet(@PathVariable Long id, Model model) {
+
         model.addAttribute("mode", "edit");
         User admin = userRepository.findUserById(id);
         model.addAttribute("user", admin);
@@ -229,6 +231,71 @@ public class UserController {
         User baseUser = customUser.getUser();
         userMethods.changePassword(user, baseUser);
         return "redirect:/";
+    }
+
+    @GetMapping("/admin/admin/update")
+    public String testupdateAdminByAdminGet(
+            HttpSession session,
+            Model model
+            ) {
+        Long userId = (Long) session.getAttribute("userId");
+        model.addAttribute("mode", "edit");
+        User admin = userRepository.findUserById(userId);
+        model.addAttribute("user", admin);
+        return "admin/addAdmin";
+    }
+
+    @PostMapping("/admin/admin/update")
+    public String testupdateAdminByAdminPost(Model model,
+                                             @ModelAttribute @Validated({EditUserValidationGroup.class}) User user,
+                                         BindingResult bindingResult,
+                                             HttpSession session) {
+        if (bindingResult.hasErrors()) {
+            model.addAttribute("mode", "edit");
+            return "admin/addAdmin";
+        }
+        Long id = (Long) session.getAttribute("userId");
+        User baseUser = userRepository.findUserById(id);
+
+        //admin.setEnabled(userRepository.findUserById(id).getEnabled());
+        //admin.setRole(Role.ROLE_ADMIN);
+        userMethods.saveEditedAdmin(user, baseUser);
+        return "redirect:../allUsers";
+    }
+
+
+    @PostMapping("/admin/allUsers")
+    public String formTestPost(@RequestParam Long userId,
+                               @RequestParam String role,
+                               Model model, HttpSession session) {
+        session.setAttribute("userId", userId);
+        session.setAttribute("role", role);
+        return "redirect:../admin/"+role+"/update";
+    }
+
+
+    @GetMapping("/admin/user/update")
+    public String testupdateUserByAdminGet(HttpSession session, Model model) {
+        Long userId = (Long) session.getAttribute("userId");
+        model.addAttribute("mode", "edit");
+        User user = userRepository.findUserById(userId);
+        model.addAttribute("user", user);
+        return "admin/addUser";
+    }
+
+    @PostMapping("/admin/user/update")
+    public String testupdateUserByAdminPost(Model model,HttpSession session, @ModelAttribute @Validated({EditUserValidationGroup.class}) User user,
+                                        BindingResult bindingResult) {
+        if (bindingResult.hasErrors()) {
+            model.addAttribute("mode", "edit");
+            return "admin/addUser";
+        }
+        Long userId = (Long) session.getAttribute("userId");
+        User baseUser = userRepository.findUserById(userId);
+        //user.setEnabled(userRepository.findUserById(id).isEnabled());
+        //userRepository.save(user);
+        userMethods.saveEditedUser(user, baseUser);
+        return "redirect:../allUsers";
     }
 
 }

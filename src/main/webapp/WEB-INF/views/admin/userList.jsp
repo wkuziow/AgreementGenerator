@@ -43,39 +43,47 @@
                         <td>${user.enabled}
 
                             <c:choose>
-                                <c:when test="${user.enabled == 'true'}">
+                            <c:when test="${user.enabled == 'true'}">
                             <button type="button" class="btn btn-outline-danger">
-                                    <a href="/admin/${user.id}/disable">Dezaktywuj</a>
+                                <a href="/admin/${user.id}/disable">Dezaktywuj</a>
                                 </c:when>
                                 <c:otherwise>
                                 <button type="button" class="btn btn-outline-success">
                                     <a href="/admin/${user.id}/enable">Aktywuj</a>
-                                </c:otherwise>
-                            </c:choose>
-                            </button>
+                                    </c:otherwise>
+                                    </c:choose>
+                                </button>
 
                         </td>
                         <td>${user.username}</td>
                         <td>${user.role}</td>
 
                         <td>
-                            <button type="button" class="btn btn-outline-primary">
-                                    <%--    <a href="/admin/user/delete/${author.id}">Delete</a> --%>
+                            <form:form method="post">
+                                <input type="hidden" name="userId" value="${user.id}">
                                 <c:choose>
                                     <c:when test="${user.role == 'ROLE_ADMIN'}">
-                                        <a href="/admin/admin/update/${user.id}">Edycja</a>
+                                        <input type="hidden" name="role" value="admin">
+                                        <button type="submit" class="btn btn-outline-primary">
+                                            Edycja
+                                        </button>
+                                        <%--   <a href="/admin/admin/update/${user.id}">Edycja</a> --%>
                                     </c:when>
                                     <c:otherwise>
-                                        <a href="/admin/user/update/${user.id}">Edycja</a>
+                                        <input type="hidden" name="role" value="user">
+                                        <button type="submit" class="btn btn-outline-primary">
+                                            Edycja
+                                        </button>
                                     </c:otherwise>
                                 </c:choose>
-                            </button>
+                            </form:form>
                         </td>
                     </tr>
                 </c:forEach>
             </table>
         </div>
     </div>
+
 </div>
 <%@include file="/WEB-INF/includes/footer.jsp" %>
 <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
