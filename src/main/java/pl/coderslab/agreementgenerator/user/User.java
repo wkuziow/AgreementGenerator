@@ -21,11 +21,11 @@ public class User {
 
     @Column(nullable = false, unique = true, length = 60)
     @NotEmpty(message = "To pole jest wymagane",
-            groups = {AddUserValidationGroup.class, EditUserValidationGroup.class})
+            groups = {AddUserValidationGroup.class, EditUserValidationGroup.class, ResetPasswordValidationGroup.class})
     @Size(min = 3, max = 30, message = "nieprawidłowe dane, minimalna długość to 3, maksymalna 30 znaków",
-            groups = {AddUserValidationGroup.class, EditUserValidationGroup.class})
+            groups = {AddUserValidationGroup.class, EditUserValidationGroup.class, ResetPasswordValidationGroup.class})
     @Pattern(regexp = "[a-zA-Z0-9]*", message = "błędny format, dopuszczalne tylko cyfry i litery",
-            groups = {AddUserValidationGroup.class, EditUserValidationGroup.class})
+            groups = {AddUserValidationGroup.class, EditUserValidationGroup.class, ResetPasswordValidationGroup.class})
     private String username;
 
     @NotEmpty(message = "To pole jest wymagane",

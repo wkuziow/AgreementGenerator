@@ -1,12 +1,16 @@
 package pl.coderslab.agreementgenerator.user;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.mail.SimpleMailMessage;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
+import pl.coderslab.agreementgenerator.ConfirmationToken.ConfirmationToken;
+import pl.coderslab.agreementgenerator.ConfirmationToken.ConfirmationTokenRepository;
+import pl.coderslab.agreementgenerator.ConfirmationToken.EmailSenderService;
 import pl.coderslab.agreementgenerator.validation.AddUserValidationGroup;
 import pl.coderslab.agreementgenerator.validation.ChangePasswordValidators;
 import pl.coderslab.agreementgenerator.validation.EditUserValidationGroup;
@@ -16,16 +20,19 @@ import java.util.Arrays;
 import java.util.List;
 
 @Controller
-
 public class UserController {
     @Autowired
     private UserRepository userRepository;
     private final UserService userService;
     private UserMethods userMethods;
+    private ConfirmationTokenRepository confirmationTokenRepository;
+    private EmailSenderService emailSenderService;
 
-    public UserController(UserService userService, UserMethods userMethods) {
+    public UserController(UserService userService, UserMethods userMethods, ConfirmationTokenRepository confirmationTokenRepository, EmailSenderService emailSenderService) {
         this.userService = userService;
         this.userMethods = userMethods;
+        this.confirmationTokenRepository = confirmationTokenRepository;
+        this.emailSenderService = emailSenderService;
     }
 
     //    public UserController(UserService userService) {
@@ -208,7 +215,43 @@ public class UserController {
 
         user.setEnabled(false);
         userService.saveUser(user);
-        return "redirect:/";
+
+        ConfirmationToken confirmationToken = new ConfirmationToken(user);
+
+        confirmationTokenRepository.save(confirmationToken);
+
+        SimpleMailMessage mailMessage = new SimpleMailMessage();
+        mailMessage.setTo(user.getEmail());
+        mailMessage.setSubject("Complete Registration!");
+        mailMessage.setFrom("donotreply@gmail.com");
+        mailMessage.setText("To confirm your account, please click here : "
+                +"http://localhost:8080/confirm-account?token="+confirmationToken.getConfirmationToken());
+
+        emailSenderService.sendEmail(mailMessage);
+
+        model.addAttribute("emailId", user.getEmail());
+
+        //modelAndView.setViewName("successfulRegisteration");
+        return "home/success";
+    }
+
+    @RequestMapping(value="/confirm-account", method= {RequestMethod.GET, RequestMethod.POST})
+    public String confirmUserAccount(Model model, @RequestParam("token")String confirmationToken)
+    {
+        ConfirmationToken token = confirmationTokenRepository.findByConfirmationToken(confirmationToken);
+        String result = "";
+
+        if(token != null)
+        {
+            User user = userRepository.findByEmailIgnoreCase(token.getUser().getEmail());
+            user.setEnabled(true);
+            userRepository.save(user);
+            result = "redirect:/login";
+        } else {
+
+            result = "errors/tokenError";
+        }
+        return result;
     }
 
     @RequestMapping(value = "/user/changePassword", method = RequestMethod.GET)

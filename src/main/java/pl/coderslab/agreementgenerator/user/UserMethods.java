@@ -1,6 +1,5 @@
 package pl.coderslab.agreementgenerator.user;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -37,7 +36,7 @@ public class UserMethods {
         userRepository.save(baseAdmin);
     }
 
-    protected void changePassword(User user, User baseUser) {
+    public void changePassword(User user, User baseUser) {
         baseUser.setPassword(passwordEncoder.encode(user.getPassword()));
         userRepository.save(baseUser);
     }

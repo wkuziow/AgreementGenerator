@@ -33,7 +33,9 @@
                 <div><input type="submit" value="Sign In"/></div>
                 <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
             </form>
+
     </div>
+    <div class=" d-flex justify-content-center"> <a href="/resetpassword">Nie pamiętam hasła</a></div> <br><br><br>
 </div>
 
 
