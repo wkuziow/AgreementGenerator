@@ -24,7 +24,6 @@
 <body>
 <%@include file="/WEB-INF/includes/header.jsp"%>
 <div class="container">
-    <h1>Gratulacje, pomyślnie zarejestrowałeś się. Sprawdź swoją pocztę, wysłaliśmy link aktywacyjny.</h1>
     <h2>${message}</h2>
 </div>
 <%@include file="/WEB-INF/includes/footer.jsp"%>

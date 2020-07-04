@@ -61,7 +61,7 @@
                     </div>
                 </div>
             </c:if>
-            <c:if test="${mode == 'add' || mode == 'edit'}">
+            <c:if test="${mode == 'add' || mode == 'edit' || mode == 'reset'}">
                 <div class="form-group">
                     <label for="usernameId" class="col-sm-2 col-form-label">Nazwa użytkownika: </label>
                     <div class="col-sm-10">

@@ -52,8 +52,9 @@ public class HomeController {
 
     @RequestMapping(value = "/resetpassword", method = RequestMethod.GET)
     public String resetPasswordGet(Model model) {
+        model.addAttribute("mode", "reset");
         model.addAttribute("user", new User());
-        return "home/resetPassword";
+        return "admin/addUser";
     }
 
     @RequestMapping(value = "/resetpassword", method = RequestMethod.POST)
@@ -112,6 +113,7 @@ public class HomeController {
             userMethods.changePassword(user, baseUser);
 
             userRepository.save(baseUser);
+            confirmationTokenRepository.delete(token);
             model.addAttribute("message", "Gratulacje, hasło zmienione, możesz się zalogować");
             result = "home/success";
 

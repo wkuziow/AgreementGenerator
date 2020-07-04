@@ -230,6 +230,9 @@ public class UserController {
         emailSenderService.sendEmail(mailMessage);
 
         model.addAttribute("emailId", user.getEmail());
+        String message = "Gratulacje, pomyślnie zarejestrowałeś się. " +
+                "Sprawdź swoją pocztę, wysłaliśmy link aktywacyjny.";
+        model.addAttribute("message", message);
 
         //modelAndView.setViewName("successfulRegisteration");
         return "home/success";
@@ -246,6 +249,7 @@ public class UserController {
             User user = userRepository.findByEmailIgnoreCase(token.getUser().getEmail());
             user.setEnabled(true);
             userRepository.save(user);
+            confirmationTokenRepository.delete(token);
             result = "redirect:/login";
         } else {
 
