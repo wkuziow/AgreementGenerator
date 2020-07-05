@@ -236,7 +236,7 @@ public class UserController {
         mailMessage.setSubject("Complete Registration!");
         mailMessage.setFrom("donotreply@gmail.com");
         mailMessage.setText("To confirm your account, please click here : "
-                + "http://localhost:8080/confirm-account?token=" + confirmationToken.getConfirmationToken());
+                + "https://agreementgenerator.herokuapp.com/confirm-account?token=" + confirmationToken.getConfirmationToken());
 
         emailSenderService.sendEmail(mailMessage);
 
@@ -377,7 +377,7 @@ public class UserController {
         mailMessage.setTo(user.getEmail());
         mailMessage.setSubject("Reset password");
         mailMessage.setText("To reset your password, please click here : "
-                + "http://localhost:8080/reset-password?token=" + confirmationToken.getConfirmationToken());
+                + "https://agreementgenerator.herokuapp.com/reset-password?token=" + confirmationToken.getConfirmationToken());
         emailSenderService.sendEmail(mailMessage);
         session.removeAttribute("userId");
         return "redirect:../admin/allUsers";

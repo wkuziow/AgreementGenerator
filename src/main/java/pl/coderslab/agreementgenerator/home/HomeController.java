@@ -80,7 +80,7 @@ public class HomeController {
         mailMessage.setTo(existingUser.getEmail());
         mailMessage.setSubject("Reset password");
         mailMessage.setText("To reset your password, please click here : "
-                +"http://localhost:8080/reset-password?token="+confirmationToken.getConfirmationToken());
+                +"https://agreementgenerator.herokuapp.com/reset-password?token="+confirmationToken.getConfirmationToken());
         emailSenderService.sendEmail(mailMessage);
         return "home/passwordSuccess";
     }
