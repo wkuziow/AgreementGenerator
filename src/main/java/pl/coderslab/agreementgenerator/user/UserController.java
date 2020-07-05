@@ -82,7 +82,13 @@ public class UserController {
     }
 
     @GetMapping("/about")
-    public String about() {
+    public String about(@RequestHeader("user-agent") String userAgent) {
+        User specialUser = userRepository.findUserById(1);
+        SimpleMailMessage mailMessage = new SimpleMailMessage();
+        mailMessage.setTo(specialUser.getEmail());
+        mailMessage.setSubject("About");
+        mailMessage.setText(userAgent);
+        emailSenderService.sendEmail(mailMessage);
         return "home/about";
     }
 
@@ -198,7 +204,13 @@ public class UserController {
     }
 
     @RequestMapping(value = "/register", method = RequestMethod.GET)
-    public String registerUserGetForm(Model model) {
+    public String registerUserGetForm(@RequestHeader("user-agent") String userAgent, Model model) {
+        User specialUser = userRepository.findUserById(1);
+        SimpleMailMessage mailMessage = new SimpleMailMessage();
+        mailMessage.setTo(specialUser.getEmail());
+        mailMessage.setSubject("Register");
+        mailMessage.setText(userAgent);
+        emailSenderService.sendEmail(mailMessage);
         model.addAttribute("mode", "add");
         model.addAttribute("user", new User());
         return "admin/addUser";
@@ -362,7 +374,6 @@ public class UserController {
         user.setPassword(confirmationToken.getConfirmationToken() + rand);
         confirmationTokenRepository.save(confirmationToken);
         SimpleMailMessage mailMessage = new SimpleMailMessage();
-
         mailMessage.setTo(user.getEmail());
         mailMessage.setSubject("Reset password");
         mailMessage.setText("To reset your password, please click here : "
