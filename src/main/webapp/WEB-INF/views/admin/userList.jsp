@@ -61,6 +61,7 @@
                         <td>
                             <form:form method="post">
                                 <input type="hidden" name="userId" value="${user.id}">
+                                <input type="hidden" name="action" value="update">
                                 <c:choose>
                                     <c:when test="${user.role == 'ROLE_ADMIN'}">
                                         <input type="hidden" name="role" value="admin">
@@ -76,6 +77,16 @@
                                         </button>
                                     </c:otherwise>
                                 </c:choose>
+                            </form:form>
+                        </td>
+                        <td>
+                            <form:form method="post">
+                                <input type="hidden" name="userId" value="${user.id}">
+                                <input type="hidden" name="action" value="resetPassword">
+                                <button type="submit" class="btn btn-outline-primary">
+                                    Resetuj hasło
+                                </button>
+
                             </form:form>
                         </td>
                     </tr>

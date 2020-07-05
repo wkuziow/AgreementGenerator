@@ -19,6 +19,8 @@ import pl.coderslab.agreementgenerator.user.*;
 import pl.coderslab.agreementgenerator.validation.ChangePasswordValidators;
 import pl.coderslab.agreementgenerator.validation.ResetPasswordValidationGroup;
 
+import java.util.Random;
+
 @Controller
 public class HomeController {
     @Autowired
@@ -67,9 +69,11 @@ public class HomeController {
             return "resetpassword";
         }
         existingUser.setEnabled(false);
-        existingUser.setPassword("null");
-        userService.saveUser(existingUser);
+        Random generator = new Random();
+        int rand = generator.nextInt() * 100000;
         ConfirmationToken confirmationToken = new ConfirmationToken(existingUser);
+        existingUser.setPassword(confirmationToken.getConfirmationToken() + rand);
+        userService.saveUser(existingUser);
         confirmationTokenRepository.save(confirmationToken);
         SimpleMailMessage mailMessage = new SimpleMailMessage();
 

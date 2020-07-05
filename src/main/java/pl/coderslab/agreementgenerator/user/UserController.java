@@ -18,6 +18,7 @@ import pl.coderslab.agreementgenerator.validation.EditUserValidationGroup;
 import javax.servlet.http.HttpSession;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Random;
 
 @Controller
 public class UserController {
@@ -119,7 +120,7 @@ public class UserController {
     }
 
     @PostMapping("/admin/user/update/{id}")
-    public String updateUserByAdminPost(Model model,@PathVariable Long id, @ModelAttribute @Validated({EditUserValidationGroup.class}) User user,
+    public String updateUserByAdminPost(Model model, @PathVariable Long id, @ModelAttribute @Validated({EditUserValidationGroup.class}) User user,
                                         BindingResult bindingResult) {
         if (bindingResult.hasErrors()) {
             model.addAttribute("mode", "edit");
@@ -139,14 +140,12 @@ public class UserController {
         return "admin/addAdmin";
     }
 
-
-
     @RequestMapping(value = "/admin/addAdmin", method = RequestMethod.POST)
     public String addAdminByAdminProcessForm(Model model, @ModelAttribute
-                                                 @Validated
+    @Validated
             ({AddUserValidationGroup.class})
-                                                         User user,
-                                            BindingResult bindingResult) {
+            User user,
+                                             BindingResult bindingResult) {
         if (bindingResult.hasErrors()) {
             model.addAttribute("mode", "add");
             return "admin/addAdmin";
@@ -169,7 +168,7 @@ public class UserController {
 
     @PostMapping("/admin/admin/update/{id}")
     public String updateAdminByAdminPost(Model model, @PathVariable Long id, @ModelAttribute @Validated({EditUserValidationGroup.class}) User user,
-                                        BindingResult bindingResult) {
+                                         BindingResult bindingResult) {
         if (bindingResult.hasErrors()) {
             model.addAttribute("mode", "edit");
             return "admin/addAdmin";
@@ -183,7 +182,7 @@ public class UserController {
     }
 
     @RequestMapping(value = "/admin/{id}/disable", method = RequestMethod.GET)
-    public String disableUserByAdmin (@PathVariable Long id) {
+    public String disableUserByAdmin(@PathVariable Long id) {
         User user = userRepository.findUserById(id);
         user.setEnabled(false);
         userRepository.save(user);
@@ -191,7 +190,7 @@ public class UserController {
     }
 
     @RequestMapping(value = "/admin/{id}/enable", method = RequestMethod.GET)
-    public String enableUserByAdmin (@PathVariable Long id) {
+    public String enableUserByAdmin(@PathVariable Long id) {
         User user = userRepository.findUserById(id);
         user.setEnabled(true);
         userRepository.save(user);
@@ -207,7 +206,7 @@ public class UserController {
 
     @RequestMapping(value = "/register", method = RequestMethod.POST)
     public String registerUserProcessForm(@ModelAttribute @Validated({AddUserValidationGroup.class}) User user,
-                                            BindingResult bindingResult, Model model) {
+                                          BindingResult bindingResult, Model model) {
         if (bindingResult.hasErrors()) {
             model.addAttribute("mode", "add");
             return "admin/addUser";
@@ -225,7 +224,7 @@ public class UserController {
         mailMessage.setSubject("Complete Registration!");
         mailMessage.setFrom("donotreply@gmail.com");
         mailMessage.setText("To confirm your account, please click here : "
-                +"http://localhost:8080/confirm-account?token="+confirmationToken.getConfirmationToken());
+                + "http://localhost:8080/confirm-account?token=" + confirmationToken.getConfirmationToken());
 
         emailSenderService.sendEmail(mailMessage);
 
@@ -238,14 +237,12 @@ public class UserController {
         return "home/success";
     }
 
-    @RequestMapping(value="/confirm-account", method= {RequestMethod.GET, RequestMethod.POST})
-    public String confirmUserAccount(Model model, @RequestParam("token")String confirmationToken)
-    {
+    @RequestMapping(value = "/confirm-account", method = {RequestMethod.GET, RequestMethod.POST})
+    public String confirmUserAccount(Model model, @RequestParam("token") String confirmationToken) {
         ConfirmationToken token = confirmationTokenRepository.findByConfirmationToken(confirmationToken);
         String result = "";
 
-        if(token != null)
-        {
+        if (token != null) {
             User user = userRepository.findByEmailIgnoreCase(token.getUser().getEmail());
             user.setEnabled(true);
             userRepository.save(user);
@@ -271,8 +268,8 @@ public class UserController {
                                                BindingResult bindingResult, Model model,
                                                @AuthenticationPrincipal CurrentUser customUser) {
         if (bindingResult.hasErrors()) {
-          model.addAttribute("mode", "pass");
-          //  model.addAttribute("bindingResult", bindingResult);
+            model.addAttribute("mode", "pass");
+            //  model.addAttribute("bindingResult", bindingResult);
             return "admin/addUser";
         }
         User baseUser = customUser.getUser();
@@ -284,7 +281,7 @@ public class UserController {
     public String testupdateAdminByAdminGet(
             HttpSession session,
             Model model
-            ) {
+    ) {
         Long userId = (Long) session.getAttribute("userId");
         model.addAttribute("mode", "edit");
         User admin = userRepository.findUserById(userId);
@@ -295,7 +292,7 @@ public class UserController {
     @PostMapping("/admin/admin/update")
     public String testupdateAdminByAdminPost(Model model,
                                              @ModelAttribute @Validated({EditUserValidationGroup.class}) User user,
-                                         BindingResult bindingResult,
+                                             BindingResult bindingResult,
                                              HttpSession session) {
         if (bindingResult.hasErrors()) {
             model.addAttribute("mode", "edit");
@@ -306,20 +303,28 @@ public class UserController {
 
         //admin.setEnabled(userRepository.findUserById(id).getEnabled());
         //admin.setRole(Role.ROLE_ADMIN);
+        session.removeAttribute("userId");
         userMethods.saveEditedAdmin(user, baseUser);
         return "redirect:../allUsers";
     }
 
-
     @PostMapping("/admin/allUsers")
     public String formTestPost(@RequestParam Long userId,
-                               @RequestParam String role,
+                               @RequestParam(value = "role", required = false) String role,
+                               @RequestParam String action,
                                Model model, HttpSession session) {
+        //String action = session.setAttribute("action", action);
+                //(String) model.getAttribute("action");
+        String result = "";
         session.setAttribute("userId", userId);
-        session.setAttribute("role", role);
-        return "redirect:../admin/"+role+"/update";
+        if (action.equals("update")) {
+            session.setAttribute("role", role);
+            result = "redirect:../admin/" + role + "/update";
+        } else if (action.equals("resetPassword")) {
+            result = "redirect:../admin/resetPassword";
+        }
+        return result;
     }
-
 
     @GetMapping("/admin/user/update")
     public String testupdateUserByAdminGet(HttpSession session, Model model) {
@@ -331,8 +336,8 @@ public class UserController {
     }
 
     @PostMapping("/admin/user/update")
-    public String testupdateUserByAdminPost(Model model,HttpSession session, @ModelAttribute @Validated({EditUserValidationGroup.class}) User user,
-                                        BindingResult bindingResult) {
+    public String testupdateUserByAdminPost(Model model, HttpSession session, @ModelAttribute @Validated({EditUserValidationGroup.class}) User user,
+                                            BindingResult bindingResult) {
         if (bindingResult.hasErrors()) {
             model.addAttribute("mode", "edit");
             return "admin/addUser";
@@ -341,8 +346,29 @@ public class UserController {
         User baseUser = userRepository.findUserById(userId);
         //user.setEnabled(userRepository.findUserById(id).isEnabled());
         //userRepository.save(user);
+        session.removeAttribute("userId");
         userMethods.saveEditedUser(user, baseUser);
         return "redirect:../allUsers";
     }
 
+    @RequestMapping(value = "/admin/resetPassword", method = RequestMethod.GET)
+    public String resetUserPasswordByAdmin(HttpSession session, Model model) {
+        Long userId = (Long) session.getAttribute("userId");
+        User user = userRepository.findUserById(userId);
+        user.setEnabled(false);
+        Random generator = new Random();
+        int rand = generator.nextInt() * 100000;
+        ConfirmationToken confirmationToken = new ConfirmationToken(user);
+        user.setPassword(confirmationToken.getConfirmationToken() + rand);
+        confirmationTokenRepository.save(confirmationToken);
+        SimpleMailMessage mailMessage = new SimpleMailMessage();
+
+        mailMessage.setTo(user.getEmail());
+        mailMessage.setSubject("Reset password");
+        mailMessage.setText("To reset your password, please click here : "
+                + "http://localhost:8080/reset-password?token=" + confirmationToken.getConfirmationToken());
+        emailSenderService.sendEmail(mailMessage);
+        session.removeAttribute("userId");
+        return "redirect:../admin/allUsers";
+    }
 }
