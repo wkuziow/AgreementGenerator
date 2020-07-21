@@ -6,6 +6,7 @@ import pl.coderslab.agreementgenerator.client.Client;
 
 import javax.persistence.*;
 import javax.validation.constraints.*;
+import java.time.LocalDate;
 
 @Entity
 @Setter
@@ -16,9 +17,9 @@ public class Transaction {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @NotEmpty(message = "To pole nie może być puste")
-    @Size(max = 40, message = "Maksymalna długość to 40 znaków")
-    private String dateOfSign;
+    @NotNull(message = "To pole nie może być puste")
+    @FutureOrPresent
+    private LocalDate dateOfSign;
 
     @Column(columnDefinition = "boolean default false")
     private boolean isActive;
@@ -26,8 +27,8 @@ public class Transaction {
     @Column(columnDefinition = "boolean default true")
     private boolean hasValidDate;
 
-    @Size(max = 40, message = "Maksymalna długość to 40 znaków")
-    private String validDate;
+    @FutureOrPresent
+    private LocalDate validDate;
 
     @NotEmpty(message = "To pole nie może być puste")
     @Size(min = 3, max = 3, message = "Błędna wartość")
@@ -41,8 +42,8 @@ public class Transaction {
     @Column(columnDefinition = "boolean default false")
     private boolean isTerminated;
 
-    @Size(max = 40, message = "Maksymalna długość to 40 znaków")
-    private String terminationDate;
+    @FutureOrPresent
+    private LocalDate terminationDate;
 
     @NotEmpty(message = "To pole nie może być puste")
     @Size(max = 40, message = "Maksymalna długość to 40 znaków")
