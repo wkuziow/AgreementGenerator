@@ -2,6 +2,7 @@ package pl.coderslab.agreementgenerator.transaction;
 
 import lombok.Getter;
 import lombok.Setter;
+import org.springframework.format.annotation.DateTimeFormat;
 import pl.coderslab.agreementgenerator.client.Client;
 
 import javax.persistence.*;
@@ -18,7 +19,8 @@ public class Transaction {
     private Long id;
 
     @NotNull(message = "To pole nie może być puste")
-    @FutureOrPresent
+    @FutureOrPresent(message = "Data zawarcia musi być w przyszłości")
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
     private LocalDate dateOfSign;
 
     @Column(columnDefinition = "boolean default false")
@@ -27,7 +29,8 @@ public class Transaction {
     @Column(columnDefinition = "boolean default true")
     private boolean hasValidDate;
 
-    @FutureOrPresent
+    @FutureOrPresent(message = "Data zawarcia musi być w przyszłości")
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
     private LocalDate validDate;
 
     @NotEmpty(message = "To pole nie może być puste")
@@ -69,7 +72,6 @@ public class Transaction {
     @Max(value = 100, message = "Nieprawidłowa wartość")
     @Min(value = 0, message = "Nieprawidłowa wartość")
     private double operationalFee;
-
 
     @DecimalMin(value = "0.001", message = "To pole nie może być puste")
     @Max(value = 100, message = "Nieprawidłowa wartość")
