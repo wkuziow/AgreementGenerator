@@ -85,4 +85,8 @@ public class Transaction {
                 + "%, administration fee: " + administrationFee + "%, operational fee: "
                 + "%.";
     }
+
+    public Long getId() {
+        return id;
+    }
 }
