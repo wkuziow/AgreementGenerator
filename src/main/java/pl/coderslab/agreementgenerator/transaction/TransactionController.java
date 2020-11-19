@@ -59,6 +59,7 @@ public class TransactionController {
         if (bindingResult.hasErrors()) {
             return "transaction/addTransaction";
         }
+
         transaction.setClient(clientRepository.findClientById(clientId));
         transactionRepository.save(transaction);
         return "redirect:../../../admin/allTransactions";

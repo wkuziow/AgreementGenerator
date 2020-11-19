@@ -1,7 +1,5 @@
 package pl.coderslab.agreementgenerator.transaction;
 
-import lombok.Getter;
-import lombok.Setter;
 import org.springframework.format.annotation.DateTimeFormat;
 import pl.coderslab.agreementgenerator.client.Client;
 
@@ -10,8 +8,8 @@ import javax.validation.constraints.*;
 import java.time.LocalDate;
 
 @Entity
-@Setter
-@Getter
+
+
 public class Transaction {
 
     @Id
@@ -89,4 +87,16 @@ public class Transaction {
     public Long getId() {
         return id;
     }
+
+
+    public void setClient(Client client) {
+        this.client = client;
+    }
+
+    public Client getClient() {
+        return client;
+    }
+
+
+
 }
