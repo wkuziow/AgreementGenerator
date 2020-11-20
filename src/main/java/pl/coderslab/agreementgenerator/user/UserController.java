@@ -126,7 +126,8 @@ public class UserController {
     }
 
     @PostMapping("/admin/user/update/{id}")
-    public String updateUserByAdminPost(Model model, @PathVariable Long id, @ModelAttribute @Validated({EditUserValidationGroup.class}) User user,
+    public String updateUserByAdminPost(Model model, @PathVariable Long id,
+                                        @ModelAttribute @Validated({EditUserValidationGroup.class}) User user,
                                         BindingResult bindingResult) {
         if (bindingResult.hasErrors()) {
             model.addAttribute("mode", "edit");
@@ -289,79 +290,80 @@ public class UserController {
         return "redirect:/";
     }
 
-    @GetMapping("/admin/admin/update")
-    public String testupdateAdminByAdminGet(
-            HttpSession session,
-            Model model
-    ) {
-        Long userId = (Long) session.getAttribute("userId");
-        model.addAttribute("mode", "edit");
-        User admin = userRepository.findUserById(userId);
-        model.addAttribute("user", admin);
-        return "admin/addAdmin";
-    }
+//    @GetMapping("/admin/admin/update")
+//    public String testupdateAdminByAdminGet(
+//            HttpSession session,
+//            Model model
+//    ) {
+//        Long userId = (Long) session.getAttribute("userId");
+//        model.addAttribute("mode", "edit");
+//        User admin = userRepository.findUserById(userId);
+//        model.addAttribute("user", admin);
+//        return "admin/addAdmin";
+//    }
+//
+//    @PostMapping("/admin/admin/update")
+//    public String testupdateAdminByAdminPost(Model model,
+//                                             @ModelAttribute @Validated({EditUserValidationGroup.class}) User user,
+//                                             BindingResult bindingResult,
+//                                             HttpSession session) {
+//        if (bindingResult.hasErrors()) {
+//            model.addAttribute("mode", "edit");
+//            return "admin/addAdmin";
+//        }
+//        Long id = (Long) session.getAttribute("userId");
+//        User baseUser = userRepository.findUserById(id);
+//
+//        //admin.setEnabled(userRepository.findUserById(id).getEnabled());
+//        //admin.setRole(Role.ROLE_ADMIN);
+//        session.removeAttribute("userId");
+//        userMethods.saveEditedAdmin(user, baseUser);
+//        return "redirect:../allUsers";
+//    }
 
-    @PostMapping("/admin/admin/update")
-    public String testupdateAdminByAdminPost(Model model,
-                                             @ModelAttribute @Validated({EditUserValidationGroup.class}) User user,
-                                             BindingResult bindingResult,
-                                             HttpSession session) {
-        if (bindingResult.hasErrors()) {
-            model.addAttribute("mode", "edit");
-            return "admin/addAdmin";
-        }
-        Long id = (Long) session.getAttribute("userId");
-        User baseUser = userRepository.findUserById(id);
+//    @PostMapping("/admin/allUsers")
+//    public String formTestPost(@RequestParam Long userId,
+//                               @RequestParam(value = "role", required = false) String role,
+//                               @RequestParam String action,
+//                               Model model, HttpSession session) {
+//        //String action = session.setAttribute("action", action);
+//                //(String) model.getAttribute("action");
+//        String result = "";
+//        session.setAttribute("userId", userId);
+//        if (action.equals("update")) {
+//            session.setAttribute("role", role);
+//            result = "redirect:../admin/" + role + "/update";
+//        } else if (action.equals("resetPassword")) {
+//            result = "redirect:../admin/resetPassword";
+//        }
+//        return result;
+//    }
 
-        //admin.setEnabled(userRepository.findUserById(id).getEnabled());
-        //admin.setRole(Role.ROLE_ADMIN);
-        session.removeAttribute("userId");
-        userMethods.saveEditedAdmin(user, baseUser);
-        return "redirect:../allUsers";
-    }
+//    @GetMapping("/admin/user/update")
+//    public String testupdateUserByAdminGet(HttpSession session, Model model) {
+//        Long userId = (Long) session.getAttribute("userId");
+//        model.addAttribute("mode", "edit");
+//        User user = userRepository.findUserById(userId);
+//        model.addAttribute("user", user);
+//        return "admin/addUser";
+//    }
 
-    @PostMapping("/admin/allUsers")
-    public String formTestPost(@RequestParam Long userId,
-                               @RequestParam(value = "role", required = false) String role,
-                               @RequestParam String action,
-                               Model model, HttpSession session) {
-        //String action = session.setAttribute("action", action);
-                //(String) model.getAttribute("action");
-        String result = "";
-        session.setAttribute("userId", userId);
-        if (action.equals("update")) {
-            session.setAttribute("role", role);
-            result = "redirect:../admin/" + role + "/update";
-        } else if (action.equals("resetPassword")) {
-            result = "redirect:../admin/resetPassword";
-        }
-        return result;
-    }
-
-    @GetMapping("/admin/user/update")
-    public String testupdateUserByAdminGet(HttpSession session, Model model) {
-        Long userId = (Long) session.getAttribute("userId");
-        model.addAttribute("mode", "edit");
-        User user = userRepository.findUserById(userId);
-        model.addAttribute("user", user);
-        return "admin/addUser";
-    }
-
-    @PostMapping("/admin/user/update")
-    public String testupdateUserByAdminPost(Model model, HttpSession session, @ModelAttribute @Validated({EditUserValidationGroup.class}) User user,
-                                            BindingResult bindingResult) {
-        if (bindingResult.hasErrors()) {
-            model.addAttribute("mode", "edit");
-            return "admin/addUser";
-        }
-        Long userId = (Long) session.getAttribute("userId");
-        User baseUser = userRepository.findUserById(userId);
-        //user.setEnabled(userRepository.findUserById(id).isEnabled());
-        //userRepository.save(user);
-        session.removeAttribute("userId");
-        userMethods.saveEditedUser(user, baseUser);
-        return "redirect:../allUsers";
-    }
+//    @PostMapping("/admin/user/update")
+//    public String testupdateUserByAdminPost(Model model, HttpSession session,
+//                                            @ModelAttribute @Validated({EditUserValidationGroup.class}) User user,
+//                                            BindingResult bindingResult) {
+//        if (bindingResult.hasErrors()) {
+//            model.addAttribute("mode", "edit");
+//            return "admin/addUser";
+//        }
+//        Long userId = (Long) session.getAttribute("userId");
+//        User baseUser = userRepository.findUserById(userId);
+//        //user.setEnabled(userRepository.findUserById(id).isEnabled());
+//        //userRepository.save(user);
+//        session.removeAttribute("userId");
+//        userMethods.saveEditedUser(user, baseUser);
+//        return "redirect:../allUsers";
+//    }
 
     @RequestMapping(value = "/admin/resetPassword", method = RequestMethod.GET)
     public String resetUserPasswordByAdmin(HttpSession session, Model model) {

@@ -11,8 +11,8 @@ import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
 
 @Entity
-@Setter
 @Getter
+@Setter
 @ConfirmPassword(groups = {AddUserValidationGroup.class, ChangePasswordValidators.class}, message = "hasła muszą być takie same")
 public class User {
     @Id
@@ -74,5 +74,17 @@ public class User {
 
     public Long getId() {
         return id;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setRole(Role role) {
+        this.role = role;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
     }
 }

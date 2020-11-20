@@ -59,25 +59,31 @@
                         <td>${user.role}</td>
 
                         <td>
-                            <form:form method="post">
-                                <input type="hidden" name="userId" value="${user.id}">
-                                <input type="hidden" name="action" value="update">
-                                <c:choose>
-                                    <c:when test="${user.role == 'ROLE_ADMIN'}">
-                                        <input type="hidden" name="role" value="admin">
-                                        <button type="submit" class="btn btn-outline-primary">
-                                            Edycja
-                                        </button>
-                                        <%--   <a href="/admin/admin/update/${user.id}">Edycja</a> --%>
-                                    </c:when>
-                                    <c:otherwise>
-                                        <input type="hidden" name="role" value="user">
-                                        <button type="submit" class="btn btn-outline-primary">
-                                            Edycja
-                                        </button>
-                                    </c:otherwise>
-                                </c:choose>
-                            </form:form>
+                                <%-- <form:form method="post">
+                                     <input type="hidden" name="userId" value="${user.id}">
+                                     <input type="hidden" name="action" value="update"> --%>
+                            <c:choose>
+                                <c:when test="${user.role == 'ROLE_ADMIN'}">
+                                    <%-- <input type="hidden" name="role" value="admin">
+                                    <button type="submit" class="btn btn-outline-primary">
+                                        Edycja
+                                    </button> --%>
+                                    <button type="button" class="btn btn-outline-success">
+                                        <a href="/admin/admin/update/${user.id}">Edycja</a>
+                                    </button>
+                                </c:when>
+                                <c:otherwise>
+                                    <%--<input type="hidden" name="role" value="user">
+                                    <button type="submit" class="btn btn-outline-primary">
+                                        Edycja
+                                    </button> --%>
+                                    <button type="button" class="btn btn-outline-success">
+                                        <a href="/admin/user/update/${user.id}">Edycja</a>
+                                    </button>
+                                </c:otherwise>
+
+                            </c:choose>
+                                <%-- </form:form> --%>
                         </td>
                         <td>
                             <form:form method="post">
