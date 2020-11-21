@@ -1,5 +1,7 @@
 package pl.coderslab.agreementgenerator.user;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.mail.SimpleMailMessage;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
@@ -15,7 +17,6 @@ import pl.coderslab.agreementgenerator.validation.AddUserValidationGroup;
 import pl.coderslab.agreementgenerator.validation.ChangePasswordValidators;
 import pl.coderslab.agreementgenerator.validation.EditUserValidationGroup;
 
-import javax.servlet.http.HttpSession;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Random;
@@ -28,6 +29,8 @@ public class UserController {
     private UserMethods userMethods;
     private ConfirmationTokenRepository confirmationTokenRepository;
     private EmailSenderService emailSenderService;
+
+    private static final Logger LOGGER = LoggerFactory.getLogger(UserController.class);
 
     public UserController(UserService userService, UserMethods userMethods, ConfirmationTokenRepository confirmationTokenRepository, EmailSenderService emailSenderService) {
         this.userService = userService;
@@ -114,6 +117,7 @@ public class UserController {
     @RequestMapping(value = "/admin/allUsers", method = RequestMethod.GET)
     public String getAllUsersForAdmin(Model model) {
         model.addAttribute("allUsersForAdmin", userRepository.findAll());
+        LOGGER.info("/admin/allUsers " + Thread.currentThread().getStackTrace()[1].getMethodName());
         return "admin/userList";
     }
 
@@ -365,10 +369,9 @@ public class UserController {
 //        return "redirect:../allUsers";
 //    }
 
-    @RequestMapping(value = "/admin/resetPassword", method = RequestMethod.GET)
-    public String resetUserPasswordByAdmin(HttpSession session, Model model) {
-        Long userId = (Long) session.getAttribute("userId");
-        User user = userRepository.findUserById(userId);
+    @RequestMapping(value = "/admin/resetPassword/{id}", method = RequestMethod.GET)
+    public String resetUserPasswordByAdmin(@PathVariable Long id, Model model) {
+        User user = userRepository.findUserById(id);
         user.setEnabled(false);
         Random generator = new Random();
         int rand = generator.nextInt() * 100000;
@@ -381,7 +384,10 @@ public class UserController {
         mailMessage.setText("To reset your password, please click here : "
                 + "https://agreementgenerator.herokuapp.com/reset-password?token=" + confirmationToken.getConfirmationToken());
         emailSenderService.sendEmail(mailMessage);
-        session.removeAttribute("userId");
+        LOGGER.info(
+                "/admin/resetPassword/ " + Thread.currentThread().getStackTrace()[1].getMethodName()
+                        + "Change password request my admin for user: id: " + id + ", User name: " + user.getFullname()
+                        + ", email: " + user.getEmail() + " Email sent succesfuly");
         return "redirect:../admin/allUsers";
     }
 }

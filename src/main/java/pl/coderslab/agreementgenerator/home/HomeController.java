@@ -1,5 +1,7 @@
 package pl.coderslab.agreementgenerator.home;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.mail.SimpleMailMessage;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
@@ -21,6 +23,7 @@ import pl.coderslab.agreementgenerator.validation.ResetPasswordValidationGroup;
 
 import java.util.Random;
 
+
 @Controller
 public class HomeController {
     @Autowired
@@ -29,6 +32,8 @@ public class HomeController {
     private ConfirmationTokenRepository confirmationTokenRepository;
     private EmailSenderService emailSenderService;
     private UserMethods userMethods;
+
+    private static final Logger logger = LoggerFactory.getLogger(HomeController.class);
 
     public HomeController(UserService userService, ConfirmationTokenRepository confirmationTokenRepository, EmailSenderService emailSenderService, UserMethods userMethods) {
         this.userService = userService;
@@ -39,6 +44,7 @@ public class HomeController {
 
     @RequestMapping("/")
     public String home() {
+        logger.info("home method");
 
         return "home/home";
     }
@@ -48,6 +54,7 @@ public class HomeController {
         String currentUser = "-1";
         if (customUser != null) {
             currentUser = customUser.getUser().getFullname();
+            logger.info("Logged as: " + customUser.getUser().getFullname());
         }
         return currentUser;
     }

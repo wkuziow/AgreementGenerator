@@ -86,14 +86,15 @@
                                 <%-- </form:form> --%>
                         </td>
                         <td>
-                            <form:form method="post">
-                                <input type="hidden" name="userId" value="${user.id}">
-                                <input type="hidden" name="action" value="resetPassword">
-                                <button type="submit" class="btn btn-outline-primary">
-                                    Resetuj hasło
-                                </button>
+                                <%--   <form:form method="post">
+                                       <input type="hidden" name="userId" value="${user.id}">
+                                       <input type="hidden" name="action" value="resetPassword">    --%>
+                            <button type="submit" class="btn btn-outline-primary">
+                                <a href="/admin/resetPassword/${user.id}">
+                                    Resetuj hasło</a>
+                            </button>
 
-                            </form:form>
+                                <%--  </form:form> --%>
                         </td>
                     </tr>
                 </c:forEach>
