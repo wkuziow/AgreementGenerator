@@ -45,12 +45,26 @@
                         <td>${client.adress}</td>
                         <td>${client.contactInfo}</td>
                         <td>${client.account}</td>
-                        <td>${client.active}</td>
+                        <td>${client.active}
+
+                            <c:choose>
+                            <c:when test="${client.active == 'true'}">
+                            <button type="button" class="btn btn-outline-danger">
+                                <a href="/admin/client/${client.id}/disable">Dezaktywuj</a>
+                                </c:when>
+                                <c:otherwise>
+                                <button type="button" class="btn btn-outline-success">
+                                    <a href="/admin/client/${client.id}/enable">Aktywuj</a>
+                                    </c:otherwise>
+                                    </c:choose>
+                                </button>
+
+                        </td>
                         <td>${client.softDelete}</td>
                         <th>${client.user.fullname}</th>
                         <td>
                             <button type="button" class="btn btn-outline-primary">
-                            <a href="/admin/client/update/${client.id}">Edytuj</a>
+                                <a href="/admin/client/update/${client.id}">Edytuj</a>
                             </button>
 
                             <button type="button" class="btn btn-outline-warning">

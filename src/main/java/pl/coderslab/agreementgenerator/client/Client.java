@@ -81,4 +81,8 @@ public class Client {
     public String getContactInfo() {
         return "email: " + email + ", phone: " + phone;
     }
+
+    public void setActive(boolean active) {
+        isActive = active;
+    }
 }

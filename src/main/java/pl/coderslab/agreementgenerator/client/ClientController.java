@@ -24,17 +24,19 @@ import java.util.List;
 
 @Controller
 public class ClientController {
-    @Autowired
+
     private ClientRepository clientRepository;
     private UserRepository userRepository;
     private TransactionRepository transactionRepository;
+    private ClientUtils clientUtils;
 
-
-    public ClientController(UserRepository userRepository, ClientRepository clientRepository, TransactionRepository transactionRepository) {
-        this.userRepository = userRepository;
+    public ClientController(ClientRepository clientRepository, UserRepository userRepository, TransactionRepository transactionRepository, ClientUtils clientUtils) {
         this.clientRepository = clientRepository;
+        this.userRepository = userRepository;
         this.transactionRepository = transactionRepository;
+        this.clientUtils = clientUtils;
     }
+
     @ModelAttribute("currentUserFullName")
     public String currentUser(@AuthenticationPrincipal CurrentUser customUser, Model model) {
         String currentUser = "-1";
@@ -142,6 +144,20 @@ public class ClientController {
     public String getAllTransactionsForClient(Model model, @PathVariable Long clientId) {
         model.addAttribute("allTransactionsforClient", transactionRepository.findTransactionByClientId(clientId));
         return "client/transactionList";
+    }
+
+    @RequestMapping(value = "/admin/clint/{id}/disable", method = RequestMethod.GET)
+    public String disableClientByAdmin(@PathVariable Long id) {
+        clientUtils.disableClientByAdmin(id);
+        return "redirect:../../admin/allUsers";
+    }
+
+    @RequestMapping(value = "/admin/client/{id}/enable", method = RequestMethod.GET)
+    public String enableClientByAdmin(@PathVariable Long id) {
+        User user = userRepository.findUserById(id);
+        user.setEnabled(true);
+        userRepository.save(user);
+        return "redirect:../../admin/allUsers";
     }
 
 }
