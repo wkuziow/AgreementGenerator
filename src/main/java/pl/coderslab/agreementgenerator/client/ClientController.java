@@ -1,8 +1,5 @@
 package pl.coderslab.agreementgenerator.client;
 
-import lombok.RequiredArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.access.annotation.Secured;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -12,13 +9,13 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import pl.coderslab.agreementgenerator.logger.LoggerService;
 import pl.coderslab.agreementgenerator.transaction.TransactionRepository;
 import pl.coderslab.agreementgenerator.user.CurrentUser;
 import pl.coderslab.agreementgenerator.user.Role;
 import pl.coderslab.agreementgenerator.user.User;
 import pl.coderslab.agreementgenerator.user.UserRepository;
 
-import javax.validation.Validator;
 import java.util.Arrays;
 import java.util.List;
 
@@ -29,12 +26,14 @@ public class ClientController {
     private UserRepository userRepository;
     private TransactionRepository transactionRepository;
     private ClientUtils clientUtils;
+    private LoggerService loggerService;
 
-    public ClientController(ClientRepository clientRepository, UserRepository userRepository, TransactionRepository transactionRepository, ClientUtils clientUtils) {
+    public ClientController(ClientRepository clientRepository, UserRepository userRepository, TransactionRepository transactionRepository, ClientUtils clientUtils, LoggerService loggerService) {
         this.clientRepository = clientRepository;
         this.userRepository = userRepository;
         this.transactionRepository = transactionRepository;
         this.clientUtils = clientUtils;
+        this.loggerService = loggerService;
     }
 
     @ModelAttribute("currentUserFullName")
@@ -146,18 +145,23 @@ public class ClientController {
         return "client/transactionList";
     }
 
-    @RequestMapping(value = "/admin/clint/{id}/disable", method = RequestMethod.GET)
-    public String disableClientByAdmin(@PathVariable Long id) {
+    @RequestMapping(value = "/admin/client/{id}/disable", method = RequestMethod.GET)
+    public String disableClientByAdmin(@PathVariable Long id,@AuthenticationPrincipal CurrentUser customUser) {
         clientUtils.disableClientByAdmin(id);
-        return "redirect:../../admin/allUsers";
+        loggerService.loggerInfo("Client id: " + id + ". Was disabled by user: "
+                + customUser.getUser().getFullname() + " \n"
+                + Thread.currentThread().getStackTrace()[1].getMethodName());
+        return "redirect:../../allClients";
     }
 
     @RequestMapping(value = "/admin/client/{id}/enable", method = RequestMethod.GET)
-    public String enableClientByAdmin(@PathVariable Long id) {
-        User user = userRepository.findUserById(id);
-        user.setEnabled(true);
-        userRepository.save(user);
-        return "redirect:../../admin/allUsers";
+    public String enableClientByAdmin(@PathVariable Long id, @AuthenticationPrincipal CurrentUser customUser) {
+        clientUtils.enablelientByAdmin(id);
+        loggerService.loggerInfo("Client id: " + id + ". Was enabled by user: "
+                + customUser.getUser().getFullname() + " \n"
+                + Thread.currentThread().getStackTrace()[1].getMethodName());
+        return "redirect:../../allClients";
     }
+
 
 }

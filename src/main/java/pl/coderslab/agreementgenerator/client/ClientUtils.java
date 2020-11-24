@@ -22,5 +22,13 @@ public class ClientUtils {
 
     }
 
+    public void enablelientByAdmin(Long id) {
+
+        Client client = clientRepository.findClientById(id);
+        client.setActive(true);
+        clientRepository.save(client);
+
+    }
+
 
 }

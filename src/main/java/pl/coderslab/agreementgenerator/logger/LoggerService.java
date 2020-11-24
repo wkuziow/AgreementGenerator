@@ -9,4 +9,8 @@ import org.springframework.stereotype.Service;
 public class LoggerService {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(LoggerService.class);
+
+    public void loggerInfo(String message){
+        LOGGER.info(message);
+    }
 }

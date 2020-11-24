@@ -26,11 +26,11 @@ public class Client {
     private boolean isActive;
 
     @NotEmpty(message = "To pole nie może być puste")
-    @org.hibernate.validator.constraints.pl.NIP (message = "Nieprawidłowy format danych")
+   // @org.hibernate.validator.constraints.pl.NIP (message = "Nieprawidłowy format danych")
     private String NIP;
 
     @NotEmpty(message = "To pole nie może być puste")
-    @org.hibernate.validator.constraints.pl.REGON (message = "Nieprawidłowy format danych")
+   // @org.hibernate.validator.constraints.pl.REGON (message = "Nieprawidłowy format danych")
     private String REGON;
 
     @NotEmpty(message = "To pole nie może być puste")
