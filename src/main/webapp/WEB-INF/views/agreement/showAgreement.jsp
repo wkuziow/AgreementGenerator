@@ -35,7 +35,7 @@
 </head>
 <body class="agreement">
 
-<div class="container" >
+<div class="container">
     <div class="" id="printableArea">
         <p>Umowa nr ${client.id}</p>
         <p>Zawarta w ${client.town} dnia ${transaction.dateOfSign} pomiędzy</p>
@@ -43,7 +43,7 @@
             <li><p>
                 Firmą <b>${client.name}</b>, <b>${client.adress}</b>,
                 REGON <b>${client.REGON}</b>, NIP
-                    <b>${client.NIP}</b>,
+                <b>${client.NIP}</b>,
             </p>
                 <p>reprezentowaną przez:
                     .........................................................................................
@@ -53,7 +53,7 @@
             <li>
                 <p><b>Firmą Faktoring dla wszystkich S.A. </b>z siedzibą w <b>Warszawie</b> przy <b>ul.
                     Finansowej 1</b>, kod pocztowy <b>01-111</b>, REGON <b>111111111</b>, NIP
-                        <b>2222222222</b>,</p>
+                    <b>2222222222</b>,</p>
                 <p>reprezentowaną przez ................................................................................
                     (imię i nazwisko, uprawnienie do reprezentacji)
                     zwaną dalej <b>Faktorem</b>.</p></li>
@@ -69,7 +69,8 @@
 
             <li>
                 <ol type="a">
-                    <li>Faktor przyznaje Faktorantowi limit w wysokości <b>${transaction.amount} ${transaction.currency}</b>
+                    <li>Faktor przyznaje Faktorantowi limit w wysokości
+                        <b>${transaction.amount} ${transaction.currency}</b>
                         zwany
                         dalej Limitem finansowania.
                     </li>
@@ -80,7 +81,8 @@
                         przez Dłużnika powoduje odnowienie Limitu finansowania o wysokość danej spłaty.
                     </li>
                     <li>Faktorant zobowiązuje się do zapłaty Faktorowi prowizji z tytułu administrowania limitem w
-                        wysokości <b>${transaction.administrationFee}% </b>od kwoty Limitu finansowania w cyklach miesięcznych.
+                        wysokości <b>${transaction.administrationFee}% </b>od kwoty Limitu finansowania w cyklach
+                        miesięcznych.
                     </li>
                     <li>Faktorant zobowiązuje się do zapłaty Faktorowi prowizji z tytułu niewykorzystanego Limitu
                         finansowania w
@@ -130,17 +132,20 @@
                     <li>Faktor zapłaci Faktorantowi kwotę stanowiącą 100% wartości nominalnej przelanej wierzytelności
                         pomniejszoną o:
                         <ol type="I">
-                            <li>prowizję operacyjną w wysokości <b>${transaction.operationalFee}% </b>od każdej zgłoszonej
+                            <li>prowizję operacyjną w wysokości <b>${transaction.operationalFee}% </b>od każdej
+                                zgłoszonej
                                 Wierzytelności
                             </li>
                             oraz
                             <li>odsetki dyskontowe naliczane od wartości Wierzytelności według odpowiedniej
-                                stopy <b>${transaction.referenceRate} </b>powiększonej o marżę <b>${transaction.margin} p.p.p.a.</b>
+                                stopy <b>${transaction.referenceRate} </b>powiększonej o marżę <b>${transaction.margin}
+                                    p.p.p.a.</b>
                             </li>
                             w terminie 2 dni roboczych od zgłoszenia przez Faktoranta Wierzytelności do wykupu.
                         </ol>
                     </li>
-                    <li>Zapłata nastąpi przelewem na rachunek Faktoranta nr <b>${client.account}</b>. Datą zapłaty jest data
+                    <li>Zapłata nastąpi przelewem na rachunek Faktoranta nr <b>${client.account}</b>. Datą zapłaty jest
+                        data
                         księgowania polecenia obciążenia rachunku Faktora.
                     </li>
                 </ol>
@@ -157,7 +162,7 @@
                 Umowa została zawarta na czas
                 <c:choose>
                     <c:when test="${transaction.hasValidDate == false}">
-                <b>nieokreślony</b>
+                        <b>nieokreślony</b>
                     </c:when>
                     <c:otherwise>
                         określony, do dnia <b>${transaction.validDate}</b>.
@@ -201,7 +206,17 @@
     </div>
     <p>
         <br><br><br>
-    <input type="button" class="btn btn-primary btn-lg btn-success" onclick="printDiv('printableArea')" value="Wygeneruj umowę w PDF" />
+        <input type="button" class="btn btn-primary btn-lg btn-success" onclick="printDiv('printableArea')"
+               value="Wygeneruj umowę w PDF"/>
+    </p>
+
+    <p>
+        <button type="button" class="btn btn-outline-danger">
+            <a href="/client/${client.id}/showAgreement/${transaction.id}/pdf">To pdf</a>
+
+
+        </button>
+
     </p>
 </div>
 <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
